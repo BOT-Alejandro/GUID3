@@ -11,6 +11,7 @@ drawable ajustes_icono
 drawable cerrar_icono
 drawable home_icono
 drawable info_icono
+drawable nav_fondo_redondo
 drawable usuario_icono
 font codec_cold_regular
 font codec_pro_regular

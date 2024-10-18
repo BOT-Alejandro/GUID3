@@ -116,6 +116,10 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_nav_fondo_redondo.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\drawable\\nav_fondo_redondo.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\layout_fragment_ayuda.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\layout\\fragment_ayuda.xml"
     },

@@ -2984,6 +2984,7 @@ int drawable ic_mtrl_chip_checked_black 0x7f07009b
 int drawable ic_mtrl_chip_checked_circle 0x7f07009c
 int drawable ic_mtrl_chip_close_circle 0x7f07009d
 int drawable ic_search_black_24 0x7f07009e
+int drawable idioma_icono 0x7f0700ef
 int drawable info_icono 0x7f07009f
 int drawable m3_appbar_background 0x7f0700a0
 int drawable m3_avd_hide_password 0x7f0700a1
@@ -3286,6 +3287,7 @@ int id honorRequest 0x7f0900d8
 int id horizontal_only 0x7f0900d9
 int id icon 0x7f0900da
 int id icon_group 0x7f0900db
+int id idioma_icono 0x7f0901fb
 int id ifRoom 0x7f0900dc
 int id ignore 0x7f0900dd
 int id ignoreRequest 0x7f0900de
@@ -3533,6 +3535,8 @@ int id textinput_placeholder 0x7f0901cd
 int id textinput_prefix_text 0x7f0901ce
 int id textinput_suffix_text 0x7f0901cf
 int id texto_accesibilidad_vAjustes 0x7f0901fa
+int id texto_cambiar_idioma 0x7f0901fc
+int id texto_modo_noche 0x7f0901fd
 int id time 0x7f0901d0
 int id title 0x7f0901d1
 int id titleDividerNoCustom 0x7f0901d2

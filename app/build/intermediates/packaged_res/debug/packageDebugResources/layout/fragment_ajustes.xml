@@ -95,24 +95,49 @@
                     android:src="@drawable/modo_noche_icono"/>
 
                 <TextView
+                    android:id="@+id/texto_modo_noche"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Modo Noche"
                     android:layout_below="@id/texto_accesibilidad_vAjustes"
-                    android:layout_toEndOf="@+id/modo_noche_icono"
-                    android:layout_marginTop="12dp"
                     android:layout_marginStart="10dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/negro"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@+id/modo_noche_icono"
                     android:fontFamily="@font/fuente_principal"
-                    />
+                    android:text="Modo Noche"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_below="@id/texto_accesibilidad_vAjustes"
-                    app:switchMinWidth="50dp"/>
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="130dp"
+                    android:layout_toEndOf="@+id/texto_modo_noche"
+                    app:switchMinWidth="50dp" />
+
+                <ImageView
+                    android:id="@+id/idioma_icono"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/modo_noche_icono"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/idioma_icono"/>
+
+                <TextView
+                    android:id="@+id/texto_cambiar_idioma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto_modo_noche"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/modo_noche_icono"
+                    android:fontFamily="@font/fuente_principal"
+                    android:text="Cambiar Idioma"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
+
 
             </RelativeLayout>
 

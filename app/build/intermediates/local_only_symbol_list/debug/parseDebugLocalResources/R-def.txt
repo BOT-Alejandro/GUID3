@@ -15,6 +15,7 @@ drawable fondo_ajustesv2
 drawable fondo_botones
 drawable fondo_ventana_config
 drawable home_icono
+drawable idioma_icono
 drawable info_icono
 drawable modo_noche_icono
 drawable nav_fondo_redondo
@@ -29,12 +30,15 @@ id barra_de_herramientas
 id foto_de_usario
 id fragmento_contenedor
 id home
+id idioma_icono
 id layout_contenedor_accesibilidad
 id layout_principal
 id menu_lateral
 id modo_noche_icono
 id salir
 id texto_accesibilidad_vAjustes
+id texto_cambiar_idioma
+id texto_modo_noche
 id ventana_menu_lateral
 layout fragment_acerca_de
 layout fragment_ajustes

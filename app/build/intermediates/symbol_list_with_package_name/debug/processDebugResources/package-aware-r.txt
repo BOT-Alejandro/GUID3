@@ -2985,6 +2985,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable idioma_icono
 drawable info_icono
 drawable m3_appbar_background
 drawable m3_avd_hide_password
@@ -3287,6 +3288,7 @@ id honorRequest
 id horizontal_only
 id icon
 id icon_group
+id idioma_icono
 id ifRoom
 id ignore
 id ignoreRequest
@@ -3534,6 +3536,8 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id texto_accesibilidad_vAjustes
+id texto_cambiar_idioma
+id texto_modo_noche
 id time
 id title
 id titleDividerNoCustom

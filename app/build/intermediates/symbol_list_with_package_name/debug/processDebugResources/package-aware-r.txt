@@ -1418,6 +1418,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gris
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color m3_appbar_overlay_color
@@ -2961,6 +2962,10 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable fondo_ajustes
+drawable fondo_ajustesv2
+drawable fondo_botones
+drawable fondo_ventana_config
 drawable home_icono
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
@@ -3003,6 +3008,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable modo_noche_icono
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3260,6 +3266,7 @@ id fixed
 id flip
 id floating
 id forever
+id foto_de_usario
 id fragment_container_view_tag
 id fragmento_contenedor
 id frost
@@ -3296,6 +3303,8 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layout_contenedor_accesibilidad
+id layout_principal
 id left
 id leftToRight
 id legacy
@@ -3334,6 +3343,7 @@ id menu_lateral
 id message
 id middle
 id mini
+id modo_noche_icono
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -3523,6 +3533,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id texto_accesibilidad_vAjustes
 id time
 id title
 id titleDividerNoCustom

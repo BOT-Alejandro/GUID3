@@ -21,6 +21,8 @@
             android:id="@+id/barra_de_herramientas"
             android:elevation="4dp"
             android:background="@color/AzulPrincipal"
+            app:title="GUID3 Technologies"
+            app:popupTheme="@style/Theme.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <FrameLayout

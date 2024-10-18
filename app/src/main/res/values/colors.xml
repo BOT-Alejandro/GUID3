@@ -5,5 +5,6 @@
     <color name="MoradoOscuro">#180E2B</color>
     <color name="negro">#FF000000</color>
     <color name="blanco">#FFFFFFFF</color>
+    <color name="gris">#FFC0C0C0</color>
     <color name="amarillo">#E7C94A</color>
 </resources>

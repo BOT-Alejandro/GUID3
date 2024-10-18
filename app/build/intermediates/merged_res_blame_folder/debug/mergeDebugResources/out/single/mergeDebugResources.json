@@ -20,6 +20,14 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_fondo_botones.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\drawable\\fondo_botones.xml"
+    },
+    {
+        "merged": "com.alexdev.guid3.app-debug-31:/drawable_modo_noche_icono.xml.flat",
+        "source": "com.alexdev.guid3.app-main-33:/drawable/modo_noche_icono.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\layout_fragment_ajustes.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\layout\\fragment_ajustes.xml"
     },
@@ -54,6 +62,10 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_fondo_ajustes.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\drawable\\fondo_ajustes.png"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
@@ -104,8 +116,20 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
+        "merged": "com.alexdev.guid3.app-debug-31:/layout_fragment_ajustes.xml.flat",
+        "source": "com.alexdev.guid3.app-main-33:/layout/fragment_ajustes.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_fondo_ventana_config.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\drawable\\fondo_ventana_config.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_background.webp.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_background.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_fondo_ajustesv2.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\drawable\\fondo_ajustesv2.png"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
@@ -150,10 +174,6 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\layout_fragment_acerca_de.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-33:\\layout\\fragment_acerca_de.xml"
-    },
-    {
-        "merged": "com.alexdev.guid3.app-debug-31:/layout_ventana_nav.xml.flat",
-        "source": "com.alexdev.guid3.app-main-33:/layout/ventana_nav.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-31:\\drawable_acerca_de_icono.xml.flat",

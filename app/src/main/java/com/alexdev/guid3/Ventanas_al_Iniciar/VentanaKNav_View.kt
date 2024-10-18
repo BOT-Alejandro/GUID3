@@ -66,11 +66,11 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
     // Funcionalidad que permite cerrar el menu lateral al pulsar el boton tactil del dispositivo
     override fun onBackPressed() {
         super.onBackPressed()
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            onBackPressedDispatcher.onBackPressed()
+            return
         }
+        onBackPressedDispatcher.onBackPressed()
     }
 
 }

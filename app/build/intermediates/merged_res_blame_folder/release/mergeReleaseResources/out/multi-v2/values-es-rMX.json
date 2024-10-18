@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.alexdev.guid3.app-mergeReleaseResources-29:/values-es-rMX/values-es-rMX.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Alex\\AndroidStudioProjects\\GUID3\\app\\src\\main\\res\\values-es-rMX\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,5,9,7,8,6,10,3",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "175,55,219,409,311,365,265,460,115",
+                        "endColumns": "43,59,45,50,53,43,45,51,59",
+                        "endOffsets": "214,110,260,455,360,404,306,507,170"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,99,159,205,256,310,354,400,452",
+                        "endColumns": "43,59,45,50,53,43,45,51,59",
+                        "endOffsets": "94,154,200,251,305,349,395,447,507"
+                    }
+                }
+            ]
+        }
+    ]
+}

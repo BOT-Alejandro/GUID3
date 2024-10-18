@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name" translatable="false">GUID3</string>
+    <string name="version_de_app" translatable="false">1.0.0</string>
+    <string name="autor_de_app">Alejandro Martinez</string>
+    <string name="txtV_Inicial">Welcome to GUID3</string>
+    <string name="abrir_Nav">Open</string>
+    <string name="cerrar_Nav">Close</string>
+    <string name="nav_inicio">Home</string>
+    <string name="nav_ajustes">Settings</string>
+    <string name="nav_ayuda">Help</string>
+    <string name="nav_acercade">About Us</string>
+    <string name="nav_salir">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+</resources>

@@ -332,8 +332,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="exportar_icono2" />
-                            <entry key="sourceFile" value="C:\Users\Alex\AndroidStudioProjects\GUID3" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="guid3_a2" />
+                            <entry key="sourceFile" value="C:\Users\Alex\Desktop\Proyecto GUID3\Recursos\Logos\guid3_a2.svg" />
                           </map>
                         </option>
                       </PersistentState>

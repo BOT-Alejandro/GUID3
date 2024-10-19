@@ -2962,6 +2962,8 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable exportar_icono
+drawable exportar_icono2
 drawable fondo_ajustes
 drawable fondo_ajustesv2
 drawable fondo_botones
@@ -3080,6 +3082,9 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Switch_cambiar_idioma
+id Switch_modo_noche
+id Switch_modo_noche_prueba
 id TOP_END
 id TOP_START
 id accelerate
@@ -3165,6 +3170,7 @@ id beginOnFirstDraw
 id beginning
 id bestChoice
 id blocking
+id boton_exportar
 id bottom
 id bounce
 id bounceBoth
@@ -3253,6 +3259,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id exportar_icono
 id fade
 id fill
 id fill_horizontal
@@ -3293,6 +3300,10 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
+id imageView2
+id imageView3
+id imageView4
 id immediateStop
 id included
 id indeterminate
@@ -3306,6 +3317,7 @@ id jumpToStart
 id labeled
 id layout
 id layout_contenedor_accesibilidad
+id layout_contenedor_test1
 id layout_principal
 id left
 id leftToRight
@@ -3432,6 +3444,7 @@ id postLayout
 id pressed
 id progress_circular
 id progress_horizontal
+id prueba_icono1
 id radio
 id ratio
 id rectangles
@@ -3505,6 +3518,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switchMaterial
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3526,6 +3540,10 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
+id textView2
+id textView3
+id textView4
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3537,6 +3555,9 @@ id textinput_prefix_text
 id textinput_suffix_text
 id texto_accesibilidad_vAjustes
 id texto_cambiar_idioma
+id texto_contedor1
+id texto_contenedor2
+id texto_exportar_pssw
 id texto_modo_noche
 id time
 id title

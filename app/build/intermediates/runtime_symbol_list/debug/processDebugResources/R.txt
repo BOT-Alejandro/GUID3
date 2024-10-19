@@ -2961,6 +2961,8 @@ int drawable design_ic_visibility 0x7f070085
 int drawable design_ic_visibility_off 0x7f070086
 int drawable design_password_eye 0x7f070087
 int drawable design_snackbar_background 0x7f070088
+int drawable exportar_icono 0x7f0700f0
+int drawable exportar_icono2 0x7f0700f1
 int drawable fondo_ajustes 0x7f070089
 int drawable fondo_ajustesv2 0x7f07008a
 int drawable fondo_botones 0x7f07008b
@@ -3079,6 +3081,9 @@ int id SHOW_ALL 0x7f090008
 int id SHOW_PATH 0x7f090009
 int id SHOW_PROGRESS 0x7f09000a
 int id SYM 0x7f09000b
+int id Switch_cambiar_idioma 0x7f0901fe
+int id Switch_modo_noche 0x7f0901ff
+int id Switch_modo_noche_prueba 0x7f090203
 int id TOP_END 0x7f09000c
 int id TOP_START 0x7f09000d
 int id accelerate 0x7f09000e
@@ -3164,6 +3169,7 @@ int id beginOnFirstDraw 0x7f09005d
 int id beginning 0x7f09005e
 int id bestChoice 0x7f09005f
 int id blocking 0x7f090060
+int id boton_exportar 0x7f090200
 int id bottom 0x7f090061
 int id bounce 0x7f090062
 int id bounceBoth 0x7f090063
@@ -3252,6 +3258,7 @@ int id enterAlwaysCollapsed 0x7f0900b5
 int id exitUntilCollapsed 0x7f0900b6
 int id expand_activities_button 0x7f0900b7
 int id expanded_menu 0x7f0900b8
+int id exportar_icono 0x7f090201
 int id fade 0x7f0900b9
 int id fill 0x7f0900ba
 int id fill_horizontal 0x7f0900bb
@@ -3292,6 +3299,10 @@ int id ifRoom 0x7f0900dd
 int id ignore 0x7f0900de
 int id ignoreRequest 0x7f0900df
 int id image 0x7f0900e0
+int id imageView 0x7f090204
+int id imageView2 0x7f090205
+int id imageView3 0x7f09020d
+int id imageView4 0x7f09020e
 int id immediateStop 0x7f0900e1
 int id included 0x7f0900e2
 int id indeterminate 0x7f0900e3
@@ -3305,6 +3316,7 @@ int id jumpToStart 0x7f0900ea
 int id labeled 0x7f0900eb
 int id layout 0x7f0900ec
 int id layout_contenedor_accesibilidad 0x7f0900ed
+int id layout_contenedor_test1 0x7f090206
 int id layout_principal 0x7f0900ee
 int id left 0x7f0900ef
 int id leftToRight 0x7f0900f0
@@ -3431,6 +3443,7 @@ int id postLayout 0x7f090168
 int id pressed 0x7f090169
 int id progress_circular 0x7f09016a
 int id progress_horizontal 0x7f09016b
+int id prueba_icono1 0x7f090207
 int id radio 0x7f09016c
 int id ratio 0x7f09016d
 int id rectangles 0x7f09016e
@@ -3504,6 +3517,7 @@ int id stretch 0x7f0901b1
 int id submenuarrow 0x7f0901b2
 int id submit_area 0x7f0901b3
 int id supportScrollUp 0x7f0901b4
+int id switchMaterial 0x7f090208
 int id tabMode 0x7f0901b5
 int id tag_accessibility_actions 0x7f0901b6
 int id tag_accessibility_clickable_spans 0x7f0901b7
@@ -3525,6 +3539,10 @@ int id textSpacerNoButtons 0x7f0901c6
 int id textSpacerNoTitle 0x7f0901c7
 int id textStart 0x7f0901c8
 int id textTop 0x7f0901c9
+int id textView 0x7f090209
+int id textView2 0x7f09020a
+int id textView3 0x7f09020f
+int id textView4 0x7f090210
 int id text_input_end_icon 0x7f0901ca
 int id text_input_error_icon 0x7f0901cb
 int id text_input_start_icon 0x7f0901cc
@@ -3536,6 +3554,9 @@ int id textinput_prefix_text 0x7f0901d1
 int id textinput_suffix_text 0x7f0901d2
 int id texto_accesibilidad_vAjustes 0x7f0901d3
 int id texto_cambiar_idioma 0x7f0901d4
+int id texto_contedor1 0x7f09020b
+int id texto_contenedor2 0x7f09020c
+int id texto_exportar_pssw 0x7f090202
 int id texto_modo_noche 0x7f0901d5
 int id time 0x7f0901d6
 int id title 0x7f0901d7

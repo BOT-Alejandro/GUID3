@@ -63,14 +63,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/fondo_ventana_config">
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
 
 
             <RelativeLayout
                 android:id="@+id/layout_contenedor_accesibilidad"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/fondo_ventana_config">
 
                 <TextView
                     android:id="@+id/texto_accesibilidad_vAjustes"
@@ -108,11 +111,12 @@
                     android:textSize="18sp" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/Switch_modo_noche"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/texto_accesibilidad_vAjustes"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="130dp"
+                    android:layout_marginStart="100dp"
                     android:layout_toEndOf="@+id/texto_modo_noche"
                     app:switchMinWidth="50dp" />
 
@@ -138,6 +142,216 @@
                     android:textColor="@color/negro"
                     android:textSize="18sp" />
 
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/Switch_cambiar_idioma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Switch_modo_noche"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="100dp"
+                    android:layout_toEndOf="@+id/texto_modo_noche"
+                    app:switchMinWidth="50dp" />
+
+                <ImageView
+                    android:id="@+id/exportar_icono"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/idioma_icono"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/exportar_icono2"/>
+
+                <TextView
+                    android:id="@+id/texto_exportar_pssw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto_cambiar_idioma"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/modo_noche_icono"
+                    android:fontFamily="@font/fuente_principal"
+                    android:text="Exportar contraseñas"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/boton_exportar"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:contentDescription="Exportar"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/exportar_icono"
+                    android:layout_below="@id/Switch_cambiar_idioma"
+                    android:layout_toEndOf="@id/texto_exportar_pssw"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_contenedor_test1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/fondo_ventana_config">
+
+                <TextView
+                    android:id="@+id/texto_contedor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ajustes de Cuenta"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/negro"
+                    android:fontFamily="@font/fuente_principal"
+                    />
+
+                <ImageView
+                    android:id="@+id/prueba_icono1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/texto_contedor1"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/modo_noche_icono"/>
+
+                <TextView
+                    android:id="@+id/texto_contenedor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto_contedor1"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_toEndOf="@+id/prueba_icono1"
+                    android:fontFamily="@font/fuente_principal"
+                    android:text="Modo Noche"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/Switch_modo_noche_prueba"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texto_contedor1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toEndOf="@+id/texto_contenedor2"
+                    android:checked="false"
+                    app:switchMinWidth="50dp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/prueba_icono1"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/idioma_icono" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/texto_contenedor2"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:fontFamily="@font/fuente_principal"
+                    android:text="Cambiar Idioma"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchMaterial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Switch_modo_noche_prueba"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="69dp"
+                    android:layout_toEndOf="@+id/textView"
+                    app:switchMinWidth="50dp" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/imageView"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/exportar_icono2" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:fontFamily="@font/fuente_principal"
+                    android:text="Exportar contraseñas"
+                    android:textColor="@color/negro"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/switchMaterial"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/textView2"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Exportar"
+                    android:src="@drawable/exportar_icono"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/imageView2"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/usuario_icono"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Borrar cuenta"
+                    android:layout_below="@id/textView2"
+                    android:layout_toEndOf="@id/imageView3"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/negro"
+                    android:fontFamily="@font/fuente_principal"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/imageView3"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/usuario_icono"
+                    android:layout_alignParentStart="true"/>
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Borrar cuenta"
+                    android:layout_below="@id/textView3"
+                    android:layout_toEndOf="@id/imageView4"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/negro"
+                    android:fontFamily="@font/fuente_principal"
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 

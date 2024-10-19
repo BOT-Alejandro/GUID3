@@ -14,13 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        
+
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:id="@+id/barra_de_herramientas"
             android:elevation="4dp"
             android:background="@color/AzulPrincipal"
+            app:title="GUID3 Technologies"
+            app:popupTheme="@style/Theme.AppCompat.Light"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <FrameLayout
@@ -34,9 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/menu_lateral"
+        android:layout_marginTop="30dp"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_encabezado"
         app:menu="@menu/menu"
+        android:background="@drawable/nav_fondo_redondo"
         app:itemIconTint="@color/AzulSecundario"
         app:itemTextColor="@color/negro"
         app:itemIconSize="30dp" />

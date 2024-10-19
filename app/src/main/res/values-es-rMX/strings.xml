@@ -15,4 +15,11 @@
     <string name="accesibilidad">Accesibilidad</string>
     <string name="foto_de_usuario">Foto de usuario</string>
     <string name="editar_perfil">Editar perfil</string>
+    <string name="texto_acerca_de">Nuestra meta es brindar al usuario una herramienta confiable para
+        generar contraseñas complejas, para guiar a las personas para asegurar que sus contraseñas sean
+        sólidas y adecuadas para protegerse de posibles intentos de intrusiones.\n\n
+        Disminuir el 55% de víctimas por contraseñas inseguras en México.\n\n
+        Incrementar la cultura de ciberseguridad en el país.\n\n
+        Reducir la complejidad de elaborar una contraseña segura.</string>
+    <string name="app_version">Version de app</string>
 </resources>

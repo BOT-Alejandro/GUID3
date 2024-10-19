@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">GUID3</string>
-    <string name="version_de_app" translatable="false">1.0.0</string>
+    <string name="version_de_app" translatable="false">1.0.3</string>
     <string name="autor_de_app">Alejandro Martinez</string>
     <string name="txtV_Inicial">Welcome to GUID3</string>
     <string name="abrir_Nav">Open</string>
@@ -10,6 +10,11 @@
     <string name="nav_ayuda">Help</string>
     <string name="nav_acercade">About Us</string>
     <string name="nav_salir">Logout</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="exportar_contras">Export passwords</string>
+    <string name="cambiar_idioma">Change language</string>
+    <string name="modo_noche">Night mode</string>
+    <string name="accesibilidad">Accessibility</string>
+    <string name="foto_de_usuario">User picture</string>
+    <string name="editar_perfil">Edit Profile</string>
 
 </resources>

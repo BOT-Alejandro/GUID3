@@ -9,4 +9,10 @@
     <string name="nav_ayuda">Ayuda</string>
     <string name="nav_acercade">Acerca de</string>
     <string name="nav_salir">Cerrar Sesión</string>
+    <string name="exportar_contras">Exportar contraseñas</string>
+    <string name="cambiar_idioma">Cambiar idioma</string>
+    <string name="modo_noche">Modo noche</string>
+    <string name="accesibilidad">Accesibilidad</string>
+    <string name="foto_de_usuario">Foto de usuario</string>
+    <string name="editar_perfil">Editar perfil</string>
 </resources>

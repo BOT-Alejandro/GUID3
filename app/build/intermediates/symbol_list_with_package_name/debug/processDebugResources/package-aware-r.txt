@@ -2968,6 +2968,7 @@ drawable fondo_ajustes
 drawable fondo_ajustesv2
 drawable fondo_botones
 drawable fondo_ventana_config
+drawable guid3_a2
 drawable home_icono
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
@@ -2989,6 +2990,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable idioma_icono
 drawable info_icono
+drawable logo1
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3084,7 +3086,6 @@ id SHOW_PROGRESS
 id SYM
 id Switch_cambiar_idioma
 id Switch_modo_noche
-id Switch_modo_noche_prueba
 id TOP_END
 id TOP_START
 id accelerate
@@ -3300,10 +3301,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
-id imageView2
-id imageView3
-id imageView4
 id immediateStop
 id included
 id indeterminate
@@ -3317,7 +3314,6 @@ id jumpToStart
 id labeled
 id layout
 id layout_contenedor_accesibilidad
-id layout_contenedor_test1
 id layout_principal
 id left
 id leftToRight
@@ -3401,6 +3397,7 @@ id neverCompleteToEnd
 id neverCompleteToStart
 id noScroll
 id noState
+id nombre_app_acercade
 id none
 id normal
 id north
@@ -3444,7 +3441,6 @@ id postLayout
 id pressed
 id progress_circular
 id progress_horizontal
-id prueba_icono1
 id radio
 id ratio
 id rectangles
@@ -3518,7 +3514,6 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
-id switchMaterial
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3533,6 +3528,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id tech_app_acercade
 id text
 id text2
 id textEnd
@@ -3540,10 +3536,6 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
-id textView
-id textView2
-id textView3
-id textView4
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3554,11 +3546,12 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id texto_accesibilidad_vAjustes
+id texto_acerca_de
 id texto_cambiar_idioma
-id texto_contedor1
-id texto_contenedor2
 id texto_exportar_pssw
 id texto_modo_noche
+id texto_version_app
+id texto_version_de_app
 id time
 id title
 id titleDividerNoCustom
@@ -3830,8 +3823,10 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string abrir_Nav
+string accesibilidad
 string androidx_startup
 string app_name
+string app_version
 string appbar_scrolling_view_behavior
 string autor_de_app
 string bottom_sheet_behavior
@@ -3847,16 +3842,20 @@ string call_notification_hang_up_action
 string call_notification_incoming_text
 string call_notification_ongoing_text
 string call_notification_screening_text
+string cambiar_idioma
 string cerrar_Nav
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string editar_perfil
 string error_a11y_label
 string error_icon_content_description
+string exportar_contras
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string foto_de_usuario
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
@@ -3898,6 +3897,7 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
+string modo_noche
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name
@@ -3977,6 +3977,8 @@ string searchview_navigation_content_description
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string technologies_text_acercade
+string texto_acerca_de
 string txtV_Inicial
 string version_de_app
 style AlertDialog_AppCompat

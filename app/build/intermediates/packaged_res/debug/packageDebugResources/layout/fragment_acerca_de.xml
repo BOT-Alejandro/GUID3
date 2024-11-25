@@ -1,17 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Fragments.Acerca_de">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fragment Acerca de"
-        android:layout_centerInParent="true"
-        android:textSize="30sp"
-        android:textColor="@color/AzulPrincipal"
-        android:fontFamily="@font/fuente_principal"/>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/nombre_app_acercade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/AzulSecundario"
+            android:fontFamily="@font/fuente_principal"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/tech_app_acercade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre_app_acercade"
+            android:layout_marginStart="20dp"
+            android:text="@string/technologies_text_acercade"
+            android:textColor="@color/AzulSecundario"
+            android:fontFamily="@font/fuente_principal"
+            android:textSize="25sp"
+            android:textAlignment="textStart"
+            />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="45dp"
+            android:src="@drawable/logo1"
+            android:background="@color/AzulPrincipal"
+            />
+
+        <TextView
+            android:id="@+id/texto_version_de_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tech_app_acercade"
+            android:layout_marginStart="20dp"
+            android:text="@string/app_version"
+            android:textColor="@color/AzulSecundario"
+            android:fontFamily="@font/fuente_principal"
+            android:textSize="13sp"
+            android:textAlignment="textStart"
+            />
+
+        <TextView
+            android:id="@+id/texto_version_app"
+            android:text="@string/version_de_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tech_app_acercade"
+            android:layout_toEndOf="@id/texto_version_de_app"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/fuente_principal"
+            android:textColor="@color/AzulSecundario"
+            android:textStyle="bold"
+            android:textSize="13sp"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        >
+
+        <TextView
+            android:id="@+id/texto_acerca_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="inherit"
+            android:text="@string/texto_acerca_de"
+            android:textColor="@color/AzulSecundario"
+            android:fontFamily="@font/fuente_principal"
+            android:textSize="16sp"
+            />
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

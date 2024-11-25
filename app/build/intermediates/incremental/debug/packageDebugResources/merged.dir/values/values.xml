@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="AzulPrincipal">#0054f6</color>
+    <color name="AzulSecundario">#012350</color>
+    <color name="MoradoOscuro">#180E2B</color>
+    <color name="amarillo">#E7C94A</color>
+    <color name="blanco">#FFFFFFFF</color>
+    <color name="gris">#FFC0C0C0</color>
+    <color name="negro">#FF000000</color>
+    <string name="abrir_Nav">Open</string>
+    <string name="accesibilidad">Accessibility</string>
+    <string name="app_name" translatable="false">GUID3</string>
+    <string name="app_version">App version</string>
+    <string name="autor_de_app">Alejandro Martinez</string>
+    <string name="cambiar_idioma">Change language</string>
+    <string name="cerrar_Nav">Close</string>
+    <string name="editar_perfil">Edit Profile</string>
+    <string name="exportar_contras">Export passwords</string>
+    <string name="foto_de_usuario">User picture</string>
+    <string name="modo_noche">Night mode</string>
+    <string name="nav_acercade">About Us</string>
+    <string name="nav_ajustes">Settings</string>
+    <string name="nav_ayuda">Help</string>
+    <string name="nav_inicio">Home</string>
+    <string name="nav_salir">Logout</string>
+    <string name="technologies_text_acercade" translatable="false">Technologies</string>
+    <string name="texto_acerca_de">Our goal is give the user
+        a trustful tool to generate complex passwords and guide
+        people to ensure that their passwords are solid and appropriate
+        to protect them of possible attempts of intrusion.\n\nWe want to decrease
+        the 55% victims of insecure passwords in Mexico.\n\nIncrease the
+        cybersecurity culture in our country.\n\nDecrease the complexity
+        of elaborate a secure password for each platform where it is planned to be used.</string>
+    <string name="txtV_Inicial">Welcome to GUID3</string>
+    <string name="version_de_app" translatable="false">1.0.3</string>
+    <style name="Theme.GUID3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/AzulPrincipal</item>
+        <item name="colorPrimaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnPrimary">@color/blanco</item>
+        
+        <item name="colorSecondary">@color/AzulPrincipal</item>
+        <item name="colorSecondaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnSecondary">@color/negro</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>

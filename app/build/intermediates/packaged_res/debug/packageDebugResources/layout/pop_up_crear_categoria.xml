@@ -12,7 +12,7 @@
         android:text="Nombre de la categoría"
         android:fontFamily="@font/fuente_principal"
         android:textSize="14sp"
-        android:textColor="@color/negro"
+        android:textColor="@color/Negro"
         android:textStyle="bold"
         />
 
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:fontFamily="@font/fuente_principal"
-            android:backgroundTint="@color/grisOscuro"/>
+            android:backgroundTint="@color/GrisOscuro"/>
 
         <Button
             android:id="@+id/btnCancelar"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:fontFamily="@font/fuente_principal"
-            android:backgroundTint="@color/grisOscuro"
+            android:backgroundTint="@color/GrisOscuro"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
 </LinearLayout>

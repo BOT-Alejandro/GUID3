@@ -6,7 +6,8 @@
     android:layout_margin="8dp"
     android:padding="16dp"
     android:radius="4dp"
-    app:cardCornerRadius="12dp">
+    app:cardCornerRadius="12dp"
+    android:background="?attr/colorSurface">
 
     <RelativeLayout
         android:id="@+id/contenidoPrincipal"
@@ -30,7 +31,7 @@
             android:layout_toEndOf="@+id/img_de_contrasena"
             android:layout_marginStart="5dp"
             android:text="Facebook"
-            android:textColor="@color/negro"
+            android:textColor="?attr/android:textColorPrimary"
             android:fontFamily="@font/fuente_principal"
             android:textSize="18sp"/>
 
@@ -42,7 +43,7 @@
             android:layout_below="@+id/txtViewTituloContrasena"
             android:layout_marginStart="5dp"
             android:text="hectoralejandro037@gmail.com"
-            android:textColor="@color/AzulSecundario"
+            android:textColor="?attr/android:textColorSecondary"
             android:fontFamily="@font/fuente_principal"
             android:textSize="12sp"
             android:visibility="visible"/>
@@ -55,32 +56,30 @@
             android:layout_below="@+id/textViewCorreo"
             android:layout_marginStart="5dp"
             android:text="Alex0028012"
-            android:textColor="@color/AzulSecundario"
+            android:textColor="?attr/android:textColorSecondary"
             android:fontFamily="@font/fuente_principal"
             android:textSize="12sp"
             android:visibility="visible"/>
 
+        <ImageButton
+            android:id="@+id/btnMostrarOcultar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ocultar_icono"
+            android:contentDescription="Mostrar/Ocultar Contraseña"
+            android:layout_toStartOf="@+id/btnEditar"
+            android:background="@android:color/transparent"/>
 
-            <ImageButton
-                android:id="@+id/btnMostrarOcultar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ocultar_icono"
-                android:contentDescription="Mostrar/Ocultar Contraseña"
-                android:layout_toStartOf="@+id/btnEditar"
-                android:background="#00FFFFFF"
-                />
-
-            <ImageButton
-                android:id="@+id/btnEditar"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/editar_icono"
-                android:contentDescription="Editar Contraseña"
-                android:background="#00FFFFFF"/>
+        <ImageButton
+            android:id="@+id/btnEditar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/editar_icono"
+            android:contentDescription="Editar Contraseña"
+            android:background="@android:color/transparent"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
-        android:textColor="@color/AzulPrincipal"
+        android:textColor="?attr/android:textColorPrimary"
         android:fontFamily="@font/fuente_principal"/>
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_below="@+id/txt_cg_inicio"
         android:layout_centerHorizontal="true"
         android:textSize="14sp"
-        android:textColor="@color/AzulSecundario"
+        android:textColor="?attr/android:textColorSecondary"
         android:fontFamily="@font/fuente_principal"/>
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_toEndOf="@+id/txt_cg_inicio2"
         android:layout_centerHorizontal="true"
         android:textSize="14sp"
-        android:textColor="@color/AzulSecundario"
+        android:textColor="?attr/android:textColorSecondary"
         android:fontFamily="@font/fuente_principal"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -69,7 +69,7 @@
         android:layout_marginBottom="20dp"
         android:focusable="true"
         android:clickable="true"
-        android:backgroundTint="@color/AzulPrincipal"
+        android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/mas_icono" />
@@ -85,7 +85,7 @@
         android:focusable="true"
         android:clickable="true"
         android:visibility="invisible"
-        android:backgroundTint="@color/AzulPrincipal"
+        android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/contra_icono" />
@@ -100,7 +100,7 @@
         android:focusable="true"
         android:visibility="invisible"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/AzulPrincipal"
+        android:backgroundTint="?attr/colorPrimary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/categoria_icono" />

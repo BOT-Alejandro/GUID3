@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.GUID3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.GUID3" parent="Theme.Material3.DayNight.NoActionBar">
         
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>
-        <item name="colorOnPrimary">@color/blanco</item>
+        <item name="colorOnPrimary">@color/Blanco</item>
+
         
-        <item name="colorSecondary">@color/AzulSecundario</item>
-        <item name="colorSecondaryVariant">@color/AzulPrincipal</item>
-        <item name="colorOnSecondary">@color/blanco</item>
+        <item name="android:windowBackground">@color/FondoOscuro</item>
+        <item name="android:textColorPrimary">@color/TextoOscuro</item>
+        <item name="android:textColorSecondary">@color/Blanco</item>
+
+        
+        <item name="colorSecondary">@color/AzulPrincipal</item>
+        <item name="colorSecondaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnSecondary">@color/Blanco</item>
+
+        
+        <item name="buttonStyle">@style/Widget.Material3.Button</item>
+        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+
         
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        
     </style>
 </resources>

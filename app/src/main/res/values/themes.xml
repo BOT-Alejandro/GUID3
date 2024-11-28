@@ -1,20 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme (Light) -->
     <style name="Theme.GUID3" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Primary brand color. -->
+        <!-- Colores y configuraciones del tema claro -->
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>
-        <item name="colorOnPrimary">@color/blanco</item>
-        <!-- Secondary brand color. -->
+        <item name="colorOnPrimary">@color/Blanco</item>
+
+        <!-- Fondo y texto del modo claro -->
+        <item name="android:windowBackground">@color/FondoClaro</item>
+        <item name="android:textColorPrimary">@color/TextoClaro</item>
+        <item name="android:textColorSecondary">@color/Negro</item>
+
+        <!-- Colores de botones -->
         <item name="colorSecondary">@color/AzulPrincipal</item>
         <item name="colorSecondaryVariant">@color/AzulSecundario</item>
-        <item name="colorOnSecondary">@color/negro</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
-    </style>
+        <item name="colorOnSecondary">@color/Blanco</item>
 
-    <style name="FormaCuadradaFAB" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerSize">120%</item>
+        <!-- Botones -->
+        <item name="buttonStyle">@style/Widget.Material3.Button</item>
+        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+
+        <!-- Barra de estado -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 </resources>

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_ventana_config_oscuro.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_ventana_config_oscuro.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guid3_a2.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\guid3_a2.xml"
     },
@@ -46,6 +50,10 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_ajustes.png.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_ajustes.png"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_ventana_config_claro.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_ventana_config_claro.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher_background.webp.flat",
@@ -106,10 +114,6 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_item_contras.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\item_contras.xml"
-    },
-    {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_inicio.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/fragment_inicio.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -242,6 +246,14 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\font_codec_pro_regular.ttf.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\font\\codec_pro_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_selector.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_selector.xml"
+    },
+    {
+        "merged": "com.alexdev.guid3.app-debug-57:/layout_item_contras.xml.flat",
+        "source": "com.alexdev.guid3.app-main-59:/layout/item_contras.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_ocultar_icono.xml.flat",

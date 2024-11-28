@@ -1,12 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="AzulPrincipal">#0054f6</color>
-    <color name="AzulSecundario">#012350</color>
-    <color name="AzulClaro">#05BCFB</color>
-    <color name="MoradoOscuro">#180E2B</color>
-    <color name="negro">#FF000000</color>
-    <color name="blanco">#FFFFFFFF</color>
-    <color name="gris">#FFC0C0C0</color>
-    <color name="grisOscuro">#302c2c</color>"
-    <color name="amarillo">#E7C94A</color>
+    <!-- Colores generales -->
+    <color name="AzulPrincipal">#0054F6</color> <!-- Azul principal para el tema -->
+    <color name="AzulSecundario">#003C99</color> <!-- Azul secundario -->
+    <color name="AzulClaro">#78B9FF</color> <!-- Azul claro para detalles -->
+    <color name="MoradoOscuro">#180E2B</color> <!-- Morado oscuro para detalles -->
+    <color name="Negro">#000000</color> <!-- Negro puro -->
+    <color name="Blanco">#FFFFFF</color> <!-- Blanco puro -->
+    <color name="Gris">#B0B0B0</color> <!-- Gris más suave -->
+    <color name="GrisOscuro">#505050</color> <!-- Gris oscuro -->
+    <color name="Amarillo">#FFB400</color> <!-- Amarillo para advertencias -->
+
+    <!-- Colores para texto -->
+    <color name="TextoClaro">#212121</color> <!-- Texto principal en modo claro -->
+    <color name="TextoOscuro">#E0E0E0</color> <!-- Texto principal en modo oscuro -->
+    <color name="TextoSecundarioClaro">#757575</color> <!-- Texto secundario en modo claro -->
+    <color name="TextoSecundarioOscuro">#B0B0B0</color> <!-- Texto secundario en modo oscuro -->
+
+    <!-- Fondos -->
+    <color name="FondoClaro">#FFFFFF</color> <!-- Fondo blanco para modo claro -->
+    <color name="FondoOscuro">#121212</color> <!-- Fondo oscuro para modo oscuro -->
+    <color name="FondoSecundario">#F5F5F5</color> <!-- Fondo de áreas secundarias (claro) -->
+    <color name="FondoSecundarioOscuro">#333333</color> <!-- Fondo de áreas secundarias (oscuro) -->
+    <color name="FondoTarjeta">#FAFAFA</color> <!-- Fondo de tarjeta en modo claro -->
+    <color name="FondoTarjetaOscuro">#222222</color> <!-- Fondo de tarjeta en modo oscuro -->
+
+    <!-- Botones -->
+    <color name="BotonClaro">#0054F6</color> <!-- Azul para botones claros -->
+    <color name="BotonOscuro">#0054F6</color> <!-- Azul para botones oscuros -->
+    <color name="TextoBotonClaro">#FFFFFF</color> <!-- Texto blanco en botones claros -->
+    <color name="TextoBotonOscuro">#FFFFFF</color> <!-- Texto blanco en botones oscuros -->
+
+    <!-- Otros colores -->
+    <color name="Sombra">#E0E0E0</color> <!-- Sombra suave -->
+    <color name="SombraOscura">#000000</color> <!-- Sombra oscura en modo oscuro -->
+    <color name="ErrorColor">#D32F2F</color> <!-- Color de error en modo claro -->
+    <color name="ErrorColorOscuro">#EF5350</color> <!-- Color de error en modo oscuro -->
 </resources>

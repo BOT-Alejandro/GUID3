@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_principal"
-    android:background="@drawable/fondo_ajustesv2"
     tools:context=".Fragments.Ajustes">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +21,7 @@
             android:src="@drawable/foto"
             android:scaleType="centerCrop"
             android:contentDescription="@string/foto_de_usuario"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,20 +29,18 @@
             android:layout_marginTop="5dp"
             android:text="Alejandro Martinez"
             android:textSize="20sp"
-            android:textColor="@color/blanco"
+            android:textColor="?attr/android:textColorPrimary"
             android:fontFamily="@font/fuente_principal"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="hectoralejandro037@gmail.com"
             android:textSize="14sp"
-            android:textColor="@color/blanco"
+            android:textColor="?attr/android:textColorSecondary"
             android:fontFamily="@font/fuente_principal"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
 
         <Button
             android:layout_width="wrap_content"
@@ -53,9 +49,9 @@
             android:layout_marginTop="10dp"
             android:text="@string/editar_perfil"
             android:textSize="16sp"
-            android:textColor="@color/blanco"
-            android:backgroundTint="@color/AzulSecundario"
-            android:fontFamily="@font/fuente_principal"/>
+            android:textColor="?attr/android:textColorPrimary"
+            android:backgroundTint="?attr/colorSecondary"
+            android:fontFamily="@font/fuente_principal" />
 
     </LinearLayout>
 
@@ -72,12 +68,11 @@
             android:layout_marginEnd="10dp"
             android:orientation="vertical">
 
-
             <RelativeLayout
                 android:id="@+id/layout_contenedor_accesibilidad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/fondo_ventana_config">
+                android:background="?attr/colorSurface">
 
                 <TextView
                     android:id="@+id/texto_accesibilidad_vAjustes"
@@ -88,9 +83,8 @@
                     android:layout_alignParentTop="true"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/negro"
-                    android:fontFamily="@font/fuente_principal"
-                    />
+                    android:textColor="?attr/android:textColorPrimary"
+                    android:fontFamily="@font/fuente_principal" />
 
                 <ImageView
                     android:id="@+id/modo_noche_icono"
@@ -99,7 +93,7 @@
                     android:layout_below="@+id/texto_accesibilidad_vAjustes"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/modo_noche_icono"/>
+                    android:src="@drawable/modo_noche_icono" />
 
                 <TextView
                     android:id="@+id/texto_modo_noche"
@@ -111,7 +105,7 @@
                     android:layout_toEndOf="@+id/modo_noche_icono"
                     android:fontFamily="@font/fuente_principal"
                     android:text="@string/modo_noche"
-                    android:textColor="@color/negro"
+                    android:textColor="?attr/android:textColorPrimary"
                     android:textSize="18sp" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
@@ -129,7 +123,7 @@
                     android:layout_below="@+id/modo_noche_icono"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/idioma_icono"/>
+                    android:src="@drawable/idioma_icono" />
 
                 <TextView
                     android:id="@+id/texto_cambiar_idioma"
@@ -141,7 +135,7 @@
                     android:layout_toEndOf="@+id/modo_noche_icono"
                     android:fontFamily="@font/fuente_principal"
                     android:text="@string/cambiar_idioma"
-                    android:textColor="@color/negro"
+                    android:textColor="?attr/android:textColorPrimary"
                     android:textSize="18sp" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
@@ -159,7 +153,7 @@
                     android:layout_below="@+id/idioma_icono"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/exportar_icono2"/>
+                    android:src="@drawable/exportar_icono2" />
 
                 <TextView
                     android:id="@+id/texto_exportar_pssw"
@@ -171,7 +165,7 @@
                     android:layout_toEndOf="@+id/modo_noche_icono"
                     android:fontFamily="@font/fuente_principal"
                     android:text="@string/exportar_contras"
-                    android:textColor="@color/negro"
+                    android:textColor="?attr/android:textColorPrimary"
                     android:textSize="18sp" />
 
                 <ImageButton

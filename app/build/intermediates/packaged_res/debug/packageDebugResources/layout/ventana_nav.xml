@@ -55,7 +55,7 @@
         app:menu="@menu/menu"
         android:background="@drawable/nav_fondo_redondo"
         app:itemIconTint="@color/AzulSecundario"
-        app:itemTextColor="@color/negro"
+        app:itemTextColor="@color/Negro"
         app:itemIconSize="30dp" />
 
 

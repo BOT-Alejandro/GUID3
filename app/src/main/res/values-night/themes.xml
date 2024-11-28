@@ -1,16 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.GUID3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
+    <!-- Base application theme (Dark) -->
+    <style name="Theme.GUID3" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Colores y configuraciones del tema oscuro -->
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>
-        <item name="colorOnPrimary">@color/blanco</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/AzulSecundario</item>
-        <item name="colorSecondaryVariant">@color/AzulPrincipal</item>
-        <item name="colorOnSecondary">@color/blanco</item>
-        <!-- Status bar color. -->
+        <item name="colorOnPrimary">@color/Blanco</item>
+
+        <!-- Fondo y texto del modo oscuro -->
+        <item name="android:windowBackground">@color/FondoOscuro</item>
+        <item name="android:textColorPrimary">@color/TextoOscuro</item>
+        <item name="android:textColorSecondary">@color/Blanco</item>
+
+        <!-- Colores de botones -->
+        <item name="colorSecondary">@color/AzulPrincipal</item>
+        <item name="colorSecondaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnSecondary">@color/Blanco</item>
+
+        <!-- Botones -->
+        <item name="buttonStyle">@style/Widget.Material3.Button</item>
+        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+
+        <!-- Barra de estado -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
 </resources>

@@ -55,10 +55,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="140dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnF1"
+        android:id="@+id/btnAbrirOpciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -73,11 +75,11 @@
         android:src="@drawable/mas_icono" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnF2"
+        android:id="@+id/btnAddContras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnF1"
-        android:layout_alignEnd="@+id/btnF1"
+        android:layout_above="@+id/btnAbrirOpciones"
+        android:layout_alignEnd="@+id/btnAbrirOpciones"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="20dp"
         android:focusable="true"
@@ -89,11 +91,11 @@
         android:src="@drawable/contra_icono" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnF3"
+        android:id="@+id/btnAddCategorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnF2"
-        android:layout_alignEnd="@+id/btnF2"
+        android:layout_above="@+id/btnAddContras"
+        android:layout_alignEnd="@+id/btnAddContras"
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"

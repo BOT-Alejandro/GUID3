@@ -56,11 +56,11 @@ id ajustes
 id ayuda
 id barra_de_herramientas
 id boton_exportar
+id btnAbrirOpciones
+id btnAddCategorias
+id btnAddContras
 id btnCancelar
 id btnEditar
-id btnF1
-id btnF2
-id btnF3
 id btnGuardar
 id btnMostrarOcultar
 id contenidoPrincipal

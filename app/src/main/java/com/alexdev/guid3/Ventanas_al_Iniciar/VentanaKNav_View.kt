@@ -74,11 +74,16 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
         return true
     }
 
-    // Funcion para regresar a las ventanas anteriores almacenadas en la cola
+    // Funcion para regresar a las ventanas anteriores almacenadas en la cola y para cerrar el sistema de navegacion con el boton regresar del dispositivo movil
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
     override fun onBackPressed() {
         super.onBackPressed()
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
 
     }
+
 
 
 

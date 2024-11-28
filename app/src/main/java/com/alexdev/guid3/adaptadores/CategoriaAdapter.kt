@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
+import com.alexdev.guid3.dataClasses.categorias
 
 class CategoriaAdapter(
-    private val categorias: List<String>,
+    private val categorias: MutableList<categorias>,
     private val alSeleccionarCategoria: (String) -> Unit
 ) : RecyclerView.Adapter<CategoriaAdapter.VistaCategoria>() {
 
@@ -17,7 +18,7 @@ class CategoriaAdapter(
 
         init {
             view.setOnClickListener {
-                alSeleccionarCategoria(categorias[adapterPosition])
+                alSeleccionarCategoria(categorias[adapterPosition].categoria) // Selecciona el campo 'categoria'
             }
         }
     }
@@ -28,9 +29,10 @@ class CategoriaAdapter(
     }
 
     override fun onBindViewHolder(holder: VistaCategoria, position: Int) {
-        holder.textoCategoria.text = categorias[position]
+        // Usa el campo 'categoria' para asignar el texto al TextView
+        holder.textoCategoria.text = categorias[position].categoria
     }
 
     override fun getItemCount() = categorias.size
-
 }
+

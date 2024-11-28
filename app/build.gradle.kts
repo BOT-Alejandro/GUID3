@@ -1,18 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.alexdev.guid3"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.alexdev.guid3"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0.3"
+        versionName = "1.0.4_alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,8 +38,8 @@ android {
 
 dependencies {
     implementation (libs.glide)
+    kapt(libs.compiler)
     implementation(libs.androidx.material3.android)
-    annotationProcessor (libs.compiler)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

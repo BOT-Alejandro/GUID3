@@ -38,16 +38,6 @@ class Ajustes : Fragment(R.layout.fragment_ajustes) {
         toolbar?.title = "Configuración"
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        // Acceder al Toolbar desde el Activity
-        val toolbar = (activity as? AppCompatActivity)?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.barra_de_herramientas)
-
-        // Restaurar el título original del Toolbar
-        toolbar?.title = "GUID3 Technologies"
-
-    }
 
 
 }

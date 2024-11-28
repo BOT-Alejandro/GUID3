@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-29:/values-es-rMX/values-es-rMX.xml",
+            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-54:/values-es-rMX/values-es-rMX.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Alex\\AndroidStudioProjects\\GUID3\\app\\src\\main\\res\\values-es-rMX\\strings.xml",
                     "from": {
                         "startLines": "4,14,23,2,12,5,16,11,15,13,9,7,8,6,10,17,3",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "175,686,1366,55,578,219,802,512,742,636,409,311,365,265,460,858,115",
+                        "startOffsets": "179,700,1389,57,590,224,818,523,757,649,418,318,373,271,470,875,118",
                         "endLines": "4,14,23,2,12,5,16,11,15,13,9,7,8,6,10,22,3",
                         "endColumns": "43,55,54,59,57,45,55,65,59,49,50,53,43,45,51,74,59",
-                        "endOffsets": "214,737,1416,110,631,260,853,573,797,681,455,360,404,306,507,1361,170"
+                        "endOffsets": "218,751,1439,112,643,265,869,584,812,694,464,367,412,312,517,1383,173"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,23",

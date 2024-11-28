@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="AzulClaro">#05BCFB</color>
     <color name="AzulPrincipal">#0054f6</color>
     <color name="AzulSecundario">#012350</color>
     <color name="MoradoOscuro">#180E2B</color>
     <color name="amarillo">#E7C94A</color>
     <color name="blanco">#FFFFFFFF</color>
     <color name="gris">#FFC0C0C0</color>
+    <color name="grisOscuro">#302c2c</color>
     <color name="negro">#FF000000</color>
     <string name="abrir_Nav">Open</string>
     <string name="accesibilidad">Accessibility</string>
@@ -33,7 +35,10 @@
         of elaborate a secure password for each platform where it is planned to be used.</string>
     <string name="txtV_Inicial">Welcome to GUID3</string>
     <string name="version_de_app" translatable="false">1.0.3</string>
-    <style name="Theme.GUID3" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="FormaCuadradaFAB" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">120%</item>
+    </style>
+    <style name="Theme.GUID3" parent="Theme.Material3.Light.NoActionBar">
         
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>

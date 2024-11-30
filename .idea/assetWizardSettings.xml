@@ -322,7 +322,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/fingerprint/baseline_fingerprint_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconsoutlined/edit/outline_edit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -332,7 +332,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="contra_icono" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="editar_icono" />
                             <entry key="sourceFile" value="C:\Users\Alex\Desktop\Proyecto GUID3\Recursos\Logos\guid3_a2.svg" />
                           </map>
                         </option>

@@ -24,7 +24,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/Theme.GUID3">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:id="@+id/img_usuario"
@@ -32,7 +32,6 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="imagen de usuario"
                 android:src="@drawable/foto"
-                android:background="@drawable/fondo_circular_de_foto_del_usuario"
                 android:scaleType="centerCrop"
                 />
 
@@ -54,8 +53,8 @@
         app:headerLayout="@layout/nav_encabezado"
         app:menu="@menu/menu"
         android:background="@drawable/nav_fondo_redondo"
-        app:itemIconTint="@color/AzulSecundario"
-        app:itemTextColor="@color/Negro"
+        app:itemIconTint="?attr/android:iconTint"
+        app:itemTextColor="?attr/android:textColorPrimary"
         app:itemIconSize="30dp" />
 
 

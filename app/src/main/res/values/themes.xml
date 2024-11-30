@@ -16,11 +16,16 @@
         <item name="colorSecondaryVariant">@color/AzulSecundario</item>
         <item name="colorOnSecondary">@color/Blanco</item>
 
-        <!-- Botones -->
-        <item name="buttonStyle">@style/Widget.Material3.Button</item>
-        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+        <!-- Colores de botones FAB -->
+        <item name="colorTertiary">@color/Blanco</item>
+        <item name="colorOnTertiary">@color/AzulSecundario</item>
 
         <!-- Barra de estado -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Colores de iconos -->
+        <item name= "android:iconTint">@color/Negro</item>
+
+
     </style>
 </resources>

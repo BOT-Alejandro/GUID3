@@ -44,11 +44,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCategorias"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/txt_cg_inicio2"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        />
+        android:orientation="horizontal" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewContras"
@@ -69,7 +67,7 @@
         android:layout_marginBottom="20dp"
         android:focusable="true"
         android:clickable="true"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorTertiary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/mas_icono" />
@@ -85,10 +83,12 @@
         android:focusable="true"
         android:clickable="true"
         android:visibility="invisible"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorTertiary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
-        android:src="@drawable/contra_icono" />
+        android:src="@drawable/contra_icono"
+
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddCategorias"
@@ -100,9 +100,37 @@
         android:focusable="true"
         android:visibility="invisible"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="?attr/colorPrimary"
+        android:backgroundTint="?attr/colorTertiary"
         android:contentDescription="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/categoria_icono" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/txtAddCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAddContras"
+        android:layout_marginBottom="25dp"
+        android:layout_toStartOf="@+id/btnAddCategorias"
+        android:text="Añadir categoría"
+        android:visibility="invisible"
+        android:textColor="?attr/android:textColorPrimary"
+        android:backgroundTint="?attr/colorTertiary"
+        android:elevation="10dp"
+        app:cornerRadius="15dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/txtAddContra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAbrirOpciones"
+        android:layout_marginBottom="25dp"
+        android:layout_toStartOf="@+id/btnAddContras"
+        android:backgroundTint="?attr/colorTertiary"
+        android:elevation="10dp"
+        android:visibility="invisible"
+        android:text="Crear contraseña"
+        android:textColor="?attr/android:textColorPrimary"
+        app:cornerRadius="15dp" />
 
 </RelativeLayout>

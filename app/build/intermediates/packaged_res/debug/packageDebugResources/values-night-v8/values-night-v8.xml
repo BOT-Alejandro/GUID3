@@ -12,15 +12,20 @@
         <item name="android:textColorSecondary">@color/Blanco</item>
 
         
-        <item name="colorSecondary">@color/AzulPrincipal</item>
-        <item name="colorSecondaryVariant">@color/AzulSecundario</item>
-        <item name="colorOnSecondary">@color/Blanco</item>
+        <item name="colorSecondary">@color/Blanco</item>
+        <item name="colorSecondaryVariant">@color/GrisOscuro</item>
+        <item name="colorOnSecondary">@color/Negro</item>
 
         
-        <item name="buttonStyle">@style/Widget.Material3.Button</item>
-        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+        <item name="colorTertiary">@color/GrisOscuro</item>
+        <item name="colorOnTertiary">@color/GrisOscuro</item>
+
 
         
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/GrisOscuro</item>
+
+        
+        <item name="android:iconTint">@color/Blanco</item>
+
     </style>
 </resources>

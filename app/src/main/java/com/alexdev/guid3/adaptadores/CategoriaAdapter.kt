@@ -8,31 +8,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
 import com.alexdev.guid3.dataClasses.categorias
 
-class CategoriaAdapter(
-    private val categorias: MutableList<categorias>,
-    private val alSeleccionarCategoria: (String) -> Unit
-) : RecyclerView.Adapter<CategoriaAdapter.VistaCategoria>() {
+class CategoriaAdapter(private var listaCategorias: MutableList<categorias>) :
+    RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder>() {
 
-    inner class VistaCategoria(view: View) : RecyclerView.ViewHolder(view) {
-        val textoCategoria: TextView = view.findViewById(R.id.txtView_Categoria)
-
-        init {
-            view.setOnClickListener {
-                alSeleccionarCategoria(categorias[adapterPosition].categoria) // Selecciona el campo 'categoria'
-            }
-        }
+    inner class CategoriaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nombreCategoria: TextView = itemView.findViewById(R.id.txtView_Categoria)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VistaCategoria {
-        val vista = LayoutInflater.from(parent.context).inflate(R.layout.item_categoria, parent, false)
-        return VistaCategoria(vista)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriaViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_categoria, parent, false)
+        return CategoriaViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: VistaCategoria, position: Int) {
-        // Usa el campo 'categoria' para asignar el texto al TextView
-        holder.textoCategoria.text = categorias[position].categoria
+    override fun onBindViewHolder(holder: CategoriaViewHolder, position: Int) {
+        holder.nombreCategoria.text = listaCategorias[position].categoria
     }
 
-    override fun getItemCount() = categorias.size
+    override fun getItemCount(): Int = listaCategorias.size
+
+    // Método para actualizar la lista de categorías y notificar cambios
+    fun actualizarLista(nuevaLista: List<categorias>) {
+        listaCategorias.clear()
+        listaCategorias.addAll(nuevaLista)
+        notifyDataSetChanged() // Notifica que los datos han cambiado
+    }
 }
+
+
+
 

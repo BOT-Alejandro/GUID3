@@ -39,6 +39,7 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
+
         // Condicion para reemplazar la actividad o ventana que se muestra con el contenedor establecido en el layout ventana_principal.xml para que muestre por defecto el fragmento Inicio
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -55,6 +56,7 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         }
     }
+
 
 
     // Funcionalidad del menu lateral al seleccionar cada item dentro del menu te redireccione a la actividad o ventana correspondiente
@@ -83,8 +85,5 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
         }
 
     }
-
-
-
 
 }

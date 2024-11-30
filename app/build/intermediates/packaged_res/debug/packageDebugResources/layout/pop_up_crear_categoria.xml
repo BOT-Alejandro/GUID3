@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/fondo_ajustes">
 
     <TextView
         android:id="@+id/textview_nombre_categoria"
@@ -12,18 +13,19 @@
         android:text="Nombre de la categoría"
         android:fontFamily="@font/fuente_principal"
         android:textSize="14sp"
-        android:textColor="@color/Negro"
+        android:textColor="?attr/android:textColorSecondary"
         android:textStyle="bold"
         />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editCategoryName"
+        android:id="@+id/inputTextCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fuente_principal"
         android:hint="Categoría 1"
         android:inputType="text"
-        android:maxLength="10"/>
+        android:textColor="?attr/android:textColorPrimary"
+        android:maxLength="16"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -33,20 +35,23 @@
         android:gravity="center_horizontal">
 
         <Button
-            android:id="@+id/btnGuardar"
+            android:id="@+id/btnCategoriaGuardar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:fontFamily="@font/fuente_principal"
-            android:backgroundTint="@color/GrisOscuro"/>
+            android:backgroundTint="?attr/colorSecondary"
+            android:textColor="?attr/colorOnSecondary"
+            />
 
         <Button
-            android:id="@+id/btnCancelar"
+            android:id="@+id/btnCategoriaCancelar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:fontFamily="@font/fuente_principal"
-            android:backgroundTint="@color/GrisOscuro"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:textColor="?attr/colorOnSecondary"/>
     </LinearLayout>
 </LinearLayout>

@@ -70,10 +70,15 @@
         <item name="colorOnSecondary">@color/Blanco</item>
 
         
-        <item name="buttonStyle">@style/Widget.Material3.Button</item>
-        <item name="android:buttonStyle">@style/Widget.Material3.Button</item>
+        <item name="colorTertiary">@color/Blanco</item>
+        <item name="colorOnTertiary">@color/AzulSecundario</item>
 
         
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        
+        <item name="android:iconTint">@color/Negro</item>
+
+
     </style>
 </resources>

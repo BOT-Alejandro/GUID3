@@ -322,7 +322,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialiconsoutlined/edit/outline_edit_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/edit/baseline_edit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -333,7 +333,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="editar_icono" />
+                            <entry key="outputName" value="editar_elemento_icono" />
                             <entry key="sourceFile" value="C:\Users\Alex\Desktop\Proyecto GUID3\Recursos\Logos\guid3_a2.svg" />
                           </map>
                         </option>

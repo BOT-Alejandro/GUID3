@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/fondo_ajustes">
@@ -17,15 +18,27 @@
         android:textStyle="bold"
         />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputTextCategoria"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutTextCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/fuente_principal"
-        android:hint="Categoría 1"
-        android:inputType="text"
-        android:textColor="?attr/android:textColorPrimary"
-        android:maxLength="16"/>
+        app:placeholderText="Redes Sociales"
+        app:endIconMode="clear_text"
+        app:endIconContentDescription="Borrar"
+        app:endIconDrawable="@drawable/cancelar_icono">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputTextCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fuente_principal"
+            android:hint="Nombre"
+            android:inputType="text"
+            android:textColor="?attr/android:textColorPrimary"
+            android:maxLength="16"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:orientation="vertical"

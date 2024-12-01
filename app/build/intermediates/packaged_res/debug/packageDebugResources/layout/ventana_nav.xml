@@ -8,9 +8,11 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    tools:context=".Ventanas_al_Iniciar.VentanaKNav_View">
+    tools:context=".Ventanas_al_Iniciar.VentanaKNav_View"
+    android:theme="@style/Theme.GUID3">
 
     <LinearLayout
+        android:theme="@style/Theme.GUID3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -32,12 +34,13 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="imagen de usuario"
                 android:src="@drawable/foto"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 />
 
         </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
+            android:theme="@style/Theme.GUID3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/fragmento_contenedor"/>
@@ -45,6 +48,7 @@
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:theme="@style/Theme.GUID3"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/menu_lateral"
@@ -53,9 +57,8 @@
         app:headerLayout="@layout/nav_encabezado"
         app:menu="@menu/menu"
         android:background="@drawable/nav_fondo_redondo"
-        app:itemIconTint="?attr/android:iconTint"
-        app:itemTextColor="?attr/android:textColorPrimary"
-        app:itemIconSize="30dp" />
+        app:itemIconSize="30dp"
+        app:itemTextAppearance="@style/Theme.GUID3"/>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

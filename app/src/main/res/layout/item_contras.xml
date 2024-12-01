@@ -7,7 +7,8 @@
     android:padding="16dp"
     android:radius="4dp"
     app:cardCornerRadius="12dp"
-    android:background="?attr/colorSurface">
+    android:background="?attr/colorSurface"
+    app:cardPreventCornerOverlap="true">
 
     <RelativeLayout
         android:id="@+id/contenidoPrincipal"
@@ -16,55 +17,59 @@
 
         <ImageView
             android:id="@+id/img_de_contrasena"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
             android:layout_centerInParent="true"
-            android:padding="4dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/logo1"
             />
 
         <TextView
             android:id="@+id/txtViewTituloContrasena"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/img_de_contrasena"
             android:layout_marginStart="5dp"
-            android:text="Facebook"
+            android:layout_marginTop="5dp"
+            android:text="Facebook: Alejandro Martinez"
+            android:textStyle="bold"
             android:textColor="?attr/android:textColorPrimary"
             android:fontFamily="@font/fuente_principal"
             android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/textViewCorreo"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/img_de_contrasena"
             android:layout_below="@+id/txtViewTituloContrasena"
-            android:layout_marginStart="5dp"
+            android:layout_alignStart="@+id/txtViewTituloContrasena"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/fuente_principal"
             android:text="hectoralejandro037@gmail.com"
             android:textColor="?attr/android:textColorSecondary"
-            android:fontFamily="@font/fuente_principal"
-            android:textSize="12sp"
-            android:visibility="visible"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textViewContrasena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/img_de_contrasena"
             android:layout_below="@+id/textViewCorreo"
-            android:layout_marginStart="5dp"
-            android:text="Alex0028012"
-            android:textColor="?attr/android:textColorSecondary"
+            android:layout_alignStart="@+id/txtViewTituloContrasena"
+            android:layout_marginTop="5dp"
             android:fontFamily="@font/fuente_principal"
-            android:textSize="12sp"
-            android:visibility="visible"/>
+            android:text="ejM0287#a2^(423"
+            android:maxLength="16"
+            android:textColor="?attr/android:textColorSecondary"
+            android:textSize="14sp" />
 
         <ImageButton
             android:id="@+id/btnMostrarOcultar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/ocultar_icono"
             android:contentDescription="Mostrar/Ocultar Contraseña"
@@ -73,10 +78,11 @@
 
         <ImageButton
             android:id="@+id/btnEditar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="5dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             android:src="@drawable/editar_icono"
             android:contentDescription="Editar Contraseña"
             android:background="@android:color/transparent"/>

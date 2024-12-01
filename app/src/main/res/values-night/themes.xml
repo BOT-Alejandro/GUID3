@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme (Dark) -->
     <style name="Theme.GUID3" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:fontFamily">@font/fuente_principal</item>
+
         <!-- Colores y configuraciones del tema oscuro -->
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>

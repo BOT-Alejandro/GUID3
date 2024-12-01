@@ -52,8 +52,11 @@
         cybersecurity culture in our country.\n\nDecrease the complexity
         of elaborate a secure password for each platform where it is planned to be used.</string>
     <string name="txtV_Inicial">Welcome to GUID3</string>
-    <string name="version_de_app" translatable="false">1.0.3</string>
+    <string name="version_de_app" translatable="false">1.0.5_alpha</string>
     <style name="Theme.GUID3" parent="Theme.Material3.Light.NoActionBar">
+
+        <item name="android:fontFamily">@font/fuente_principal</item>
+
         
         <item name="colorPrimary">@color/AzulPrincipal</item>
         <item name="colorPrimaryVariant">@color/AzulSecundario</item>

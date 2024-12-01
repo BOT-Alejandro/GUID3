@@ -2,7 +2,7 @@
 <resources>
     <string name="abrir_Nav">Abrir</string>
     <string name="accesibilidad">Accesibilidad</string>
-    <string name="app_version">Version de app</string>
+    <string name="app_version">Versión de app</string>
     <string name="autor_de_app">Alejandro Martinez</string>
     <string name="cambiar_idioma">Cambiar idioma</string>
     <string name="cerrar_Nav">Cerrar</string>

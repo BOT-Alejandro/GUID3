@@ -1,5 +1,12 @@
 package com.alexdev.guid3.Fragments
 
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
@@ -10,7 +17,6 @@ import android.widget.Toast
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
 import com.alexdev.guid3.adaptadores.CategoriaAdapter
 import com.alexdev.guid3.adaptadores.ContrasAdapter
@@ -19,6 +25,7 @@ import com.alexdev.guid3.dataClasses.contras
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.alexdev.guid3.viewModels.CategoriaViewModel
 
@@ -32,9 +39,9 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         contras(R.drawable.logo_instagram, "Instagram", "hectorzendejas069@gmail.com", "Alex271202"),
         contras(R.drawable.logo_bbva, "BBVA", "hectoralejandro037@gmail.com", "Alex1104"),
         contras(R.drawable.logo_outlook, "Outlook", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_gmail, "Gmail", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_youtube, "Youtube", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_x, "X", "hectoralejandro037@gmail.com", "Alex1104")
+        contras(R.drawable.logo_gmail, "Correo Gmail", "hectoralejandro037@gmail.com", "Alex1104"),
+        contras(R.drawable.logo_x, "Cuenta X: SoyAlex", "hectoralejandro037@gmail.com", "Alex1104"),
+        contras(R.drawable.logo_youtube, "Cuenta Youtube: Alejandroo", "hectoralejandro23@outlook.com", "Alex1104")
     )
 
     //Lista de categorias de contraseñas
@@ -54,6 +61,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
         // ViewModel para que las categorías se actualicen conforme se cambie el modo oscuro de la aplicación
         categoriaViewModel = ViewModelProvider(this).get(CategoriaViewModel::class.java)
+
 
         val btnAbrirOpciones = view.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btnAbrirOpciones)
         val btnAddContras = view.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btnAddContras)
@@ -153,6 +161,122 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         //Configurar el boton 2 de agregar Categorias
         txtAddCategoria.setOnClickListener { alPresionarBotonCategorias() }
 
+        configurarDeslizarRecyclerView(recyclerViewContras)
+
+
+
+
+
+
+    }
+
+    private fun configurarDeslizarRecyclerView(recyclerViewContras: RecyclerView) {
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                // No se implementa el movimiento vertical
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+                when (direction) {
+                    ItemTouchHelper.RIGHT -> {
+                        mostrarDialogoEliminar(position) // Llama a la función para eliminar
+                    }
+                    ItemTouchHelper.LEFT -> {
+                        mostrarDialogoEliminar(position)
+                    }
+                }
+
+                // Vuelve a dibujar el elemento en caso de que no se elimine o edite
+                recyclerViewContras.adapter?.notifyItemChanged(position)
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+                val background = ColorDrawable()
+
+                val icon: Drawable?
+                val iconMargin = (itemView.height - 100) / 2 // Margen del icono
+
+                if (dX > 0) { // Deslizar a la derecha
+                    background.color = Color.BLUE
+                    background.setBounds(
+                        itemView.left,
+                        itemView.top,
+                        itemView.left + dX.toInt(),
+                        itemView.bottom
+                    )
+                    icon = ContextCompat.getDrawable(requireContext(), R.drawable.editar_elemento_icono)
+                    icon?.setBounds(
+                        itemView.left + iconMargin,
+                        itemView.top + iconMargin,
+                        itemView.left + iconMargin + 100,
+                        itemView.bottom - iconMargin
+                    )
+                } else { // Deslizar a la izquierda
+                    background.color = Color.RED
+                    background.setBounds(
+                        itemView.right + dX.toInt(),
+                        itemView.top,
+                        itemView.right,
+                        itemView.bottom
+                    )
+                    icon = ContextCompat.getDrawable(requireContext(), R.drawable.eliminar_elemento_icono)
+                    icon?.setBounds(
+                        itemView.right - iconMargin - 100,
+                        itemView.top + iconMargin,
+                        itemView.right - iconMargin,
+                        itemView.bottom - iconMargin
+                    )
+                }
+
+                background.draw(c)
+                icon?.draw(c)
+
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+            }
+        }
+
+        // Asignar ItemTouchHelper al RecyclerView
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerViewContras)
+    }
+
+    // Metodo apoyado del metodo eliminar elemento para mostrar un dialogo de confirmacion antes de eliminar
+    private fun mostrarDialogoEliminar(position: Int) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Eliminar")
+            .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
+            .setPositiveButton("Sí") { _, _ ->
+                eliminarElemento(position) // Llama a la función para eliminar el item
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    // Metodo para eliminar un elemento del RecyclerView de contraseñas
+    private fun eliminarElemento(position: Int) {
+        // Remover el elemento de la lista
+        val recyclerViewContra = view?.findViewById<RecyclerView>(R.id.recyclerViewContras)
+        contras.removeAt(position)
+            recyclerViewContra?.adapter?.notifyItemRemoved(position)
     }
 
     // Función para agregar una nueva categoría
@@ -208,7 +332,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
     private fun hideRecyclerViewWithAnimation(recyclerView: RecyclerView) {
         val animator = ObjectAnimator.ofFloat(recyclerView, "translationY", 0f, -recyclerView.height.toFloat())
-        animator.duration = 300 // Duración de la animación en milisegundos
+        animator.duration = 200 // Duración de la animación en milisegundos
         animator.start()
 
         // ocultar la vista después de la animación
@@ -224,12 +348,10 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         recyclerView.visibility = View.VISIBLE
 
         val animator = ObjectAnimator.ofFloat(recyclerView, "translationY", -recyclerView.height.toFloat(), 0f)
-        animator.duration = 300 // Duración de la animación en milisegundos
+        animator.duration = 200 // Duración de la animación en milisegundos
         animator.start()
+
     }
 
 
 }
-
-
-

@@ -1,11 +1,23 @@
 [
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_eliminar_elemento_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\eliminar_elemento_icono.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guid3_a2.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\guid3_a2.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_categoria_icono.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\categoria_icono.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_numeros.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_numeros.png"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_editar_elemento_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\editar_elemento_icono.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -18,6 +30,10 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher_background.webp.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher_background.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_guion.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_guion.png"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_foto.jpg.flat",
@@ -50,6 +66,10 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_acerca_de_icono.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\acerca_de_icono.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guardar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\guardar_icono.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_contra_icono.xml.flat",
@@ -110,10 +130,6 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_circular_de_foto_del_usuario.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_circular_de_foto_del_usuario.xml"
-    },
-    {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_pop_up_crear_contra.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/pop_up_crear_contra.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_hacia_abajo_anim.xml.flat",
@@ -208,6 +224,10 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\logo_instagram.png"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_mayusculas.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_mayusculas.png"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_mostrar_icono.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\mostrar_icono.xml"
     },
@@ -264,6 +284,10 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\info_icono.xml"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_guionbajo.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_guionbajo.png"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_exportar_icono2.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\exportar_icono2.xml"
     },
@@ -276,6 +300,14 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\idioma_icono.xml"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_minusculas.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_minusculas.png"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_subir_imagen_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\subir_imagen_icono.xml"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_texto_fab.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_texto_fab.xml"
     },
@@ -284,8 +316,16 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxhdpi\\ic_launcher_background.webp"
     },
     {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_especiales.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_especiales.png"
+    },
+    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.alexdev.guid3.app-debug-57:/drawable_eliminar_elemento_icono.xml.flat",
+        "source": "com.alexdev.guid3.app-main-59:/drawable/eliminar_elemento_icono.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxxhdpi_ic_launcher_background.webp.flat",
@@ -306,5 +346,13 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_borrar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\borrar_icono.xml"
+    },
+    {
+        "merged": "com.alexdev.guid3.app-debug-57:/drawable_editar_elemento_icono.xml.flat",
+        "source": "com.alexdev.guid3.app-main-59:/drawable/editar_elemento_icono.xml"
     }
 ]

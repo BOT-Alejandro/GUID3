@@ -25,6 +25,7 @@ import com.alexdev.guid3.dataClasses.contras
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.alexdev.guid3.viewModels.CategoriaViewModel
@@ -32,16 +33,23 @@ import com.alexdev.guid3.viewModels.CategoriaViewModel
 class Inicio : Fragment(R.layout.fragment_inicio) {
     private lateinit var categoriaViewModel: CategoriaViewModel
 
-
     //Lista de contraseñas generadas internamente para pruebas
     private val contras = mutableListOf(
-        contras(R.drawable.logo_facebook, "Facebook", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_instagram, "Instagram", "hectorzendejas069@gmail.com", "Alex271202"),
-        contras(R.drawable.logo_bbva, "BBVA", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_outlook, "Outlook", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_gmail, "Correo Gmail", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_x, "Cuenta X: SoyAlex", "hectoralejandro037@gmail.com", "Alex1104"),
-        contras(R.drawable.logo_youtube, "Cuenta Youtube: Alejandroo", "hectoralejandro23@outlook.com", "Alex1104")
+        contras(R.drawable._logofacebook, "Facebook", "hectoralejandro037@gmail.com", "JKGB_+53r"),
+        contras(R.drawable._logoinstragram, "Instagram", "hectorzendejas069@gmail.com", "@#dfsf@1"),
+        contras(R.drawable._logobbva, "BBVA", "hectoralejandro037@gmail.com", "DSF#$%d452"),
+        contras(R.drawable._logooutlook, "Outlook", "hectoralejandro037@gmail.com", "SD#s@#%HH_"),
+        contras(R.drawable._logogmail, "Correo Gmail", "hectoralejandro037@gmail.com", "fjn#$%fx&"),
+        contras(R.drawable._logox, "Cuenta X: SoyAlex", "hectoralejandro037@gmail.com", "AKC@4Ddfa"),
+        contras(R.drawable._logoyoutube, "Cuenta Youtube: Alejandroo", "hectoralejandro23@outlook.com", "%^#FFFBd"),
+        contras(R.drawable._logonetflix, "Netflix: Alejandro", "hectoralejandro037@gmail.com", "#@%DFEUhmkf"),
+        contras(R.drawable._logomercadopago, "Mercado Pago", "hectoralejandro037@gmail.com", "@#%BGfjgdfb"),
+        contras(R.drawable._logoprime, "Cuenta Prime: Alejandro", "hectoralejandro037@gmail.com", "ASFjh3^^%"),
+        contras(R.drawable._logoamazon, "Cuenta Amazon: Alejandro", "hectoralejandro037@gmail.com", "ApU_@4Ddfa"),
+        contras(R.drawable._logomercadolibre, "Cuenta Mercado Libre: Alejandro", "hectoralejandro037@gmail.com", "&(_aslASmz"),
+        contras(R.drawable._logoebay, "Cuenta Ebay: Alejandro", "hectoralejandro037@gmail.com", "@347Dgry845_"),
+        contras(R.drawable._logopaypal, "Cuenta Paypal: Alejandro", "hectoralejandro037@gmail.com", "aslf!@vAFL"),
+        contras(R.drawable._logoicloud, "Cuenta iCloud: Alejandro Martinez", "hectoralejandro037@gmail.com", "adSFIL3%&gdw"),
     )
 
     //Lista de categorias de contraseñas
@@ -59,8 +67,10 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         // ViewModel para que las categorías se actualicen conforme se cambie el modo oscuro de la aplicación
-        categoriaViewModel = ViewModelProvider(this).get(CategoriaViewModel::class.java)
+        categoriaViewModel = ViewModelProvider(this)[CategoriaViewModel::class.java]
 
 
         val btnAbrirOpciones = view.findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.btnAbrirOpciones)
@@ -70,15 +80,35 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         val txtAddContra = view.findViewById<com.google.android.material.button.MaterialButton>(R.id.txtAddContra)
 
         // Configurar la barra de herramientas
-        val toolbar =
-            (activity as? AppCompatActivity)?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.barra_de_herramientas)
+        val toolbar = (activity as? AppCompatActivity)?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.barra_de_herramientas)
         toolbar?.title = "GUID3"
 
         // Configurar el RecyclerView de la lista de contraseñas
-        val recyclerViewContras = view.findViewById<RecyclerView>(R.id.recyclerViewContras)
+        val txtConteoContra = view.findViewById<TextView>(R.id.txt_conteo_contra)
         val adaptadorContras = ContrasAdapter(contras)
+        val recyclerViewContras = view.findViewById<RecyclerView>(R.id.recyclerViewContras)
         recyclerViewContras.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewContras.adapter = adaptadorContras
+        txtConteoContra.text = adaptadorContras.itemCount.toString()
+
+
+
+        // Actualizar el conteo en tiempo real
+        adaptadorContras.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                txtConteoContra.text = adaptadorContras.itemCount.toString()
+            }
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+                txtConteoContra.text = adaptadorContras.itemCount.toString()
+            }
+
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                txtConteoContra.text = adaptadorContras.itemCount.toString()
+            }
+        })
 
         // Configurar el RecyclerView con el ViewModel y la lista de Categorias
         val recyclerViewCategoria = view.findViewById<RecyclerView>(R.id.recyclerViewCategorias)
@@ -164,12 +194,9 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         configurarDeslizarRecyclerView(recyclerViewContras)
 
 
-
-
-
-
     }
-
+    // Metodo para poder deslizar hacia la izquierda o derecha los elementos del recyclerview
+    // de contraseñas y eliminarlos o editarlos
     private fun configurarDeslizarRecyclerView(recyclerViewContras: RecyclerView) {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
@@ -327,7 +354,6 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         transaction.replace(R.id.fragmento_contenedor, fragmentPopUp)
         transaction.addToBackStack(null)
         transaction.commit()
-
     }
 
     private fun hideRecyclerViewWithAnimation(recyclerView: RecyclerView) {
@@ -352,6 +378,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         animator.start()
 
     }
+
 
 
 }

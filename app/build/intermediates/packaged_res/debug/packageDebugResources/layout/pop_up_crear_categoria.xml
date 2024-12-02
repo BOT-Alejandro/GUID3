@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/fondo_ajustes">
+    android:background="@drawable/fondo_botones">
 
     <TextView
         android:id="@+id/textview_nombre_categoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre de la categoría"
+        android:text="@string/nombre_de_la_categoria"
         android:fontFamily="@font/fuente_principal"
         android:textSize="14sp"
         android:textColor="?attr/android:textColorSecondary"
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fuente_principal"
-            android:hint="Nombre"
+            android:hint="@string/nombre"
             android:inputType="text"
             android:textColor="?attr/android:textColorPrimary"
             android:maxLength="16"/>
@@ -51,7 +51,7 @@
             android:id="@+id/btnCategoriaGuardar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:text="@string/guardar"
             android:fontFamily="@font/fuente_principal"
             android:backgroundTint="?attr/colorSecondary"
             android:textColor="?attr/colorOnSecondary"
@@ -61,7 +61,7 @@
             android:id="@+id/btnCategoriaCancelar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
+            android:text="@string/cancelar"
             android:fontFamily="@font/fuente_principal"
             android:layout_marginTop="10dp"
             android:backgroundTint="?attr/colorSecondary"

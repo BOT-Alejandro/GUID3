@@ -31,7 +31,7 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/txtSugerencias"
+                android:id="@+id/btnSugerencias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -50,7 +50,7 @@
                 android:id="@+id/txtDeslizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desliza para ver más sugerencias"
+                android:text="Desliza para ver más sugerencias o pulsa el boton '+' para seleccionar un icono de tu preferencia"
                 android:fontFamily="@font/fuente_principal"
                 />
 
@@ -68,122 +68,123 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/presetFacebook"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:id="@+id/btnImgPersonalizada"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginEnd="16dp"
-                        android:scaleType="centerCrop"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Facebook"
-                        android:src="@drawable/logo_facebook" />
+                        android:contentDescription="Subir imagen personalizada"
+                        android:src="@drawable/subir_imagen_icono"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetGmail"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_toEndOf="@+id/presetFacebook"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_toEndOf="@+id/btnImgPersonalizada"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="Gmail"
-                        android:src="@drawable/logo_gmail"
+                        android:src="@drawable/_logogmail"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetYoutube"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_toEndOf="@+id/presetGmail"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="YouTube"
-                        android:src="@drawable/logo_youtube"
+                        android:src="@drawable/_logoyoutube"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetInstagram"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginEnd="16dp"
                         android:layout_toEndOf="@+id/presetYoutube"
                         android:contentDescription="Instagram"
-                        android:src="@drawable/logo_instagram"
+                        android:src="@drawable/_logoinstragram"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetBBVA"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_below="@id/presetFacebook"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/btnImgPersonalizada"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
                         android:contentDescription="BBVA"
-                        android:src="@drawable/logo_bbva"
+                        android:src="@drawable/_logobbva"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetX"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
                         android:layout_below="@+id/presetGmail"
                         android:layout_toEndOf="@+id/presetBBVA"
                         android:contentDescription="Logo X"
-                        android:src="@drawable/logo_x"
+                        android:src="@drawable/_logox"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetOutlook"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_below="@+id/presetYoutube"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
                         android:layout_toEndOf="@+id/presetX"
                         android:contentDescription="Logo Outlook"
-                        android:src="@drawable/logo_outlook"
-                        android:scaleType="fitCenter"
-                        android:background="@android:color/transparent"/>
-
-                    <ImageButton
-                        android:id="@+id/presetLogo1"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_below="@+id/presetInstagram"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_toEndOf="@+id/presetOutlook"
-                        android:contentDescription="Logo Outlook"
-                        android:src="@drawable/logo_bbva"
-                        android:scaleType="fitCenter"
-                        android:background="@android:color/transparent"/>
-
-                    <ImageButton
-                        android:id="@+id/presetLogo2"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_toEndOf="@+id/presetInstagram"
-                        android:contentDescription="Logo Outlook"
-                        android:src="@drawable/logo_facebook"
+                        android:src="@drawable/_logooutlook"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
 
                     <ImageButton
                         android:id="@+id/presetMercadoPago"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_below="@+id/presetLogo2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/presetInstagram"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_toEndOf="@+id/presetLogo1"
-                        android:contentDescription="Subir imagen personalizada"
-                        android:src="@drawable/subir_imagen_icono"
+                        android:layout_toEndOf="@+id/presetOutlook"
+                        android:contentDescription="Logo Outlook"
+                        android:src="@drawable/_logomercadopago"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetNetflix"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@+id/presetInstagram"
+                        android:contentDescription="Logo Outlook"
+                        android:src="@drawable/_logonetflix"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+
+                    <ImageButton
+                        android:id="@+id/presetFacebook"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/presetMercadoPago"
+                        android:layout_below="@+id/presetNetflix"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Facebook"
+                        android:src="@drawable/_logofacebook" />
 
 
 
@@ -195,6 +196,7 @@
                 android:id="@+id/textInputNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:hint="Nombre"
                 app:helperTextEnabled="true"
                 app:helperText="Escribe el nombre de la contraseña"
@@ -217,7 +219,7 @@
                 android:id="@+id/textInputUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:hint="Correo"
                 app:helperText="Escribe el correo asociado a tu cuenta"
                 app:helperTextEnabled="true"
@@ -240,12 +242,22 @@
                 android:id="@+id/textInputContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 app:helperTextEnabled="true"
                 app:helperText="Ingrese una contraseña"
                 android:hint="Contraseña"
                 app:endIconMode="password_toggle"
                 app:boxBackgroundMode="filled">
+
+                <ProgressBar
+                    android:id="@+id/progressRigidez"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progress="0"
+                    android:max="100"
+                    android:progressTint="#FF0000"
+                    android:visibility="visible"
+                    />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextContrasena"
@@ -255,19 +267,6 @@
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-            <ProgressBar
-                android:id="@+id/progressRigidez"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginBottom="10dp"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:progress="0"
-                android:max="100"
-                android:progressTint="#FF0000"
-                android:visibility="visible"
-                />
 
 
             <RelativeLayout
@@ -332,8 +331,8 @@
 
                 <ImageButton
                     android:id="@+id/btnGuardarPerfil"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignBottom="@+id/spinnerPresets"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@+id/btnBorrarPerfil"
@@ -343,8 +342,8 @@
 
                 <ImageButton
                     android:id="@+id/btnBorrarPerfil"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignBottom="@+id/spinnerPresets"
                     android:layout_alignParentEnd="true"
                     android:background="@android:color/transparent"
@@ -410,8 +409,8 @@
 
                 <ImageView
                     android:id="@+id/imgNumeros"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="120px"
+                    android:layout_height="120px"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/img_numeros"
                     android:layout_below="@+id/imgMinusculas"
@@ -551,6 +550,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginBottom="0dp"
                         android:text="Guardar"
+                        android:enabled="false"
                         android:textAlignment="center"
                         app:cornerRadius="8dp" />
 

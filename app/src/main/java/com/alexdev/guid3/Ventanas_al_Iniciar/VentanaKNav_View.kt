@@ -42,8 +42,7 @@ class VentanaKNav_View : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         // Condicion para reemplazar la actividad o ventana que se muestra con el contenedor establecido en el layout ventana_principal.xml para que muestre por defecto el fragmento Inicio
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmento_contenedor, Inicio()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.fragmento_contenedor, Inicio()).commit()
             navigationView.setCheckedItem(R.id.home)
         }
 

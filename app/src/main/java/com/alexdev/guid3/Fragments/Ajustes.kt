@@ -1,5 +1,6 @@
 package com.alexdev.guid3.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
 import com.alexdev.guid3.Ventanas_al_Iniciar.VentanaKNav_View
 import com.google.android.material.switchmaterial.SwitchMaterial
+import java.util.Locale
 
 
 class Ajustes : Fragment(R.layout.fragment_ajustes) {
@@ -19,8 +21,11 @@ class Ajustes : Fragment(R.layout.fragment_ajustes) {
         super.onViewCreated(view, savedInstanceState)
 
         val botonModoNoche = view.findViewById<SwitchMaterial>(R.id.Switch_modo_noche)
-        val botonIdioma = view.findViewById<SwitchMaterial>(R.id.Switch_cambiar_idioma)
         val botonExportar = view.findViewById<ImageButton>(R.id.boton_exportar)
+
+        val switchIdioma = view.findViewById<SwitchMaterial>(R.id.Switch_cambiar_idioma)
+
+
 
 
         //Logica para exportar contraseñas (PENDIENTE)
@@ -37,6 +42,7 @@ class Ajustes : Fragment(R.layout.fragment_ajustes) {
         // Configura el título del Toolbar
         toolbar?.title = "Configuración"
     }
+
 
 
 

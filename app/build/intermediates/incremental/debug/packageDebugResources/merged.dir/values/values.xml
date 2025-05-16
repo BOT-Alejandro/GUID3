@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Amarillo">#FFB400</color>
+    <color name="AzulClaro">#78B9FF</color>
+    <color name="AzulPrincipal">#0054F6</color>
+    <color name="AzulSecundario">#003C99</color>
+    <color name="Blanco">#FFFFFF</color>
+    <color name="BotonClaro">#0054F6</color>
+    <color name="BotonOscuro">#0054F6</color>
+    <color name="ErrorColor">#D32F2F</color>
+    <color name="ErrorColorOscuro">#EF5350</color>
+    <color name="FondoClaro">#FFFFFF</color>
+    <color name="FondoOscuro">#121212</color>
+    <color name="FondoSecundario">#F5F5F5</color>
+    <color name="FondoSecundarioOscuro">#333333</color>
+    <color name="FondoTarjeta">#FAFAFA</color>
+    <color name="FondoTarjetaOscuro">#222222</color>
+    <color name="Gris">#B0B0B0</color>
+    <color name="GrisOscuro">#505050</color>
+    <color name="MoradoOscuro">#180E2B</color>
+    <color name="Negro">#000000</color>
+    <color name="Sombra">#E0E0E0</color>
+    <color name="SombraOscura">#000000</color>
+    <color name="TextoBotonClaro">#FFFFFF</color>
+    <color name="TextoBotonOscuro">#FFFFFF</color>
+    <color name="TextoClaro">#212121</color>
+    <color name="TextoOscuro">#E0E0E0</color>
+    <color name="TextoSecundarioClaro">#757575</color>
+    <color name="TextoSecundarioOscuro">#B0B0B0</color>
+    <string name="abrir_Nav">Open</string>
+    <string name="accesibilidad">Accessibility</string>
+    <string name="app_name" translatable="false">GUID3</string>
+    <string name="app_version">App version</string>
+    <string name="autor_de_app">Alejandro Martinez</string>
+    <string name="cambiar_idioma">Change language</string>
+    <string name="cancelar">Cancel</string>
+    <string name="cerrar_Nav">Close</string>
+    <string name="contrase_as_hasta_el_momento">Passwords so far:</string>
+    <string name="contrasenas_generadas">Generated Passwords</string>
+    <string name="editar_perfil">Edit Profile</string>
+    <string name="entendido">Understood</string>
+    <string name="exportar_contras">Export passwords</string>
+    <string name="foto_de_usuario">User picture</string>
+    <string name="guardar">Save</string>
+    <string name="modo_noche">Night mode</string>
+    <string name="nav_acercade">About Us</string>
+    <string name="nav_ajustes">Settings</string>
+    <string name="nav_ayuda">Help</string>
+    <string name="nav_inicio">Home</string>
+    <string name="nav_salir">Logout</string>
+    <string name="nombre">Name</string>
+    <string name="nombre_de_la_categoria">Category name</string>
+    <string name="technologies_text_acercade" translatable="false">Technologies</string>
+    <string name="texto_acerca_de">Our goal is give the user
+        a trustful tool to generate complex passwords and guide
+        people to ensure that their passwords are solid and appropriate
+        to protect them of possible attempts of intrusion.\n\nWe want to decrease
+        the 55% victims of insecure passwords in Mexico.\n\nIncrease the
+        cybersecurity culture in our country.\n\nDecrease the complexity
+        of elaborate a secure password for each platform where it is planned to be used.</string>
+    <string name="txt1_Sugerencias">"Below are preset profiles, each with an algorithm designed for its application category. Selecting one will automatically fill in the Name and Password fields.  "</string>
+    <string name="txt2_Sugerencias">In the \"Advanced\" section, you can customize and generate your own password based on the list of selected conditions according to your preferences. You can also choose the password length, with a maximum limit of 16 characters.</string>
+    <string name="txtV_Inicial">Welcome to GUID3</string>
+    <string name="version_de_app" translatable="false">1.0.5_alpha</string>
+    <style name="Theme.GUID3" parent="Theme.Material3.Light.NoActionBar">
+
+        <item name="android:fontFamily">@font/fuente_principal</item>
+
+        
+        <item name="colorPrimary">@color/AzulPrincipal</item>
+        <item name="colorPrimaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnPrimary">@color/Blanco</item>
+
+        
+        <item name="android:windowBackground">@color/FondoClaro</item>
+        <item name="android:textColorPrimary">@color/TextoClaro</item>
+        <item name="android:textColorSecondary">@color/Negro</item>
+
+        
+        <item name="colorSecondary">@color/AzulPrincipal</item>
+        <item name="colorSecondaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnSecondary">@color/Blanco</item>
+
+        
+        <item name="colorTertiary">@color/Blanco</item>
+        <item name="colorOnTertiary">@color/AzulSecundario</item>
+
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        
+        <item name="android:iconTint">@color/Negro</item>
+
+
+    </style>
+</resources>

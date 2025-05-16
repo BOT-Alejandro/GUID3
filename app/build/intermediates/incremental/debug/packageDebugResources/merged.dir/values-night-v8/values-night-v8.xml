@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.GUID3" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:fontFamily">@font/fuente_principal</item>
+
+        
+        <item name="colorPrimary">@color/AzulPrincipal</item>
+        <item name="colorPrimaryVariant">@color/AzulSecundario</item>
+        <item name="colorOnPrimary">@color/Blanco</item>
+
+        
+        <item name="android:windowBackground">@color/FondoOscuro</item>
+        <item name="android:textColorPrimary">@color/TextoOscuro</item>
+        <item name="android:textColorSecondary">@color/Blanco</item>
+
+        
+        <item name="colorSecondary">@color/Blanco</item>
+        <item name="colorSecondaryVariant">@color/GrisOscuro</item>
+        <item name="colorOnSecondary">@color/Negro</item>
+
+        
+        <item name="colorTertiary">@color/GrisOscuro</item>
+        <item name="colorOnTertiary">@color/GrisOscuro</item>
+
+
+        
+        <item name="android:statusBarColor">@color/GrisOscuro</item>
+
+        
+        <item name="android:iconTint">@color/Blanco</item>
+
+    </style>
+</resources>

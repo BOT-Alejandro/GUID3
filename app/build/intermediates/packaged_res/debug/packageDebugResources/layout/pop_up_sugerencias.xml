@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_botones">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt1_Sugerencias"
+        android:textSize="16sp"
+        android:textAlignment="inherit"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/txt2_Sugerencias"
+        android:textSize="16sp"
+        android:textAlignment="inherit"
+        />
+
+    <Button
+        android:id="@+id/btnEntendido"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/entendido"
+        android:backgroundTint="?attr/colorOnSurface"
+        android:textColor="?attr/colorSurface"
+        app:cornerRadius="12dp"
+        />
+
+</LinearLayout>

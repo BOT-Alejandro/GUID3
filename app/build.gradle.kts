@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -38,7 +38,7 @@ android {
 
 dependencies {
     implementation (libs.glide)
-    kapt(libs.compiler)
+    ksp("androidx.room:room-compiler:2.5.0")
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -75,7 +75,7 @@
 
         <TextView
             android:id="@+id/texto_version_app"
-            android:text="@string/version_de_app"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tech_app_acercade"

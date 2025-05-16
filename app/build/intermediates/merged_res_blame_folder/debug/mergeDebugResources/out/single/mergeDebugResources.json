@@ -1,426 +1,430 @@
 [
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_eliminar_elemento_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\eliminar_elemento_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_hacia_abajo_anim.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/hacia_abajo_anim.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logowhatsapp.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logowhatsapp.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoyahoo.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoyahoo.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guid3_a2.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\guid3_a2.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-mdpi_ic_launcher_background.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-mdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_numeros.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_numeros.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoshein.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoshein.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-mdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_foto.jpg.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\foto.jpg"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logox.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logox.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-hdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-hdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_hacia_izquierda.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/hacia_izquierda.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logooutlook.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logooutlook.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_rotar_al_abrir_anim.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/rotar_al_abrir_anim.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_acerca_de_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\acerca_de_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logomercadopago.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logomercadopago.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logopaypal.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logopaypal.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_guion.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_guion.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoprime.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoprime.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_fondo_ajustes.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/fondo_ajustes.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_contra_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\contra_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_guid3_a2.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/guid3_a2.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\font_codec_cold_regular.ttf.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\font\\codec_cold_regular.ttf"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_ajustes_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/ajustes_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_cerrar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\cerrar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxxhdpi_ic_launcher_background.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxxhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoyoutube.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoyoutube.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_fragment_ayuda.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\fragment_ayuda.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logohbo.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logohbo.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_contra_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/contra_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logodisney.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logodisney.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_logo1.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/logo1.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_modo_noche_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\modo_noche_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/xml_backup_rules.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_inicio.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/fragment_inicio.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_circular_de_foto_del_usuario.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_circular_de_foto_del_usuario.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_rotar_al_cerrar_anim.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/rotar_al_cerrar_anim.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_hacia_abajo_anim.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\hacia_abajo_anim.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_pop_up_crear_contra.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/pop_up_crear_contra.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_pop_up_crear_contra.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\pop_up_crear_contra.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_nav_encabezado.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/nav_encabezado.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logomercadopago.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logomercadopago.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoamazon.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoamazon.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logodisney.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logodisney.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_item_categoria.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\item_categoria.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoyoutube.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoyoutube.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_rotar_al_cerrar_anim.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\rotar_al_cerrar_anim.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_nav_fondo_redondo.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/nav_fondo_redondo.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\menu_menu.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\menu\\menu.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_usuario_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\usuario_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_numeros.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_numeros.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_fragment_ajustes.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\fragment_ajustes.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_cancelar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/cancelar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_pop_up_crear_categoria.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\pop_up_crear_categoria.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_item_categoria.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/item_categoria.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_logo1.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\logo1.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logospin.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logospin.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_ajustes.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/fragment_ajustes.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_mostrar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\mostrar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_especiales.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_especiales.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_rotar_al_abrir_anim.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\rotar_al_abrir_anim.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_ventana_nav.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/ventana_nav.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logobbva.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logobbva.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoinstragram.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoinstragram.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoproton.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoproton.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logowhatsapp.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logowhatsapp.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logotiktok.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logotiktok.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_pop_up_crear_categoria.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/pop_up_crear_categoria.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_info_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\info_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_item_contras.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/item_contras.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_idioma_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\idioma_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_info_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/info_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_exportar_icono2.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\exportar_icono2.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoebay.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoebay.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_minusculas.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_minusculas.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logogmail.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logogmail.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_subir_imagen_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\subir_imagen_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_guionbajo.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_guionbajo.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_eliminar_elemento_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/eliminar_elemento_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_especiales.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_especiales.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_idioma_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/idioma_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logogmail.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logogmail.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/font_codec_cold_regular.ttf.flat",
-        "source": "com.alexdev.guid3.app-main-59:/font/codec_cold_regular.ttf"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_mostrar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/mostrar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logonu.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logonu.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_fondo_botones.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/fondo_botones.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_hacia_derecha.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\hacia_derecha.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_pop_up_crear_perfil.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/pop_up_crear_perfil.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logofacebook.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logofacebook.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoaliexpress.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoaliexpress.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoicloud.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoicloud.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-hdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_categoria_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\categoria_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_ocultar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/ocultar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_editar_elemento_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\editar_elemento_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoamazon.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoamazon.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logonetflix.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logonetflix.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_guion.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_guion.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_usuario_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/usuario_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_fragment_inicio.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\fragment_inicio.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxhdpi_ic_launcher_background.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_pop_up_sugerencias.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\pop_up_sugerencias.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xhdpi_ic_launcher_background.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoinstragram.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoinstragram.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-hdpi_ic_launcher_background.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-hdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guardar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\guardar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/font_fuente_principal.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/font/fuente_principal.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_pop_up_sugerencias.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/pop_up_sugerencias.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_mas_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\mas_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_nav_encabezado.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\nav_encabezado.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/font_codec_pro_regular.ttf.flat",
-        "source": "com.alexdev.guid3.app-main-59:/font/codec_pro_regular.ttf"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoebay.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoebay.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoproton.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoproton.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_fragment_acerca_de.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\fragment_acerca_de.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logomercadolibre.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logomercadolibre.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_minusculas.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_minusculas.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logonetflix.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logonetflix.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoprime.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoprime.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_item_contras.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\item_contras.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_nav_fondo_redondo.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\nav_fondo_redondo.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_guardar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/guardar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_modo_noche_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/modo_noche_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_ventana_nav.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\ventana_nav.xml"
     },
     {
         "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_acerca_de.xml.flat",
         "source": "com.alexdev.guid3.app-main-59:/layout/fragment_acerca_de.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoshein.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoshein.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logonu.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logonu.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoyahoo.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoyahoo.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_cerrar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/cerrar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_foto.jpg.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/foto.jpg"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logomercadolibre.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logomercadolibre.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_exportar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/exportar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_hacia_izquierda.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\hacia_izquierda.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logoicloud.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logoicloud.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_botones.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_botones.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/menu_menu.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/menu/menu.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_borrar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/borrar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\font_fuente_principal.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\font\\fuente_principal.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_hacia_derecha.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/hacia_derecha.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_acerca_de_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/acerca_de_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_mayusculas.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_mayusculas.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logopaypal.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logopaypal.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_fondo_ajustes.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\fondo_ajustes.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_img_mayusculas.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/img_mayusculas.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_ajustes_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\ajustes_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logofacebook.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logofacebook.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoaliexpress.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoaliexpress.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_fondo_circular_de_foto_del_usuario.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/fondo_circular_de_foto_del_usuario.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_exportar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\exportar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_ayuda.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/fragment_ayuda.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_cancelar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\cancelar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_subir_imagen_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/subir_imagen_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_home_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\home_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_exportar_icono2.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/exportar_icono2.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\font_codec_pro_regular.ttf.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\font\\codec_pro_regular.ttf"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_categoria_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/categoria_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logohbo.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logohbo.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_mas_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/mas_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_pop_up_crear_perfil.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\pop_up_crear_perfil.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logotiktok.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logotiktok.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logox.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logox.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/anim_desde_abajo_anim.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/anim/desde_abajo_anim.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_ocultar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\ocultar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logobbva.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logobbva.png"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_editar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\editar_icono.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_editar_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/editar_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logooutlook.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logooutlook.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_home_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/home_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_img_guionbajo.png.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\img_guionbajo.png"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\anim_desde_abajo_anim.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\anim\\desde_abajo_anim.xml"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.alexdev.guid3.app-main-59:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-xxxhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-xxxhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/xml_data_extraction_rules.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable__logospin.png.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/_logospin.png"
-    },
-    {
-        "merged": "com.alexdev.guid3.app-debug-57:/drawable_editar_elemento_icono.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/drawable/editar_elemento_icono.xml"
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_borrar_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\borrar_icono.xml"
     }
 ]

@@ -21,5 +21,14 @@
         Disminuir el 55% de víctimas por contraseñas inseguras en México.\n\n
         Incrementar la cultura de ciberseguridad en el país.\n\n
         Reducir la complejidad de elaborar una contraseña segura.</string>
-    <string name="app_version">Version de app</string>
+    <string name="app_version">Versión de app</string>
+    <string name="txt1_Sugerencias">A continuación hay perfiles prestablecidos los cuales tienen un algoritmo diseñado para su categoría de aplicación, elegir uno autocompletara los campos Nombre y Contraseña.</string>
+    <string name="txt2_Sugerencias">En el apartado \'Avanzado\' puedes modificar y generar tu propia contraseña basado en la lista de condiciones seleccionadas a tu preferencia y puedes elegir la longitud de la contraseña con un limite de 16 caracteres.</string>
+    <string name="entendido">Entendido</string>
+    <string name="nombre_de_la_categoria">Nombre de la categoría</string>
+    <string name="nombre">Nombre</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="contrasenas_generadas">Contraseñas Generadas</string>
+    <string name="contrase_as_hasta_el_momento">Contraseñas hasta el momento:</string>
 </resources>

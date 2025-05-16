@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-29:/values-large-v4/values-large-v4.xml",
+            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-55:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\339bfe905bef2f66b5c7ec6f545fdb59\\transformed\\material-1.10.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\b2db41f31e4b184c8b1c1f660ef37ada\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\7125aa3367f80187ee2e0c7c1271c2f5\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\e694d33daed0a9f624585676f0b1c5eb\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

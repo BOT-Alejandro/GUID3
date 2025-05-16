@@ -1,18 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.alexdev.guid3"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.alexdev.guid3"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0.3"
+        versionName = "1.1.1_alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,6 +37,9 @@ android {
 }
 
 dependencies {
+    implementation (libs.glide)
+    ksp("androidx.room:room-compiler:2.5.0")
+    implementation(libs.androidx.material3.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

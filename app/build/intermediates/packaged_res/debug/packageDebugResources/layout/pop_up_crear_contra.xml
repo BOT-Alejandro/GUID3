@@ -1,0 +1,582 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context=".Fragments.PopUpCrearContra">
+
+
+    <ScrollView
+        android:id="@+id/scrollViewPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNuevaEntrada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/fuente_principal"
+                android:text="Nueva Entrada"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSugerencias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="center"
+                android:backgroundTint="?attr/colorSurface"
+                android:text="Sugerencias de algoritmos específicos"
+                android:fontFamily="@font/fuente_principal"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="12sp"
+                app:icon="@drawable/info_icono"
+                app:iconGravity="end"
+                app:iconSize="24dp"
+                app:iconTint="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/txtDeslizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desliza para ver más sugerencias o pulsa el boton '+' para seleccionar un icono de tu preferencia"
+                android:fontFamily="@font/fuente_principal"
+                />
+
+            <HorizontalScrollView
+                android:id="@+id/scrollViewHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnImgPersonalizada"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="Subir imagen personalizada"
+                        android:src="@drawable/subir_imagen_icono"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetGmail"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_toEndOf="@+id/btnImgPersonalizada"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="Gmail"
+                        android:src="@drawable/_logogmail"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetYoutube"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_toEndOf="@+id/presetGmail"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="YouTube"
+                        android:src="@drawable/_logoyoutube"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetInstagram"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@+id/presetYoutube"
+                        android:contentDescription="Instagram"
+                        android:src="@drawable/_logoinstragram"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetBBVA"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@id/btnImgPersonalizada"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="BBVA"
+                        android:src="@drawable/_logobbva"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetX"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_below="@+id/presetGmail"
+                        android:layout_toEndOf="@+id/presetBBVA"
+                        android:contentDescription="Logo X"
+                        android:src="@drawable/_logox"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetOutlook"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/presetYoutube"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@+id/presetX"
+                        android:contentDescription="Logo Outlook"
+                        android:src="@drawable/_logooutlook"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetMercadoPago"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_below="@+id/presetInstagram"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@+id/presetOutlook"
+                        android:contentDescription="Logo Outlook"
+                        android:src="@drawable/_logomercadopago"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+                    <ImageButton
+                        android:id="@+id/presetNetflix"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toEndOf="@+id/presetInstagram"
+                        android:contentDescription="Logo Outlook"
+                        android:src="@drawable/_logonetflix"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"/>
+
+
+                    <ImageButton
+                        android:id="@+id/presetFacebook"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/presetMercadoPago"
+                        android:layout_below="@+id/presetNetflix"
+                        android:scaleType="centerCrop"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="Facebook"
+                        android:src="@drawable/_logofacebook" />
+
+
+
+                </RelativeLayout>
+
+            </HorizontalScrollView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="Nombre"
+                app:helperTextEnabled="true"
+                app:helperText="Escribe el nombre de la contraseña"
+                app:placeholderText="Facebook: Alonso López"
+                app:endIconMode="clear_text"
+                app:endIconDrawable="@drawable/cancelar_icono"
+                app:endIconContentDescription="Borrar"
+                app:boxBackgroundMode="filled">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="Correo"
+                app:helperText="Escribe el correo asociado a tu cuenta"
+                app:helperTextEnabled="true"
+                app:placeholderText="usuario@gmail.com"
+                app:endIconMode="clear_text"
+                app:endIconDrawable="@drawable/cancelar_icono"
+                app:endIconContentDescription="Borrar"
+                app:boxBackgroundMode="filled">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:helperTextEnabled="true"
+                app:helperText="Ingrese una contraseña"
+                android:hint="Contraseña"
+                app:endIconMode="password_toggle"
+                app:boxBackgroundMode="filled">
+
+                <ProgressBar
+                    android:id="@+id/progressRigidez"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progress="0"
+                    android:max="100"
+                    android:progressTint="#FF0000"
+                    android:visibility="visible"
+                    />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/txtAvanzado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avanzado"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:elevation="10dp"/>
+
+                <TextView
+                    android:id="@+id/txtAjustesAdicionales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ajustes adicionales"
+                    android:layout_below="@+id/txtAvanzado"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchAvanzado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layoutOpcionesAvanzadas"
+                android:theme="@style/Theme.GUID3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtPerfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:textSize="16dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="Perfil"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinnerPresets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtPerfil"
+                    android:spinnerMode="dropdown"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnGuardarPerfil"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/spinnerPresets"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/btnBorrarPerfil"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Guardar Perfil"
+                    android:src="@drawable/guardar_icono" />
+
+                <ImageButton
+                    android:id="@+id/btnBorrarPerfil"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/spinnerPresets"
+                    android:layout_alignParentEnd="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Borrar Perfil"
+                    android:src="@drawable/borrar_icono" />
+
+                <ImageView
+                    android:id="@+id/imgMayusculas"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/img_mayusculas"
+                    android:scaleType="centerCrop"
+                    android:layout_below="@+id/spinnerPresets"
+                    />
+
+                <TextView
+                    android:id="@+id/txtMayusculas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgMayusculas"
+                    android:layout_alignBottom="@id/imgMayusculas"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Mayúsculas"
+                    />
+
+                <CheckBox
+                    android:id="@+id/checkMayusculas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgMayusculas"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgMinusculas"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/img_minusculas"
+                    android:layout_below="@+id/imgMayusculas"
+                    />
+
+                <TextView
+                    android:id="@+id/txtMinusculas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgMinusculas"
+                    android:layout_alignBottom="@id/imgMinusculas"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Minúsculas"
+                    />
+
+                <CheckBox
+                    android:id="@+id/checkMinusculas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgMinusculas"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgNumeros"
+                    android:layout_width="120px"
+                    android:layout_height="120px"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/img_numeros"
+                    android:layout_below="@+id/imgMinusculas"
+                    />
+
+                <TextView
+                    android:id="@+id/txtNumeros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgNumeros"
+                    android:layout_alignBottom="@id/imgNumeros"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Números"
+                    />
+
+                <CheckBox
+                    android:id="@+id/checkNumeros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgNumeros"
+                    android:layout_alignParentEnd="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgGuion"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/imgNumeros"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/img_guion" />
+
+                <TextView
+                    android:id="@+id/txtGuion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgGuion"
+                    android:layout_alignBottom="@id/imgGuion"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Guión" />
+
+                <CheckBox
+                    android:id="@+id/checkGuion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgGuion"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    android:id="@+id/imgGuionBajo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/imgGuion"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/img_guionbajo" />
+
+                <TextView
+                    android:id="@+id/txtGuionBajo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgGuionBajo"
+                    android:layout_alignBottom="@id/imgGuionBajo"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Guión bajo" />
+
+                <CheckBox
+                    android:id="@+id/checkGuionBajo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgGuionBajo"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    android:id="@+id/imgEspeciales"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/imgGuionBajo"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/img_especiales" />
+
+                <TextView
+                    android:id="@+id/txtEspeciales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/imgEspeciales"
+                    android:layout_alignBottom="@id/imgEspeciales"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Especiales" />
+
+                <CheckBox
+                    android:id="@+id/checkEspeciales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/imgEspeciales"
+                    android:layout_alignParentEnd="true" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputTextLongitudContra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgEspeciales"
+                    android:layout_marginTop="20dp"
+                    app:helperTextEnabled="true"
+                    app:endIconDrawable="@drawable/cancelar_icono"
+                    app:endIconMode="clear_text"
+                    app:helperText="Máxima longitud 16"
+                    android:hint="Longitud de contraseña"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextLongitudContra"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layoutBotones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                    <Button
+                        android:id="@+id/btnGuardar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="0dp"
+                        android:text="Guardar"
+                        android:enabled="false"
+                        android:textAlignment="center"
+                        app:cornerRadius="8dp" />
+
+                    <Button
+                        android:id="@+id/btnCancelar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="20dp"
+                        android:text="Cancelar"
+                        android:textAlignment="center"
+                        app:cornerRadius="8dp" />
+
+                    <Button
+                        android:id="@+id/btnGenerar"
+                        android:layout_width="200dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:text="Generar"
+                        android:textAlignment="center"
+                        app:cornerRadius="8dp"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

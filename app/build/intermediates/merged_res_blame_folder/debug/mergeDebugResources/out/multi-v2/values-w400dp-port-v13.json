@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-29:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
+            "outputFile": "com.alexdev.guid3.app-mergeDebugResources-55:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\339bfe905bef2f66b5c7ec6f545fdb59\\transformed\\material-1.10.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
+                    "source": "C:\\Users\\Alex\\.gradle\\caches\\transforms-4\\b2db41f31e4b184c8b1c1f660ef37ada\\transformed\\material-1.12.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

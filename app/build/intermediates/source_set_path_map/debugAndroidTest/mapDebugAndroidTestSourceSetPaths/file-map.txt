@@ -1,0 +1,6 @@
+com.alexdev.guid3.test.app-tracing-1.2.0-0 C:\Users\Alex\.gradle\caches\transforms-4\4e8f12f06cb27371b01b1034ba173dd2\transformed\tracing-1.2.0\res
+com.alexdev.guid3.test.app-core-1.6.1-1 C:\Users\Alex\.gradle\caches\transforms-4\61146c5623fcbc491c52a05e5b23ee34\transformed\core-1.6.1\res
+com.alexdev.guid3.test.app-androidTest-2 C:\Users\Alex\AndroidStudioProjects\GUID3\app\build\generated\res\resValues\androidTest\debug
+com.alexdev.guid3.test.app-mergeDebugAndroidTestResources-3 C:\Users\Alex\AndroidStudioProjects\GUID3\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.alexdev.guid3.test.app-mergeDebugAndroidTestResources-4 C:\Users\Alex\AndroidStudioProjects\GUID3\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.alexdev.guid3.test.app-debugAndroidTest-5 C:\Users\Alex\AndroidStudioProjects\GUID3\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

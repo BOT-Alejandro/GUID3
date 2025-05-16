@@ -1,9 +1,14 @@
 package com.alexdev.guid3.adaptadores
 
+import android.graphics.RenderEffect
+import android.graphics.Shader
+import android.graphics.BlurMaskFilter
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +26,7 @@ class ContrasAdapter(
         val textoTitulo: TextView = view.findViewById(R.id.txtViewTituloContrasena)
         val textoCorreo: TextView = view.findViewById(R.id.textViewCorreo)
         val textoContrasena: TextView = view.findViewById(R.id.textViewContrasena)
+        val btnMostrarOcultar: ImageButton = view.findViewById(R.id.btnMostrarOcultar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VistaContrasena {
@@ -37,11 +43,47 @@ class ContrasAdapter(
         holder.textoTitulo.text = item.titulo
         holder.textoCorreo.text = item.correo
         holder.textoContrasena.text = item.contra
+
+        // Funcion para mostrar/ocultar el texto con un efecto de desenfoque a los textviews de correo y contraseña
+        val aplicarBlur: (TextView) -> Unit = { textView ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                val blur = RenderEffect.createBlurEffect(10f, 10f, Shader.TileMode.CLAMP)
+                textView.setRenderEffect(blur)
+            } else {
+                textView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+                textView.paint.maskFilter = BlurMaskFilter(8f, BlurMaskFilter.Blur.NORMAL)
+            }
+        }
+
+        val quitarBlur: (TextView) -> Unit = { textView ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                textView.setRenderEffect(null)
+            } else {
+                textView.paint.maskFilter = null
+            }
+        }
+
+        // Aplica o quita el efecto según el estado actual
+        if (item.esVisible) {
+            quitarBlur(holder.textoCorreo)
+            quitarBlur(holder.textoContrasena)
+            holder.btnMostrarOcultar.setImageResource(R.drawable.mostrar_icono) // ícono de "visible"
+        } else {
+            aplicarBlur(holder.textoCorreo)
+            aplicarBlur(holder.textoContrasena)
+            holder.btnMostrarOcultar.setImageResource(R.drawable.ocultar_icono) // ícono de "oculto"
+        }
+
+        holder.btnMostrarOcultar.setOnClickListener {
+            item.esVisible = !item.esVisible
+            notifyItemChanged(position)
+        }
+
     }
 
     override fun getItemCount() = contrasenas.size
 
-    // Método para agregar un nuevo item a la lista
+    // Metodo para agregar un nuevo item a la lista
     fun agregarContrasena(nuevaContrasena: contras) {
         contrasenas.add(nuevaContrasena)
         notifyItemInserted(contrasenas.size - 1) // Notificar al adaptador del cambio

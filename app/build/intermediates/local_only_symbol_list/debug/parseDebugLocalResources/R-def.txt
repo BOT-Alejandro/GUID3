@@ -116,6 +116,7 @@ id btnGenerar
 id btnGuardar
 id btnGuardarPerfil
 id btnImgPersonalizada
+id btnMostrarOcultar
 id btnSugerencias
 id checkEspeciales
 id checkGuion

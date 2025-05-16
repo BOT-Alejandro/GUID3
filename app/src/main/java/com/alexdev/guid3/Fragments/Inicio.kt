@@ -195,8 +195,8 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
 
     }
-    // Metodo para poder deslizar hacia la izquierda o derecha los elementos del recyclerview
-    // de contraseñas y eliminarlos o editarlos
+    /* Metodo para poder deslizar hacia la izquierda o derecha los elementos del recyclerview
+       de contraseñas y eliminarlos o editarlos */
     private fun configurarDeslizarRecyclerView(recyclerViewContras: RecyclerView) {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
@@ -288,7 +288,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     private fun mostrarDialogoEliminar(position: Int) {
         AlertDialog.Builder(requireContext())
             .setTitle("Eliminar")
-            .setMessage("¿Estás seguro de que deseas eliminar este elemento?")
+            .setMessage("¿Estás seguro de que deseas eliminar esta contraseña?")
             .setPositiveButton("Sí") { _, _ ->
                 eliminarElemento(position) // Llama a la función para eliminar el item
             }

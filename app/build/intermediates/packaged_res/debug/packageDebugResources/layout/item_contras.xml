@@ -59,16 +59,16 @@
             android:text="ejM0287#a2^(423"
             android:textSize="14sp" />
 
-        <!--<ImageButton
+        <ImageButton
             android:id="@+id/btnMostrarOcultar"
-            android:layout_width="22dp"
+            android:layout_width="25dp"
             android:layout_height="22dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ocultar_icono"
             android:contentDescription="Mostrar/Ocultar Contraseña"
-            android:background="@android:color/transparent"/> -->
+            android:background="@android:color/transparent"/>
 
     </RelativeLayout>
 

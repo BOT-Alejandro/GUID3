@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_eliminar_elemento_icono.xml.flat",
-        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\eliminar_elemento_icono.xml"
-    },
-    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logowhatsapp.png.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logowhatsapp.png"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_eliminar_elemento_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\eliminar_elemento_icono.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_guid3_a2.xml.flat",
@@ -124,12 +124,12 @@
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\menu\\menu.xml"
     },
     {
-        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_usuario_icono.xml.flat",
-        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\usuario_icono.xml"
-    },
-    {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_fragment_ajustes.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\fragment_ajustes.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable_usuario_icono.xml.flat",
+        "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\usuario_icono.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_pop_up_crear_categoria.xml.flat",
@@ -158,6 +158,10 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoproton.png.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\drawable\\_logoproton.png"
+    },
+    {
+        "merged": "com.alexdev.guid3.app-debug-57:/layout_item_contras.xml.flat",
+        "source": "com.alexdev.guid3.app-main-59:/layout/item_contras.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logotiktok.png.flat",
@@ -306,10 +310,6 @@
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\layout_ventana_nav.xml.flat",
         "source": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-main-59:\\layout\\ventana_nav.xml"
-    },
-    {
-        "merged": "com.alexdev.guid3.app-debug-57:/layout_fragment_acerca_de.xml.flat",
-        "source": "com.alexdev.guid3.app-main-59:/layout/fragment_acerca_de.xml"
     },
     {
         "merged": "C:\\Users\\Alex\\.gradle\\daemon\\8.7\\com.alexdev.guid3.app-debug-57:\\drawable__logoshein.png.flat",

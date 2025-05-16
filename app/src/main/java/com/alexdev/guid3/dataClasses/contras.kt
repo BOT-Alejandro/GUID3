@@ -4,5 +4,6 @@ data class contras(
     val imgSeleccionada: Int,
     val titulo: String,
     val correo: String,
-    val contra: String
+    val contra: String,
+    var esVisible: Boolean = false
 )

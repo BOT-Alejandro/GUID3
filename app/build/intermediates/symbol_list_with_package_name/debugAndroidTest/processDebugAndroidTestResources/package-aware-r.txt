@@ -1,3 +1,0 @@
-com.alexdev.guid3.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">GUID3</string>
     <string name="version_de_app" translatable="false">1.0.5_alpha</string>
-    <string name="autor_de_app">Alejandro Martinez</string>
+    <string name="autor_de_app" translatable="false">Alejandro Martinez</string>
     <string name="txtV_Inicial">Welcome to GUID3</string>
     <string name="abrir_Nav">Open</string>
     <string name="cerrar_Nav">Close</string>
@@ -26,7 +26,7 @@
     <string name="app_version">App version</string>
     <string name="technologies_text_acercade" translatable="false">Technologies</string>
     <string name="txt1_Sugerencias">"Below are preset profiles, each with an algorithm designed for its application category. Selecting one will automatically fill in the Name and Password fields.  "</string>
-    <string name="txt2_Sugerencias">In the \"Advanced\" section, you can customize and generate your own password based on the list of selected conditions according to your preferences. You can also choose the password length, with a maximum limit of 16 characters.</string>
+    <string name="txt2_Sugerencias">In the "Advanced" section, you can customize and generate your own password based on the list of selected conditions according to your preferences. You can also choose the password length, with a maximum limit of 16 characters.</string>
     <string name="entendido">Understood</string>
     <string name="nombre_de_la_categoria">Category name</string>
     <string name="nombre">Name</string>
@@ -34,5 +34,12 @@
     <string name="cancelar">Cancel</string>
     <string name="contrasenas_generadas">Generated Passwords</string>
     <string name="contrase_as_hasta_el_momento">Passwords so far:</string>
-
+    <string name="popup_edit_title">Edit item</string>
+    <string name="popup_change_icon">Change icon</string>
+    <string name="popup_hint_title">Title</string>
+    <string name="popup_hint_email">Email</string>
+    <string name="popup_hint_password">Password</string>
+    <string name="popup_save">Save</string>
+    <string name="popup_cancel">Cancel</string>
+    <string name="icono_actual">Actual Icon</string>
 </resources>

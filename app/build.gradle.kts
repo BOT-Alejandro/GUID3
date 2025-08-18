@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.alexdev.guid3"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.1.1_alpha"
 
@@ -27,6 +27,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,8 +40,10 @@ android {
 }
 
 dependencies {
+    //noinspection UseTomlInstead
+    implementation ("com.github.yalantis:ucrop:2.2.11")
     implementation (libs.glide)
-    ksp("androidx.room:room-compiler:2.5.0")
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

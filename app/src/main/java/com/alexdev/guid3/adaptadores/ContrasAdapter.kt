@@ -36,10 +36,15 @@ class ContrasAdapter(
 
     override fun onBindViewHolder(holder: VistaContrasena, position: Int) {
         val item = contrasenas[position]
-        Glide.with(holder.itemView.context)
-            .load(item.imgSeleccionada)
-            .into(holder.imagenIcono)
-
+        if (item.iconoPersonalizado != null) {
+            Glide.with(holder.itemView.context)
+                .load(item.iconoPersonalizado)
+                .into(holder.imagenIcono)
+        } else {
+            Glide.with(holder.itemView.context)
+                .load(item.imgSeleccionada)
+                .into(holder.imagenIcono)
+        }
         holder.textoTitulo.text = item.titulo
         holder.textoCorreo.text = item.correo
         holder.textoContrasena.text = item.contra
@@ -89,5 +94,3 @@ class ContrasAdapter(
         notifyItemInserted(contrasenas.size - 1) // Notificar al adaptador del cambio
     }
 }
-
-

@@ -1,9 +1,10 @@
 package com.alexdev.guid3.dataClasses
 
 data class contras(
-    val imgSeleccionada: Int,
-    val titulo: String,
-    val correo: String,
-    val contra: String,
+    var imgSeleccionada: Int,
+    var titulo: String,
+    var correo: String,
+    var contra: String,
+    var iconoPersonalizado: String? = null,
     var esVisible: Boolean = false
 )

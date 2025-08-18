@@ -29,6 +29,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.alexdev.guid3.viewModels.CategoriaViewModel
+import androidx.core.view.isVisible
 
 class Inicio : Fragment(R.layout.fragment_inicio) {
     private lateinit var categoriaViewModel: CategoriaViewModel
@@ -138,7 +139,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         // Configurar el botón para abrir y cerrar las opciones
         btnAbrirOpciones.setOnClickListener {
             // Si los botones ya están visibles, los ocultamos con animación
-            if (btnAddContras.visibility == View.VISIBLE) {
+            if (btnAddContras.isVisible) {
                 // Animación de cierre
                 btnAddContras.startAnimation(haciaAbajo)
                 btnAddCategorias.startAnimation(haciaAbajo)
@@ -179,49 +180,48 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
             }
         }
 
-        //Configurar el boton de agregar Contraseñas
-        btnAddContras.setOnClickListener { alPresionarBotonContras() }
-
-        //Configurar el boton 2 de agregar Contraseñas
-        txtAddContra.setOnClickListener { alPresionarBotonContras() }
-
-        //Configurar el boton de agregar Categorias
-        btnAddCategorias.setOnClickListener { alPresionarBotonCategorias() }
-
-        //Configurar el boton 2 de agregar Categorias
-        txtAddCategoria.setOnClickListener { alPresionarBotonCategorias() }
-
+        configurarBotonesAgregar(
+            listOf(
+                view.findViewById(R.id.btnAddContras),
+                view.findViewById(R.id.txtAddContra)
+            ),
+            ::alPresionarBotonContras
+        )
+        configurarBotonesAgregar(
+            listOf(
+                view.findViewById(R.id.btnAddCategorias),
+                view.findViewById(R.id.txtAddCategoria)
+            ),
+            ::alPresionarBotonCategorias
+        )
         configurarDeslizarRecyclerView(recyclerViewContras)
-
-
     }
-    /* Metodo para poder deslizar hacia la izquierda o derecha los elementos del recyclerview
-       de contraseñas y eliminarlos o editarlos */
+
+    // Función auxiliar para configurar listeners en varios botones
+    private fun configurarBotonesAgregar(botones: List<View>, accion: () -> Unit) {
+        botones.forEach { boton ->
+            boton.setOnClickListener { accion() }
+        }
+    }
+
     private fun configurarDeslizarRecyclerView(recyclerViewContras: RecyclerView) {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
-            ): Boolean {
-                // No se implementa el movimiento vertical
-                return false
-            }
+            ): Boolean = false
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-
                 when (direction) {
                     ItemTouchHelper.RIGHT -> {
-                        mostrarDialogoEliminar(position) // Llama a la función para eliminar
+                        mostrarDialogoEditar(position)
                     }
                     ItemTouchHelper.LEFT -> {
                         mostrarDialogoEliminar(position)
                     }
                 }
-
-                // Vuelve a dibujar el elemento en caso de que no se elimine o edite
                 recyclerViewContras.adapter?.notifyItemChanged(position)
             }
 
@@ -284,26 +284,52 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         itemTouchHelper.attachToRecyclerView(recyclerViewContras)
     }
 
-    // Funcion apoyado de la funcion eliminar elemento para mostrar un dialogo de confirmacion antes de eliminar
+    // Diálogo para editar elemento
+    private fun mostrarDialogoEditar(position: Int) {
+        if (position < 0 || position >= contras.size) return
+        val contra = contras[position]
+        val popUp = PopUpEditarContra.newInstance(
+            contra.imgSeleccionada,
+            contra.titulo,
+            contra.correo,
+            contra.contra,
+            object : PopUpEditarContra.OnContraEditadaListener {
+                override fun onContraEditada(
+                    imgSeleccionada: Int,
+                    iconoPersonalizado: String?,
+                    titulo: String,
+                    correo: String,
+                    contraStr: String
+                ) {
+                    contra.imgSeleccionada = imgSeleccionada
+                    contra.titulo = titulo
+                    contra.correo = correo
+                    contra.contra = contraStr
+                    view?.findViewById<RecyclerView>(R.id.recyclerViewContras)?.adapter?.notifyItemChanged(position)
+                    Toast.makeText(requireContext(), getString(R.string.contra_editada), Toast.LENGTH_SHORT).show()
+                }
+            }
+        )
+        popUp.show(parentFragmentManager, "PopUpEditarContra")
+    }
+
     private fun mostrarDialogoEliminar(position: Int) {
+        if (position < 0 || position >= contras.size) return
         AlertDialog.Builder(requireContext())
-            .setTitle("Eliminar")
-            .setMessage("¿Estás seguro de que deseas eliminar esta contraseña?")
-            .setPositiveButton("Sí") { _, _ ->
-                eliminarElemento(position) // Llama a la función para eliminar el item
+            .setTitle(getString(R.string.eliminar))
+            .setMessage(getString(R.string.confirmar_eliminar_contra))
+            .setPositiveButton(getString(R.string.si)) { _, _ ->
+                eliminarElemento(position)
             }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.dismiss() }
             .show()
     }
 
-    // Funcion para eliminar un elemento del RecyclerView de contraseñas
     private fun eliminarElemento(position: Int) {
-        // Remover el elemento de la lista
-        val recyclerViewContra = view?.findViewById<RecyclerView>(R.id.recyclerViewContras)
+        if (position < 0 || position >= contras.size) return
         contras.removeAt(position)
-            recyclerViewContra?.adapter?.notifyItemRemoved(position)
+        view?.findViewById<RecyclerView>(R.id.recyclerViewContras)?.adapter?.notifyItemRemoved(position)
+        Toast.makeText(requireContext(), getString(R.string.contra_eliminada), Toast.LENGTH_SHORT).show()
     }
 
     // Función para agregar una nueva categoría
@@ -382,4 +408,3 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
 
 }
-

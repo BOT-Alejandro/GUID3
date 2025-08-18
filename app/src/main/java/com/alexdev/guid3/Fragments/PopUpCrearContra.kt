@@ -1,5 +1,6 @@
 package com.alexdev.guid3.Fragments
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -8,17 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
-import com.alexdev.guid3.adaptadores.ContrasAdapter
-import com.alexdev.guid3.dataClasses.contras
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -31,6 +28,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
     private var imgSeleccionada: Int = R.drawable._logogmail
 
 
+    @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -172,9 +170,9 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         }
 
         btnGuardar.setOnClickListener {
-            val editTextNombre = view?.findViewById<TextInputEditText>(R.id.editTextNombre)
-            val editTextCorreo = view?.findViewById<TextInputEditText>(R.id.editTextCorreo)
-            val editTextContra = view?.findViewById<TextInputEditText>(R.id.editTextContrasena)
+            val editTextNombre = view.findViewById<TextInputEditText>(R.id.editTextNombre)
+            val editTextCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo)
+            val editTextContra = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
             val inputNombre = editTextNombre?.text.toString()
             val inputCorreo = editTextCorreo?.text.toString()
             val inputContra = editTextContra?.text.toString()

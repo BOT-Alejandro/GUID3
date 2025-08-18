@@ -6,14 +6,14 @@ plugins {
 
 android {
     namespace = "com.alexdev.guid3"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.alexdev.guid3"
         minSdk = 29
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
-        versionName = "1.1.1_alpha"
+        versionName = "1.2.0_alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

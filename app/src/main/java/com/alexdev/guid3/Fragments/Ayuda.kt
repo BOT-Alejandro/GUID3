@@ -1,11 +1,9 @@
 package com.alexdev.guid3.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
 
 class Ayuda : Fragment(R.layout.fragment_ayuda) {

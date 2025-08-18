@@ -1,6 +1,5 @@
 package com.alexdev.guid3.Fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -8,9 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
-import com.alexdev.guid3.Ventanas_al_Iniciar.VentanaKNav_View
 import com.google.android.material.switchmaterial.SwitchMaterial
-import java.util.Locale
 
 
 class Ajustes : Fragment(R.layout.fragment_ajustes) {

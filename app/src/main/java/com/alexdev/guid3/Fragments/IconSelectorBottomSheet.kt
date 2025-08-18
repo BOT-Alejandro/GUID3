@@ -1,8 +1,5 @@
 package com.alexdev.guid3.Fragments
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +44,6 @@ class IconSelectorBottomSheet : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.icon_selector_bottom_sheet, container, false)
         val recyclerIconos = view.findViewById<RecyclerView>(R.id.recyclerIconos)
         val btnSubirImagen = view.findViewById<Button>(R.id.btnSubirImagen)
-        val txtTitulo = view.findViewById<TextView>(R.id.txtTituloSelector)
 
         recyclerIconos.layoutManager = GridLayoutManager(requireContext(), 4)
         recyclerIconos.adapter = IconosAdapter(iconos) { iconRes ->

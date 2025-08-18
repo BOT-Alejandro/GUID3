@@ -44,4 +44,10 @@
     <string name="icono_actual">Actual Icon</string>
     <string name="selecciona_icono">Select the icon</string>
     <string name="subir_imagen">Upload Image</string>
+    <string name="contra_editada">Password edited</string>
+    <string name="eliminar">Delete</string>
+    <string name="confirmar_eliminar_contra">Are you sure you want to delete this password?</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+    <string name="contra_eliminada">Password deleted</string>
 </resources>

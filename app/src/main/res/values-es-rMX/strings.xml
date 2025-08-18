@@ -40,4 +40,10 @@
     <string name="icono_actual">Icono Actual</string>
     <string name="selecciona_icono">Selecciona el icono</string>
     <string name="subir_imagen">Subir imagen</string>
+    <string name="contra_editada">Contraseña editada</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="confirmar_eliminar_contra">¿Seguro que deseas eliminar esta contraseña?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="contra_eliminada">Contraseña eliminada</string>
 </resources>

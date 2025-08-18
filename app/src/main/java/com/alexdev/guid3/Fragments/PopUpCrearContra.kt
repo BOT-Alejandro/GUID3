@@ -1,18 +1,24 @@
 package com.alexdev.guid3.Fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.res.ColorStateList
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
@@ -21,16 +27,92 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 import java.util.Random
 
 class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
+    interface OnContraCreadaListener {
+        fun onContraCreada(imgSeleccionada: Int, iconoPersonalizado: String?, titulo: String, correo: String, contra: String)
+    }
+    var iconoPersonalizado: String? = null
+    var listener: OnContraCreadaListener? = null
 
-    private var imgSeleccionada: Int = R.drawable._logogmail
+    private var imgSeleccionada: Int = 0
+    private var iconoPreview: ImageView? = null
 
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        if (uri != null) {
+            val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "icono_personalizado_${System.currentTimeMillis()}.jpg"))
+            val intent = com.yalantis.ucrop.UCrop.of(uri, destinationUri)
+                .withAspectRatio(1f, 1f)
+                .withMaxResultSize(256, 256)
+                .getIntent(requireContext())
+            cropImageLauncher.launch(intent)
+        } else {
+            Toast.makeText(requireContext(), "No se seleccionó ninguna imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val cropImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data
+            val resultUri = data?.let { com.yalantis.ucrop.UCrop.getOutput(it) }
+            if (resultUri != null) {
+                // Subir imagen a Firebase Storage y guardar la URL
+                subirImagenAFirebaseStorage(resultUri,
+                    onSuccess = { url ->
+                        iconoPersonalizado = url
+                        Log.d(TAG, "URL de imagen personalizada guardada: $url")
+                        try {
+                            val inputStream = requireContext().contentResolver.openInputStream(resultUri)
+                            if (inputStream != null) {
+                                view?.findViewById<ImageView>(R.id.btnImgPersonalizada)?.setImageBitmap(BitmapFactory.decodeStream(inputStream))
+                                inputStream.close()
+                            } else {
+                                Toast.makeText(requireContext(), "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(requireContext(), "Error al mostrar la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    onError = { e ->
+                        Toast.makeText(requireContext(), "Error al subir imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+                )
+            } else {
+                Toast.makeText(requireContext(), "No se pudo recortar la imagen", Toast.LENGTH_SHORT).show()
+            }
+        } else if (result.resultCode == Activity.RESULT_CANCELED) {
+            Toast.makeText(requireContext(), "Recorte cancelado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val TAG = "PopUpCrearContra"
 
     @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: PopUpCrearContra inicializado")
+
+        if (savedInstanceState != null) {
+            imgSeleccionada = savedInstanceState.getInt("imgSeleccionada", 0)
+            iconoPersonalizado = savedInstanceState.getString("iconoPersonalizado")
+        }
+
+        // Referencia a la vista previa del icono
+        iconoPreview = view.findViewById<ImageView>(R.id.btnImgPersonalizada)
+        // Inicializar imgSeleccionada con el recurso actual del ImageButton
+        if (imgSeleccionada == 0) {
+            val btnImgPersonalizada = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
+            val drawable = btnImgPersonalizada.drawable
+            if (drawable != null) {
+                // Si el ImageButton tiene un recurso, usarlo como preview
+                iconoPreview?.setImageDrawable(drawable)
+            }
+            imgSeleccionada = R.drawable.subir_imagen_icono // Usar el mismo recurso que el layout
+        }
+        actualizarVistaPreviaIcono()
 
         val textInputContrasena = view.findViewById<TextInputLayout>(R.id.textInputContrasena)
         val editTextContrasena = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
@@ -46,7 +128,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val presetOutlook = view.findViewById<ImageView>(R.id.presetOutlook)
         val presetMercadoPago = view.findViewById<ImageView>(R.id.presetMercadoPago)
         val presetNetflix = view.findViewById<ImageView>(R.id.presetNetflix)
-        val btnImgPersonalizada = view.findViewById<ImageView>(R.id.btnImgPersonalizada)
+        val btnImgPersonalizada = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
         val switchAvanzado = view.findViewById<SwitchMaterial>(R.id.switchAvanzado)
         val layoutOpcionesAvanzadas = view.findViewById<RelativeLayout>(R.id.layoutOpcionesAvanzadas)
         val btnGenerar = view.findViewById<Button>(R.id.btnGenerar)
@@ -55,45 +137,74 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val btnSugerencias = view.findViewById<MaterialButton>(R.id.btnSugerencias)
 
         val presetButtons = mapOf(
-            R.id.presetGmail to Pair("Gmail", ::algoritmoGmail),
-            R.id.presetYoutube to Pair("YouTube", ::algoritmoYoutube),
-            R.id.presetInstagram to Pair("Instagram", ::algoritmoInstagram),
-            R.id.presetBBVA to Pair("BBVA", ::algoritmoBBVA),
-            R.id.presetX to Pair("X", ::algoritmoX),
-            R.id.presetOutlook to Pair("Outlook", ::algoritmoOutlook),
-            R.id.presetMercadoPago to Pair("MercadoPago", ::algoritmoMercadoPago),
-            R.id.presetNetflix to Pair("Netflix", ::algoritmoNetflix),
-            R.id.presetFacebook to Pair("Facebook", ::algoritmoFacebook)
+            R.id.presetGmail to Triple("Gmail", ::algoritmoGmail, R.drawable._logogmail),
+            R.id.presetYoutube to Triple("YouTube", ::algoritmoYoutube, R.drawable._logoyoutube),
+            R.id.presetInstagram to Triple("Instagram", ::algoritmoInstagram, R.drawable._logoinstragram),
+            R.id.presetBBVA to Triple("BBVA", ::algoritmoBBVA, R.drawable._logobbva),
+            R.id.presetX to Triple("X", ::algoritmoX, R.drawable._logox),
+            R.id.presetOutlook to Triple("Outlook", ::algoritmoOutlook, R.drawable._logooutlook),
+            R.id.presetMercadoPago to Triple("MercadoPago", ::algoritmoMercadoPago, R.drawable._logomercadopago),
+            R.id.presetNetflix to Triple("Netflix", ::algoritmoNetflix, R.drawable._logonetflix),
+            R.id.presetFacebook to Triple("Facebook", ::algoritmoFacebook, R.drawable._logofacebook)
         )
 
-        presetButtons.forEach { (id, pair) ->
+        presetButtons.forEach { (id, triple) ->
             val imageButton = view.findViewById<ImageView>(id)
             imageButton.setOnClickListener {
-                val nombre = pair.first
-                val algoritmo = pair.second
+                val nombre = triple.first
+                val algoritmo = triple.second
+                val drawable = triple.third
                 textInputNombre.setText("$nombre: ")
                 editTextContrasena.setText(algoritmo())
+                imgSeleccionada = drawable
                 Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
             }
         }
 
         btnImgPersonalizada.setOnClickListener {
-            // Aquí, abre un diálogo o cualquier tipo de vista con las opciones de imagen disponibles
+            pickImageLauncher.launch("image/*")
+        }
+
+        val btnSeleccionarIcono = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
+        btnSeleccionarIcono.setOnClickListener {
+            val selector = IconSelectorBottomSheet.newInstance(object : IconSelectorBottomSheet.OnIconSelectedListener {
+                override fun onIconSelected(iconRes: Int) {
+                    imgSeleccionada = iconRes
+                    iconoPersonalizado = null
+                    actualizarVistaPreviaIcono()
+                }
+                override fun onCustomImageRequested() {
+                    pickImageLauncher.launch("image/*")
+                }
+            })
+            selector.show(parentFragmentManager, "IconSelectorBottomSheet")
         }
 
         btnGuardar.setOnClickListener {
-                // Obtener el fragmento "Inicio" y agregar la nueva contraseña
-                val fragmentInicio = Inicio()
-
-                // Navegar de regreso al fragmento "Inicio"
-                val supportFragmentManager = requireActivity().supportFragmentManager
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmento_contenedor, fragmentInicio)
-                    .addToBackStack(null)
-                    .commit()
-
-                // Cerrar el fragmento actual (PopUpCrearContra)
-                requireActivity().supportFragmentManager.popBackStack()
+            val editTextNombre = view.findViewById<TextInputEditText>(R.id.editTextNombre)
+            val editTextCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo)
+            val editTextContra = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
+            val inputNombre = editTextNombre?.text.toString()
+            val inputCorreo = editTextCorreo?.text.toString()
+            val inputContra = editTextContra?.text.toString()
+            Log.d(TAG, "Intentando guardar contraseña: nombre=$inputNombre, correo=$inputCorreo, contra=$inputContra, iconoPersonalizado=$iconoPersonalizado, imgSeleccionada=$imgSeleccionada")
+            if (inputNombre.isEmpty() && inputCorreo.isEmpty() && inputContra.isEmpty()) {
+                btnGuardar.isEnabled = false
+                Log.w(TAG, "Campos vacíos, no se puede guardar la contraseña")
+                Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
+            } else {
+                btnGuardar.isEnabled = true
+                // Si hay imagen personalizada, verifica que sea una URL válida de Firebase Storage
+                if (iconoPersonalizado != null && !iconoPersonalizado!!.startsWith("https://")) {
+                    Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "La imagen personalizada aún no está subida. No se guarda la contraseña.")
+                    return@setOnClickListener
+                }
+                Log.d(TAG, "Campos completos, contraseña lista para guardar")
+                Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+                listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+                parentFragmentManager.popBackStack()
+            }
         }
 
         Glide.with(this)
@@ -176,12 +287,23 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             val inputNombre = editTextNombre?.text.toString()
             val inputCorreo = editTextCorreo?.text.toString()
             val inputContra = editTextContra?.text.toString()
+            Log.d(TAG, "Intentando guardar contraseña: nombre=$inputNombre, correo=$inputCorreo, contra=$inputContra, iconoPersonalizado=$iconoPersonalizado, imgSeleccionada=$imgSeleccionada")
             if (inputNombre.isEmpty() && inputCorreo.isEmpty() && inputContra.isEmpty()) {
                 btnGuardar.isEnabled = false
+                Log.w(TAG, "Campos vacíos, no se puede guardar la contraseña")
                 Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-            } else{
+            } else {
                 btnGuardar.isEnabled = true
+                // Si hay imagen personalizada, verifica que sea una URL válida de Firebase Storage
+                if (iconoPersonalizado != null && !iconoPersonalizado!!.startsWith("https://")) {
+                    Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "La imagen personalizada aún no está subida. No se guarda la contraseña.")
+                    return@setOnClickListener
+                }
+                Log.d(TAG, "Campos completos, contraseña lista para guardar")
                 Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+                listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+                parentFragmentManager.popBackStack()
             }
         }
 
@@ -189,6 +311,21 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("imgSeleccionada", imgSeleccionada)
+        outState.putString("iconoPersonalizado", iconoPersonalizado)
+    }
+
+    private fun actualizarVistaPreviaIcono() {
+        if (iconoPersonalizado != null) {
+            Glide.with(this).load(iconoPersonalizado).into(iconoPreview!!)
+        } else {
+            // Mostrar el recurso actual del ImageButton
+            Glide.with(this).load(imgSeleccionada).into(iconoPreview!!)
+        }
     }
 
     // Algoritmos de generación de contraseñas para cada servicio
@@ -378,6 +515,25 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
                     btnGuardar.isEnabled = true
                 }
             }
+        }
+    }
+
+    private fun subirImagenAFirebaseStorage(uri: Uri, onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference
+        val nombreArchivo = "iconos_personalizados/${System.currentTimeMillis()}.jpg"
+        val imagenRef = storageRef.child(nombreArchivo)
+        val uploadTask = imagenRef.putFile(uri)
+        uploadTask.addOnSuccessListener {
+            imagenRef.downloadUrl.addOnSuccessListener { url ->
+                Log.d(TAG, "Imagen subida a Firebase Storage: $url")
+                onSuccess(url.toString())
+            }.addOnFailureListener { e ->
+                Log.e(TAG, "Error al obtener URL de imagen subida", e)
+                onError(e)
+            }
+        }.addOnFailureListener { e ->
+            Log.e(TAG, "Error al subir imagen a Firebase Storage", e)
+            onError(e)
         }
     }
 }

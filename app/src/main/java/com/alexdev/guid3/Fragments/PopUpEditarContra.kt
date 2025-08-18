@@ -4,17 +4,20 @@ import android.app.Activity
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
 import com.alexdev.guid3.R
 import com.google.android.material.textfield.TextInputEditText
 import com.yalantis.ucrop.UCrop
 import java.io.File
+import androidx.core.net.toUri
 
 class PopUpEditarContra : DialogFragment() {
     interface OnContraEditadaListener {
@@ -27,25 +30,75 @@ class PopUpEditarContra : DialogFragment() {
     var contraActual: String? = null
     var listener: OnContraEditadaListener? = null
     var iconoPersonalizado: String? = null
-    private val cropImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data = result.data
-            val resultUri = data?.let { UCrop.getOutput(it) }
-            resultUri?.let {
-                iconoPersonalizado = it.toString()
-                view?.findViewById<ImageView>(R.id.imgIcono)?.setImageBitmap(BitmapFactory.decodeStream(requireContext().contentResolver.openInputStream(it)))
-            }
-        }
-    }
 
+    // Lanzador para seleccionar imagen
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "icono_personalizado.jpg"))
+        Log.d("PopUpEditarContra", "pickImageLauncher: uri = $uri")
+        if (uri != null) {
+            // Crear archivo temporal para el recorte
+            val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "icono_personalizado_${System.currentTimeMillis()}.jpg"))
+            Log.d("PopUpEditarContra", "pickImageLauncher: destinationUri = $destinationUri")
             val intent = UCrop.of(uri, destinationUri)
                 .withAspectRatio(1f, 1f)
                 .withMaxResultSize(256, 256)
                 .getIntent(requireContext())
             cropImageLauncher.launch(intent)
+        } else {
+            Log.e("PopUpEditarContra", "No se seleccionó ninguna imagen")
+            Toast.makeText(requireContext(), "No se seleccionó ninguna imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // Lanzador para recibir imagen recortada
+    private val cropImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        Log.d("PopUpEditarContra", "cropImageLauncher: resultCode = ${result.resultCode}")
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data
+            Log.d("PopUpEditarContra", "cropImageLauncher: data = $data")
+            val resultUri = data?.let { UCrop.getOutput(it) }
+            Log.d("PopUpEditarContra", "cropImageLauncher: resultUri = $resultUri")
+            if (resultUri != null) {
+                iconoPersonalizado = resultUri.toString()
+                if (isAdded && view != null) {
+                    val imgIcono = view?.findViewById<ImageView>(R.id.imgIcono)
+                    if (imgIcono != null) {
+                        actualizarVistaPreviaIcono(imgIcono)
+                    }
+                }
+            } else {
+                Log.e("PopUpEditarContra", "No se pudo recortar la imagen: resultUri es null")
+                Toast.makeText(requireContext(), "No se pudo recortar la imagen", Toast.LENGTH_SHORT).show()
+            }
+        } else if (result.resultCode == Activity.RESULT_CANCELED) {
+            Log.d("PopUpEditarContra", "Recorte cancelado por el usuario")
+            Toast.makeText(requireContext(), "Recorte cancelado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("imgSeleccionada", imgSeleccionada ?: R.drawable.subir_imagen_icono)
+        outState.putString("iconoPersonalizado", iconoPersonalizado)
+        outState.putString("tituloActual", tituloActual)
+        outState.putString("correoActual", correoActual)
+        outState.putString("contraActual", contraActual)
+    }
+
+    private fun actualizarVistaPreviaIcono(imgIcono: ImageView) {
+        if (iconoPersonalizado != null) {
+            try {
+                val inputStream = requireContext().contentResolver.openInputStream(iconoPersonalizado!!.toUri())
+                if (inputStream != null) {
+                    imgIcono.setImageBitmap(BitmapFactory.decodeStream(inputStream))
+                    inputStream.close()
+                } else {
+                    imgIcono.setImageResource(imgSeleccionada ?: R.drawable.subir_imagen_icono)
+                }
+            } catch (e: Exception) {
+                imgIcono.setImageResource(imgSeleccionada ?: R.drawable.subir_imagen_icono)
+            }
+        } else {
+            imgIcono.setImageResource(imgSeleccionada ?: R.drawable.subir_imagen_icono)
         }
     }
 
@@ -54,7 +107,7 @@ class PopUpEditarContra : DialogFragment() {
             override fun onIconSelected(iconRes: Int) {
                 imgSeleccionada = iconRes
                 iconoPersonalizado = null
-                imgIcono.setImageResource(iconRes)
+                actualizarVistaPreviaIcono(imgIcono)
             }
             override fun onCustomImageRequested() {
                 pickImageLauncher.launch("image/*")
@@ -77,12 +130,16 @@ class PopUpEditarContra : DialogFragment() {
         val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
         val btnCancelar = view.findViewById<Button>(R.id.btnCancelar)
 
-        // Mostrar el icono personalizado si existe, si no el drawable
-        if (iconoPersonalizado != null) {
-            imgIcono.setImageBitmap(BitmapFactory.decodeStream(requireContext().contentResolver.openInputStream(Uri.parse(iconoPersonalizado))))
-        } else {
-            imgIcono.setImageResource(imgSeleccionada ?: R.drawable.subir_imagen_icono)
+        // Restaurar estado si existe
+        if (savedInstanceState != null) {
+            imgSeleccionada = savedInstanceState.getInt("imgSeleccionada", imgSeleccionada ?: R.drawable.subir_imagen_icono)
+            iconoPersonalizado = savedInstanceState.getString("iconoPersonalizado", iconoPersonalizado)
+            tituloActual = savedInstanceState.getString("tituloActual", tituloActual)
+            correoActual = savedInstanceState.getString("correoActual", correoActual)
+            contraActual = savedInstanceState.getString("contraActual", contraActual)
         }
+
+        actualizarVistaPreviaIcono(imgIcono)
         inputTitulo.setText(tituloActual)
         inputCorreo.setText(correoActual)
         inputContrasena.setText(contraActual)
@@ -95,6 +152,7 @@ class PopUpEditarContra : DialogFragment() {
             val nuevoTitulo = inputTitulo.text.toString().trim()
             val nuevoCorreo = inputCorreo.text.toString().trim()
             val nuevaContra = inputContrasena.text.toString().trim()
+            Log.d("PopUpEditarContra", "GUARDAR: imgSeleccionada=$imgSeleccionada, iconoPersonalizado=$iconoPersonalizado, titulo=$nuevoTitulo, correo=$nuevoCorreo, contra=$nuevaContra")
             listener?.onContraEditada(imgSeleccionada ?: R.drawable.subir_imagen_icono, iconoPersonalizado, nuevoTitulo, nuevoCorreo, nuevaContra)
             dismiss()
         }
@@ -103,6 +161,14 @@ class PopUpEditarContra : DialogFragment() {
         }
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 1),
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
     }
 
     companion object {

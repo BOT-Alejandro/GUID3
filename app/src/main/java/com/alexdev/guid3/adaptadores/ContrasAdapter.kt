@@ -3,7 +3,9 @@ package com.alexdev.guid3.adaptadores
 import android.graphics.BlurMaskFilter
 import android.graphics.RenderEffect
 import android.graphics.Shader
+import android.net.Uri
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
 import com.alexdev.guid3.dataClasses.contras
 import com.bumptech.glide.Glide
+import java.io.File
 
 class ContrasAdapter(
     private val contrasenas: MutableList<contras> // Cambiado a MutableList para permitir modificaciones
@@ -35,14 +38,30 @@ class ContrasAdapter(
 
     override fun onBindViewHolder(holder: VistaContrasena, position: Int) {
         val item = contrasenas[position]
-        if (item.iconoPersonalizado != null) {
+        val iconoUri = item.iconoPersonalizado
+        val drawablePorDefecto = R.drawable._logoicloud
+        val recursoDrawable = if (item.imgSeleccionada != 0) item.imgSeleccionada else drawablePorDefecto
+        if (iconoUri.isNullOrEmpty()) {
             Glide.with(holder.itemView.context)
-                .load(item.iconoPersonalizado)
+                .load(recursoDrawable)
+                .into(holder.imagenIcono)
+        } else if (iconoUri.startsWith("http") || iconoUri.startsWith("https")) {
+            // Si es una URL remota, cargarla
+            Glide.with(holder.itemView.context)
+                .load(iconoUri)
                 .into(holder.imagenIcono)
         } else {
-            Glide.with(holder.itemView.context)
-                .load(item.imgSeleccionada)
-                .into(holder.imagenIcono)
+            // Si es un archivo local, cargarlo si existe
+            val file = File(Uri.parse(iconoUri).path ?: "")
+            if (file.exists()) {
+                Glide.with(holder.itemView.context)
+                    .load(file)
+                    .into(holder.imagenIcono)
+            } else {
+                Glide.with(holder.itemView.context)
+                    .load(recursoDrawable)
+                    .into(holder.imagenIcono)
+            }
         }
         holder.textoTitulo.text = item.titulo
         holder.textoCorreo.text = item.correo

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    style="@style/Theme.GUID3">
 
     <TextView
         android:id="@+id/txtTituloSelector"
@@ -25,7 +26,6 @@
 
     <Button
         android:id="@+id/btnSubirImagen"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/subir_imagen"

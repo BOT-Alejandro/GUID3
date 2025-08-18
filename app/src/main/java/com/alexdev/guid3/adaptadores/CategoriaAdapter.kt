@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
 import com.alexdev.guid3.dataClasses.categorias
 
-class CategoriaAdapter(private var listaCategorias: MutableList<categorias>) :
-    RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder>() {
 
+class CategoriaAdapter(private val listaCategorias: MutableList<categorias> = mutableListOf()) :
+    RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder>() {
     inner class CategoriaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreCategoria: TextView = itemView.findViewById(R.id.txtView_Categoria)
     }
@@ -24,13 +24,14 @@ class CategoriaAdapter(private var listaCategorias: MutableList<categorias>) :
         holder.nombreCategoria.text = listaCategorias[position].categoria
     }
 
-    override fun getItemCount(): Int = listaCategorias.size
+    override fun getItemCount(): Int {
+        return listaCategorias.size
+    }
 
-    // Método para actualizar la lista de categorías y notificar cambios
-    fun actualizarLista(nuevaLista: List<categorias>) {
+    fun setListaCategorias(nuevaLista: List<categorias>) {
         listaCategorias.clear()
         listaCategorias.addAll(nuevaLista)
-        notifyDataSetChanged() // Notifica que los datos han cambiado
+        notifyDataSetChanged()
     }
 }
 

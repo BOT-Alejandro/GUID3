@@ -214,12 +214,12 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
 
     // Funciones auxiliares para la generación de contraseñas
     private fun generarContrasenaCompleja(): String {
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()"
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()"
         return (1..16).map { chars.random() }.joinToString("")
     }
 
     private fun generarContrasenaConSimbolos(): String {
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%"
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%"
         return (1..16).map { chars.random() }.joinToString("")
     }
 
@@ -229,7 +229,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
     }
 
     private fun generarContrasenaMuySegura(): String {
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()-_=+[]{}|;:,.<>?"
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?"
         return (1..16).map { chars.random() }.joinToString("")
     }
 
@@ -254,7 +254,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val mayusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         val minusculas = "abcdefghijklmnopqrstuvwxyz"
         val numeros = "0123456789"
-        val simbolos = "!@#%^&*()+=<>?/"
+        val simbolos = "!@#%^&*()+=<>?/$"
 
         // Obtener la longitud de la contraseña
         val longitud = obtenerLongitudContrasena()
@@ -333,6 +333,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
 
     private fun evaluarComplejidadDeContrasena(password: String, textInputContrasena: TextInputLayout, progressBarContrasena: ProgressBar) {
 
+        val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
         var puntuaciondePassword = 0
         // Verifica los criterios de seguridad
         if (password.length >= 8) puntuaciondePassword++
@@ -343,19 +344,16 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
 
         // Si la contraseña contiene espacios deshabilitar el boton de Guardar
         if (password.contains(" ")) {
-            val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
             puntuaciondePassword = 0 // Si hay espacios, la contraseña se considera inválida
             progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
             textInputContrasena.helperText = "La contraseña no debe contener espacios"
             btnGuardar.isEnabled = false
 
         } else if (password.isEmpty()) {
-            val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
             textInputContrasena.helperText = "Ingrese una contraseña"
             progressBarContrasena.progress = 0
             btnGuardar.isEnabled = false
         } else if (password.length < 8) {
-            val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
             textInputContrasena.helperText = "La contraseña debe tener al menos 8 caracteres"
             progressBarContrasena.progress = 0
             btnGuardar.isEnabled = false
@@ -374,13 +372,11 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
                 4 -> { // Contraseña fuerte
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_blue_light))
                     textInputContrasena.helperText = "Contraseña aceptable"
-                    val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
                     btnGuardar.isEnabled = true
                 }
                 5 -> { // Contraseña muy fuerte
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_green_light))
                     textInputContrasena.helperText = "Contraseña segura"
-                    val btnGuardar = requireView().findViewById<MaterialButton>(R.id.btnGuardar)
                     btnGuardar.isEnabled = true
                 }
             }

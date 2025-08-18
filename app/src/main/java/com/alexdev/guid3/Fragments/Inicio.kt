@@ -118,7 +118,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
         // Observar cambios en las categorías del ViewModel
         categoriaViewModel.categorias.observe(viewLifecycleOwner) { categorias ->
-            adaptadorCategorias.actualizarLista(categorias)  // Actualizar el adaptador con la nueva lista
+            adaptadorCategorias.setListaCategorias(categorias)  // Actualizar el adaptador con la nueva lista
         }
 
         // Agregar ScrollListener al RecyclerView de contraseñas
@@ -284,7 +284,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         itemTouchHelper.attachToRecyclerView(recyclerViewContras)
     }
 
-    // Metodo apoyado del metodo eliminar elemento para mostrar un dialogo de confirmacion antes de eliminar
+    // Funcion apoyado de la funcion eliminar elemento para mostrar un dialogo de confirmacion antes de eliminar
     private fun mostrarDialogoEliminar(position: Int) {
         AlertDialog.Builder(requireContext())
             .setTitle("Eliminar")
@@ -298,7 +298,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
             .show()
     }
 
-    // Metodo para eliminar un elemento del RecyclerView de contraseñas
+    // Funcion para eliminar un elemento del RecyclerView de contraseñas
     private fun eliminarElemento(position: Int) {
         // Remover el elemento de la lista
         val recyclerViewContra = view?.findViewById<RecyclerView>(R.id.recyclerViewContras)
@@ -313,7 +313,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         val dialogView = inflater.inflate(R.layout.pop_up_crear_categoria, null)
 
         // Crear el dialogo
-        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setView(dialogView)
             .create()
 
@@ -382,3 +382,4 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
 
 }
+

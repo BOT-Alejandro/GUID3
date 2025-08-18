@@ -38,4 +38,6 @@
     <string name="popup_save">Guardar</string>
     <string name="popup_cancel">Cancelar</string>
     <string name="icono_actual">Icono Actual</string>
+    <string name="selecciona_icono">Selecciona el icono</string>
+    <string name="subir_imagen">Subir imagen</string>
 </resources>

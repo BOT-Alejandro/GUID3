@@ -25,15 +25,13 @@
 
     <Button
         android:id="@+id/btnSubirImagen"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/subir_imagen"
         android:textSize="16sp"
-        android:drawableLeft="@drawable/ic_gallery"
         android:drawablePadding="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        android:textColor="@android:color/white" />
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>
 

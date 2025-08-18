@@ -89,8 +89,8 @@ class ContrasAdapter(
     override fun getItemCount() = contrasenas.size
 
     // Metodo para agregar un nuevo item a la lista
-    fun agregarContrasena(nuevaContrasena: contras) {
-        contrasenas.add(nuevaContrasena)
-        notifyItemInserted(contrasenas.size - 1) // Notificar al adaptador del cambio
+    fun agregarContras(contras: contras) {
+        contrasenas.add(contras)
+        notifyItemInserted(contrasenas.size - 1)
     }
 }

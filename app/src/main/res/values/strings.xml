@@ -42,4 +42,6 @@
     <string name="popup_save">Save</string>
     <string name="popup_cancel">Cancel</string>
     <string name="icono_actual">Actual Icon</string>
+    <string name="selecciona_icono">Select the icon</string>
+    <string name="subir_imagen">Upload Image</string>
 </resources>

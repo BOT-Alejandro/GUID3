@@ -36,7 +36,7 @@
     <string name="contrase_as_hasta_el_momento">Passwords so far:</string>
     <string name="popup_edit_title">Edit item</string>
     <string name="popup_change_icon">Change icon</string>
-    <string name="popup_hint_title">Title</string>
+    <string name="popup_hint_title">Name</string>
     <string name="popup_hint_email">Email</string>
     <string name="popup_hint_password">Password</string>
     <string name="popup_save">Save</string>

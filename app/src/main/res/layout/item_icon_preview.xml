@@ -12,5 +12,11 @@
         android:background="@drawable/icon_preview_bg"
         android:contentDescription="@string/icono_actual" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/selectionOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:visibility="gone"/>
 
+</FrameLayout>

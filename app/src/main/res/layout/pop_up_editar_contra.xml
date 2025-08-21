@@ -25,7 +25,6 @@
             android:id="@+id/imgIcono"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/subir_imagen_icono"
             android:scaleType="centerCrop"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/popup_change_icon" />
@@ -42,35 +41,51 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:hint="@string/nombre"
+            app:helperTextEnabled="true"
+            app:helperText="Cambia el nombre de la contraseña"
+            app:endIconMode="clear_text"
+            app:endIconDrawable="@drawable/cancelar_icono"
+            app:boxBackgroundMode="filled"
+            android:layout_marginBottom="8dp"
+            >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTitulo"
+                android:maxLength="25"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/popup_hint_title" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/popup_hint_email"
+            app:helperText="Cambia el correo asociado a tu cuenta"
+            app:helperTextEnabled="true"
+            app:placeholderText="usuario@gmail.com"
+            app:endIconMode="clear_text"
+            app:endIconDrawable="@drawable/cancelar_icono"
+            app:boxBackgroundMode="filled"
             android:layout_marginBottom="8dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/popup_hint_email" />
+                android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
+            android:hint="@string/popup_hint_password"
+            app:helperText="Cambia la contraseña"
+            app:helperTextEnabled="true"
+            app:boxBackgroundMode="filled"
             android:layout_marginBottom="16dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/popup_hint_password" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout

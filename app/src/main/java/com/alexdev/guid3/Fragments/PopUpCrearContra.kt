@@ -19,9 +19,11 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
+import com.alexdev.guid3.R.id.btnImgPersonalizada
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -29,7 +31,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.security.MessageDigest
 import java.util.Random
+import com.alexdev.guid3.util.CustomIconRepository
+
+var isPasswordValid = false
 
 class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
     interface OnContraCreadaListener {
@@ -59,25 +65,26 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             val data = result.data
             val resultUri = data?.let { com.yalantis.ucrop.UCrop.getOutput(it) }
             if (resultUri != null) {
-                // Subir imagen a Firebase Storage y guardar la URL
+                val hash = computeFileHash(resultUri)
+                isUploading = true
+                showUploadDialog()
                 subirImagenAFirebaseStorage(resultUri,
                     onSuccess = { url ->
                         iconoPersonalizado = url
-                        Log.d(TAG, "URL de imagen personalizada guardada: $url")
-                        try {
-                            val inputStream = requireContext().contentResolver.openInputStream(resultUri)
-                            if (inputStream != null) {
-                                view?.findViewById<ImageView>(R.id.btnImgPersonalizada)?.setImageBitmap(BitmapFactory.decodeStream(inputStream))
-                                inputStream.close()
-                            } else {
-                                Toast.makeText(requireContext(), "Error al cargar la imagen", Toast.LENGTH_SHORT).show()
-                            }
-                        } catch (e: Exception) {
-                            Toast.makeText(requireContext(), "Error al mostrar la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                        hash?.let { CustomIconRepository.addCustomIcon(requireContext(), it, url) }
+                        Log.d(TAG, "URL personalizada guardada y registrada: $url")
+                        view?.findViewById<ImageButton>(btnImgPersonalizada)?.let { boton ->
+                            Glide.with(this).load(resultUri).into(boton)
                         }
+                        isUploading = false
+                        dismissUploadDialog()
+                        updateGuardarState()
                     },
                     onError = { e ->
+                        isUploading = false
+                        dismissUploadDialog()
                         Toast.makeText(requireContext(), "Error al subir imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                        updateGuardarState()
                     }
                 )
             } else {
@@ -100,18 +107,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             iconoPersonalizado = savedInstanceState.getString("iconoPersonalizado")
         }
 
-        // Referencia a la vista previa del icono
-        iconoPreview = view.findViewById<ImageView>(R.id.btnImgPersonalizada)
-        // Inicializar imgSeleccionada con el recurso actual del ImageButton
-        if (imgSeleccionada == 0) {
-            val btnImgPersonalizada = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
-            val drawable = btnImgPersonalizada.drawable
-            if (drawable != null) {
-                // Si el ImageButton tiene un recurso, usarlo como preview
-                iconoPreview?.setImageDrawable(drawable)
-            }
-            imgSeleccionada = R.drawable.subir_imagen_icono // Usar el mismo recurso que el layout
-        }
+        iconoPreview = view.findViewById<ImageView>(btnImgPersonalizada)
         actualizarVistaPreviaIcono()
 
         val textInputContrasena = view.findViewById<TextInputLayout>(R.id.textInputContrasena)
@@ -128,7 +124,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val presetOutlook = view.findViewById<ImageView>(R.id.presetOutlook)
         val presetMercadoPago = view.findViewById<ImageView>(R.id.presetMercadoPago)
         val presetNetflix = view.findViewById<ImageView>(R.id.presetNetflix)
-        val btnImgPersonalizada = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
+        val btnImgPersonalizada = view.findViewById<ImageButton>(btnImgPersonalizada)
         val switchAvanzado = view.findViewById<SwitchMaterial>(R.id.switchAvanzado)
         val layoutOpcionesAvanzadas = view.findViewById<RelativeLayout>(R.id.layoutOpcionesAvanzadas)
         val btnGenerar = view.findViewById<Button>(R.id.btnGenerar)
@@ -158,53 +154,63 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
                 editTextContrasena.setText(algoritmo())
                 imgSeleccionada = drawable
                 Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
+                updateGuardarState()
             }
         }
 
-        btnImgPersonalizada.setOnClickListener {
-            pickImageLauncher.launch("image/*")
-        }
-
-        val btnSeleccionarIcono = view.findViewById<ImageButton>(R.id.btnImgPersonalizada)
-        btnSeleccionarIcono.setOnClickListener {
-            val selector = IconSelectorBottomSheet.newInstance(object : IconSelectorBottomSheet.OnIconSelectedListener {
-                override fun onIconSelected(iconRes: Int) {
-                    imgSeleccionada = iconRes
+        val selector = IconSelectorBottomSheet.newInstance(object : IconSelectorBottomSheet.OnIconSelectedListener {
+            override fun onIconSelected(iconRes: Int) {
+                imgSeleccionada = iconRes
+                iconoPersonalizado = null
+                Glide.with(this@PopUpCrearContra).load(iconRes).into(btnImgPersonalizada)
+                updateGuardarState()
+            }
+            override fun onRemoteIconSelected(url: String) {
+                iconoPersonalizado = url
+                imgSeleccionada = 0
+                Glide.with(this@PopUpCrearContra).load(url).placeholder(R.drawable._logonotfound).into(btnImgPersonalizada)
+                updateGuardarState()
+            }
+            override fun onCustomImageRequested() {
+                pickImageLauncher.launch("image/*")
+            }
+            override fun onIconsDeleted(urls: List<String>) {
+                if (iconoPersonalizado != null && urls.contains(iconoPersonalizado)) {
                     iconoPersonalizado = null
-                    actualizarVistaPreviaIcono()
+                    Glide.with(this@PopUpCrearContra).load(R.drawable.subir_imagen_icono).into(btnImgPersonalizada)
+                    updateGuardarState()
                 }
-                override fun onCustomImageRequested() {
-                    pickImageLauncher.launch("image/*")
-                }
-            })
-            selector.show(parentFragmentManager, "IconSelectorBottomSheet")
+            }
+        })
+
+        btnImgPersonalizada.setOnClickListener {
+            selector.show(parentFragmentManager, "IconSelectorBottomSheetCreate")
         }
 
         btnGuardar.setOnClickListener {
-            val editTextNombre = view.findViewById<TextInputEditText>(R.id.editTextNombre)
-            val editTextCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo)
-            val editTextContra = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
-            val inputNombre = editTextNombre?.text.toString()
-            val inputCorreo = editTextCorreo?.text.toString()
-            val inputContra = editTextContra?.text.toString()
-            Log.d(TAG, "Intentando guardar contraseña: nombre=$inputNombre, correo=$inputCorreo, contra=$inputContra, iconoPersonalizado=$iconoPersonalizado, imgSeleccionada=$imgSeleccionada")
-            if (inputNombre.isEmpty() && inputCorreo.isEmpty() && inputContra.isEmpty()) {
-                btnGuardar.isEnabled = false
-                Log.w(TAG, "Campos vacíos, no se puede guardar la contraseña")
+            val inputNombre = textInputNombre.text.toString().trim()
+            val inputCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo).text.toString().trim()
+            val inputContra = editTextContrasena.text.toString().trim()
+            val imagenOk = iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")
+            if (inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()) {
                 Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-            } else {
-                btnGuardar.isEnabled = true
-                // Si hay imagen personalizada, verifica que sea una URL válida de Firebase Storage
-                if (iconoPersonalizado != null && !iconoPersonalizado!!.startsWith("https://")) {
-                    Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
-                    Log.w(TAG, "La imagen personalizada aún no está subida. No se guarda la contraseña.")
-                    return@setOnClickListener
-                }
-                Log.d(TAG, "Campos completos, contraseña lista para guardar")
-                Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
-                listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
-                parentFragmentManager.popBackStack()
+                updateGuardarState()
+                return@setOnClickListener
             }
+            if (!isPasswordValid) {
+                Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
+                updateGuardarState()
+                return@setOnClickListener
+            }
+            if (!imagenOk) {
+                Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                updateGuardarState()
+                return@setOnClickListener
+            }
+            Log.d(TAG, "Campos completos, contraseña lista para guardar")
+            Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+            listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+            parentFragmentManager.popBackStack()
         }
 
         Glide.with(this)
@@ -244,9 +250,6 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             .into(presetFacebook)
 
 
-
-
-        // Listener para que el switch muestre las opciones avanzadas
         switchAvanzado.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 layoutOpcionesAvanzadas.visibility = View.VISIBLE
@@ -278,33 +281,33 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             val contrasenaGenerada = generarContrasena()
             editTextContrasena.setText(contrasenaGenerada)
             Toast.makeText(requireContext(), "Contraseña generada", Toast.LENGTH_SHORT).show()
+            updateGuardarState()
         }
 
+        // Listener único final para guardar
         btnGuardar.setOnClickListener {
-            val editTextNombre = view.findViewById<TextInputEditText>(R.id.editTextNombre)
-            val editTextCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo)
-            val editTextContra = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
-            val inputNombre = editTextNombre?.text.toString()
-            val inputCorreo = editTextCorreo?.text.toString()
-            val inputContra = editTextContra?.text.toString()
-            Log.d(TAG, "Intentando guardar contraseña: nombre=$inputNombre, correo=$inputCorreo, contra=$inputContra, iconoPersonalizado=$iconoPersonalizado, imgSeleccionada=$imgSeleccionada")
-            if (inputNombre.isEmpty() && inputCorreo.isEmpty() && inputContra.isEmpty()) {
-                btnGuardar.isEnabled = false
-                Log.w(TAG, "Campos vacíos, no se puede guardar la contraseña")
+            val inputNombre = textInputNombre.text.toString().trim()
+            val inputCorreo = textInputCorreo.text.toString().trim()
+            val inputContra = editTextContrasena.text.toString().trim()
+            val imagenOk = iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")
+            if (inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()) {
                 Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-            } else {
-                btnGuardar.isEnabled = true
-                // Si hay imagen personalizada, verifica que sea una URL válida de Firebase Storage
-                if (iconoPersonalizado != null && !iconoPersonalizado!!.startsWith("https://")) {
-                    Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
-                    Log.w(TAG, "La imagen personalizada aún no está subida. No se guarda la contraseña.")
-                    return@setOnClickListener
-                }
-                Log.d(TAG, "Campos completos, contraseña lista para guardar")
-                Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
-                listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
-                parentFragmentManager.popBackStack()
+                updateGuardarState()
+            }else{
+                updateGuardarState()
             }
+            if (!isPasswordValid) {
+                Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
+                updateGuardarState()
+            }
+            if (!imagenOk) {
+                Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                updateGuardarState()
+            }
+            Log.d(TAG, "Campos completos, contraseña lista para guardar")
+            Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+            listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+            parentFragmentManager.popBackStack()
         }
 
         btnCancelar.setOnClickListener {
@@ -320,12 +323,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
     }
 
     private fun actualizarVistaPreviaIcono() {
-        if (iconoPersonalizado != null) {
-            Glide.with(this).load(iconoPersonalizado).into(iconoPreview!!)
-        } else {
-            // Mostrar el recurso actual del ImageButton
-            Glide.with(this).load(imgSeleccionada).into(iconoPreview!!)
-        }
+        // Se mantiene el drawable original del botón (subir_imagen_icono). Solo mostraría distinto si quisieras un preview aparte.
     }
 
     // Algoritmos de generación de contraseñas para cada servicio
@@ -391,67 +389,59 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val numeros = "0123456789"
         val simbolos = "!@#%^&*()+=<>?/$"
 
-        // Obtener la longitud de la contraseña
         val longitud = obtenerLongitudContrasena()
 
-        // Determinar las categorías habilitadas
-        val caracteresDisponibles = StringBuilder()
+        val contraPersonalizada = StringBuilder()
         if (checkMayusculas != null) {
-            if (checkMayusculas.isChecked) caracteresDisponibles.append(mayusculas)
+            if (checkMayusculas.isChecked) contraPersonalizada.append(mayusculas)
         }
         if (checkMinusculas != null) {
-            if (checkMinusculas.isChecked) caracteresDisponibles.append(minusculas)
+            if (checkMinusculas.isChecked) contraPersonalizada.append(minusculas)
         }
         if (checkNumeros != null) {
-            if (checkNumeros.isChecked) caracteresDisponibles.append(numeros)
+            if (checkNumeros.isChecked) contraPersonalizada.append(numeros)
         }
         if (checkGuion != null) {
-            if (checkGuion.isChecked) caracteresDisponibles.append("-")
+            if (checkGuion.isChecked) contraPersonalizada.append("-")
         }
         if (checkGuionBajo != null) {
-            if (checkGuionBajo.isChecked) caracteresDisponibles.append("_")
+            if (checkGuionBajo.isChecked) contraPersonalizada.append("_")
         }
         if (checkEspeciales != null) {
-            if (checkEspeciales.isChecked) caracteresDisponibles.append(simbolos)
+            if (checkEspeciales.isChecked) contraPersonalizada.append(simbolos)
         }
 
-        if (caracteresDisponibles.isEmpty()) {
-            // Si no hay ninguna opción seleccionada, devolver una contraseña aleatoria
-            caracteresDisponibles.append(mayusculas)
-            caracteresDisponibles.append(minusculas)
-            caracteresDisponibles.append(numeros)
-            caracteresDisponibles.append(simbolos)
-            caracteresDisponibles.append("-")
-            caracteresDisponibles.append("_")
+        if (contraPersonalizada.isEmpty()) {
+            contraPersonalizada.append(mayusculas)
+            contraPersonalizada.append(minusculas)
+            contraPersonalizada.append(numeros)
+            contraPersonalizada.append(simbolos)
+            contraPersonalizada.append("-")
+            contraPersonalizada.append("_")
         }
 
-        // Generar la contraseña aleatoria
         val contrasenaGenerada = StringBuilder()
         val random = Random()
         repeat(longitud) {
-            val randomIndex = random.nextInt(caracteresDisponibles.length)
-            contrasenaGenerada.append(caracteresDisponibles[randomIndex])
+            val randomIndex = random.nextInt(contraPersonalizada.length)
+            contrasenaGenerada.append(contraPersonalizada[randomIndex])
         }
 
         return contrasenaGenerada.toString()
     }
 
-    // Metodo que obtiene la longitud de la contraseña
     private fun obtenerLongitudContrasena(): Int {
         val editTextLongitudContra = view?.findViewById<TextInputEditText>(R.id.editTextLongitudContra)
         val longitudInput = editTextLongitudContra?.text.toString()
         return if (longitudInput.isEmpty()) {
-            // Si no se ingresó longitud, establecer longitud aleatoria entre 8 y 16
-            Random().nextInt(9) + 8  // genera entre 8 y 16
+            Random().nextInt(9) + 8
         } else {
             val longitud = longitudInput.toIntOrNull() ?: 8
-            // Asegurar que esté entre 8 y 16
             longitud.coerceIn(8, 16)
         }
     }
 
     private fun alPresionarBotonSugerencias(){
-        // inflar el diseño del pop up
         val inflater = LayoutInflater.from(requireContext())
         val dialogView = inflater.inflate(R.layout.pop_up_sugerencias, null)
 
@@ -477,21 +467,25 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         if (password.any { it.isDigit() }) puntuaciondePassword++
         if (password.any { "!@#$%^&*()-_+=<>?/".contains(it) }) puntuaciondePassword++
 
-        // Si la contraseña contiene espacios deshabilitar el boton de Guardar
         if (password.contains(" ")) {
-            puntuaciondePassword = 0 // Si hay espacios, la contraseña se considera inválida
+            puntuaciondePassword = 0
             progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
             textInputContrasena.helperText = "La contraseña no debe contener espacios"
+            isPasswordValid = false
             btnGuardar.isEnabled = false
+            updateGuardarState()
 
         } else if (password.isEmpty()) {
             textInputContrasena.helperText = "Ingrese una contraseña"
             progressBarContrasena.progress = 0
-            btnGuardar.isEnabled = false
+            isPasswordValid = false
+            updateGuardarState()
         } else if (password.length < 8) {
             textInputContrasena.helperText = "La contraseña debe tener al menos 8 caracteres"
             progressBarContrasena.progress = 0
+            isPasswordValid = false
             btnGuardar.isEnabled = false
+            updateGuardarState()
         } else {
             // Configura la barra de progreso y colores dinámicos
             progressBarContrasena.progress = puntuaciondePassword * 20 // Cada criterio vale 20%
@@ -499,23 +493,45 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
                 0, 1 -> { // Contraseña débil
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
                     textInputContrasena.helperText = "Contraseña muy débil"
+                    isPasswordValid = false
+                    updateGuardarState()
                 }
                 2, 3 -> { // Contraseña regular
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_orange_light))
                     textInputContrasena.helperText = "Contraseña regular"
+                    isPasswordValid = false
+                    updateGuardarState()
                 }
                 4 -> { // Contraseña fuerte
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_blue_light))
                     textInputContrasena.helperText = "Contraseña aceptable"
-                    btnGuardar.isEnabled = true
+                    isPasswordValid = true
+                    updateGuardarState()
                 }
                 5 -> { // Contraseña muy fuerte
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_green_light))
                     textInputContrasena.helperText = "Contraseña segura"
-                    btnGuardar.isEnabled = true
+                    isPasswordValid = true
+                    updateGuardarState()
                 }
             }
         }
+    }
+
+    private var uploadDialog: AlertDialog? = null
+    private var isUploading = false
+
+    private fun showUploadDialog() {
+        if (uploadDialog?.isShowing == true) return
+        val v = LayoutInflater.from(requireContext()).inflate(R.layout.progress_upload_dialog, null)
+        uploadDialog = AlertDialog.Builder(requireContext())
+            .setView(v)
+            .setCancelable(false)
+            .create()
+        uploadDialog?.show()
+    }
+    private fun dismissUploadDialog() {
+        uploadDialog?.dismiss()
     }
 
     private fun subirImagenAFirebaseStorage(uri: Uri, onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
@@ -527,13 +543,35 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             imagenRef.downloadUrl.addOnSuccessListener { url ->
                 Log.d(TAG, "Imagen subida a Firebase Storage: $url")
                 onSuccess(url.toString())
-            }.addOnFailureListener { e ->
-                Log.e(TAG, "Error al obtener URL de imagen subida", e)
-                onError(e)
+            }.addOnFailureListener { e -> onError(e) }
+        }.addOnFailureListener { e -> onError(e) }
+    }
+
+    private fun computeFileHash(uri: Uri): String? {
+        return try {
+            val md = MessageDigest.getInstance("SHA-256")
+            requireContext().contentResolver.openInputStream(uri)?.use { input ->
+                val buf = ByteArray(8192)
+                var read: Int
+                while (input.read(buf).also { read = it } != -1) {
+                    md.update(buf, 0, read)
+                }
             }
-        }.addOnFailureListener { e ->
-            Log.e(TAG, "Error al subir imagen a Firebase Storage", e)
-            onError(e)
+            md.digest().joinToString("") { String.format("%02x", it) }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error hash: ${e.message}")
+            null
         }
+    }
+
+    private fun updateGuardarState() {
+        val currentView = view ?: return
+        val btnGuardar = currentView.findViewById<MaterialButton>(R.id.btnGuardar)
+        val nombre = currentView.findViewById<TextInputEditText>(R.id.editTextNombre)?.text?.toString()?.trim().orEmpty()
+        val correo = currentView.findViewById<TextInputEditText>(R.id.editTextCorreo)?.text?.toString()?.trim().orEmpty()
+        val contra = currentView.findViewById<TextInputEditText>(R.id.editTextContrasena)?.text?.toString()?.trim().orEmpty()
+        val imagenOk = (iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")) && !isUploading
+        val camposOk = nombre.isNotEmpty() && correo.isNotEmpty() && contra.isNotEmpty()
+        btnGuardar.isEnabled = camposOk && isPasswordValid && imagenOk
     }
 }

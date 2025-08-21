@@ -16,22 +16,73 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="12dp" />
 
+    <TextView
+        android:id="@+id/txtBase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iconos base"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerIconos"
+        android:id="@+id/recyclerIconosBase"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="12dp"
         android:clipToPadding="false"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="4dp" />
+
+    <LinearLayout
+        android:id="@+id/sectionPersonalizados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtPersonalizados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iconos personalizados"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerIconosPersonalizados"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp"
+            android:clipToPadding="false"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/txtSeleccionInstruccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mantén pulsado para seleccionar, toca para alternar"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnEliminarSeleccionados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar seleccionados"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSubirImagen"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="@string/subir_imagen"
+        android:backgroundTint="@color/GrisOscuro"
+        android:textColor="@android:color/white"
         android:textSize="16sp"
         android:drawablePadding="8dp"
         android:layout_marginTop="8dp" />
 
 </LinearLayout>
-

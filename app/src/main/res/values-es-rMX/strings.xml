@@ -32,7 +32,7 @@
     <string name="contrase_as_hasta_el_momento">Contraseñas hasta el momento:</string>
     <string name="popup_edit_title">Editar elemento</string>
     <string name="popup_change_icon">Cambiar icono</string>
-    <string name="popup_hint_title">Título</string>
+    <string name="popup_hint_title">Nombre</string>
     <string name="popup_hint_email">Correo electrónico</string>
     <string name="popup_hint_password">Contraseña</string>
     <string name="popup_save">Guardar</string>

@@ -17,6 +17,7 @@ import com.alexdev.guid3.R
 import com.alexdev.guid3.dataClasses.contras
 import com.bumptech.glide.Glide
 import java.io.File
+import androidx.core.net.toUri
 
 class ContrasAdapter(
     private val contrasenas: MutableList<contras> // Cambiado a MutableList para permitir modificaciones
@@ -39,20 +40,18 @@ class ContrasAdapter(
     override fun onBindViewHolder(holder: VistaContrasena, position: Int) {
         val item = contrasenas[position]
         val iconoUri = item.iconoPersonalizado
-        val drawablePorDefecto = R.drawable._logoicloud
-        val recursoDrawable = if (item.imgSeleccionada != 0) item.imgSeleccionada else drawablePorDefecto
+        val recursoDrawable = if (item.imgSeleccionada > 0) item.imgSeleccionada else R.drawable._logonotfound
         if (iconoUri.isNullOrEmpty()) {
             Glide.with(holder.itemView.context)
                 .load(recursoDrawable)
                 .into(holder.imagenIcono)
-        } else if (iconoUri.startsWith("http") || iconoUri.startsWith("https")) {
-            // Si es una URL remota, cargarla
+        } else if (iconoUri.startsWith("http")) {
             Glide.with(holder.itemView.context)
                 .load(iconoUri)
+                .error(recursoDrawable)
                 .into(holder.imagenIcono)
         } else {
-            // Si es un archivo local, cargarlo si existe
-            val file = File(Uri.parse(iconoUri).path ?: "")
+            val file = File(iconoUri.toUri().path ?: "")
             if (file.exists()) {
                 Glide.with(holder.itemView.context)
                     .load(file)
@@ -90,11 +89,11 @@ class ContrasAdapter(
         if (item.esVisible) {
             quitarBlur(holder.textoCorreo)
             quitarBlur(holder.textoContrasena)
-            holder.btnMostrarOcultar.setImageResource(R.drawable.mostrar_icono) // ícono de "visible"
+            holder.btnMostrarOcultar.setImageResource(R.drawable.mostrar_icono)
         } else {
             aplicarBlur(holder.textoCorreo)
             aplicarBlur(holder.textoContrasena)
-            holder.btnMostrarOcultar.setImageResource(R.drawable.ocultar_icono) // ícono de "oculto"
+            holder.btnMostrarOcultar.setImageResource(R.drawable.ocultar_icono)
         }
 
         holder.btnMostrarOcultar.setOnClickListener {
@@ -106,7 +105,6 @@ class ContrasAdapter(
 
     override fun getItemCount() = contrasenas.size
 
-    // Metodo para agregar un nuevo item a la lista
     fun agregarContras(contras: contras) {
         contrasenas.add(contras)
         notifyItemInserted(contrasenas.size - 1)

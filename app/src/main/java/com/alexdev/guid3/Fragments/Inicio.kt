@@ -310,6 +310,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         Log.d(TAG, "Editar contraseña: $contra")
         val popUp = PopUpEditarContra.newInstance(
             contra.imgSeleccionada,
+            contra.iconoPersonalizado,
             contra.titulo,
             contra.correo,
             contra.contra,

@@ -1,53 +1,131 @@
 <resources>
+    <!-- No traducibles -->
     <string name="app_name" translatable="false">GUID3</string>
-    <string name="version_de_app" translatable="false">1.0.5_alpha</string>
+    <string name="version_de_app" translatable="false">1.3.0_beta</string>
     <string name="autor_de_app" translatable="false">Alejandro Martinez</string>
-    <string name="txtV_Inicial">Welcome to GUID3</string>
-    <string name="abrir_Nav">Open</string>
-    <string name="cerrar_Nav">Close</string>
-    <string name="nav_inicio">Home</string>
-    <string name="nav_ajustes">Settings</string>
-    <string name="nav_ayuda">Help</string>
-    <string name="nav_acercade">About Us</string>
-    <string name="nav_salir">Logout</string>
-    <string name="exportar_contras">Export passwords</string>
-    <string name="cambiar_idioma">Change language</string>
-    <string name="modo_noche">Night mode</string>
-    <string name="accesibilidad">Accessibility</string>
-    <string name="foto_de_usuario">User picture</string>
-    <string name="editar_perfil">Edit Profile</string>
-    <string name="texto_acerca_de">Our goal is give the user
-        a trustful tool to generate complex passwords and guide
-        people to ensure that their passwords are solid and appropriate
-        to protect them of possible attempts of intrusion.\n\nWe want to decrease
-        the 55% victims of insecure passwords in Mexico.\n\nIncrease the
-        cybersecurity culture in our country.\n\nDecrease the complexity
-        of elaborate a secure password for each platform where it is planned to be used.</string>
-    <string name="app_version">App version</string>
+    <string name="server_client_id" translatable="false">725302444507-vhh55mou6kotockl28u3ne0jq7pm8rpq.apps.googleusercontent.com</string>
+
+    <!-- UI General -->
+    <string name="txtV_Inicial">Bienvenido a GUID3</string>
+    <string name="bienvenida_text">Bienvenido a GUID3</string>
+    <string name="abrir_Nav">Abrir</string>
+    <string name="cerrar_Nav">Cerrar</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_ajustes">Ajustes</string>
+    <string name="nav_ayuda">Ayuda</string>
+    <string name="nav_acercade">Acerca de</string>
+    <string name="nav_salir">Salir</string>
+
+    <!-- Acerca de -->
+    <string name="texto_acerca_de">Nuestro objetivo es darle al usuario una herramienta confiable para generar contraseñas complejas y guiar a las personas para asegurar que sus contraseñas sean sólidas y apropiadas para protegerlas de posibles intentos de intrusión.\n\nQueremos disminuir al 55% de víctimas de contraseñas inseguras en México.\n\nIncrementar la cultura de ciberseguridad en nuestro país.\n\nReducir la complejidad de elaborar una contraseña segura para cada plataforma donde se planea usar.</string>
+    <string name="app_version">Versión de la app</string>
     <string name="technologies_text_acercade" translatable="false">Technologies</string>
-    <string name="txt1_Sugerencias">"Below are preset profiles, each with an algorithm designed for its application category. Selecting one will automatically fill in the Name and Password fields.  "</string>
-    <string name="txt2_Sugerencias">In the "Advanced" section, you can customize and generate your own password based on the list of selected conditions according to your preferences. You can also choose the password length, with a maximum limit of 16 characters.</string>
-    <string name="entendido">Understood</string>
-    <string name="nombre_de_la_categoria">Category name</string>
-    <string name="nombre">Name</string>
-    <string name="guardar">Save</string>
-    <string name="cancelar">Cancel</string>
-    <string name="contrasenas_generadas">Generated Passwords</string>
-    <string name="contrase_as_hasta_el_momento">Passwords so far:</string>
-    <string name="popup_edit_title">Edit item</string>
-    <string name="popup_change_icon">Change icon</string>
-    <string name="popup_hint_title">Name</string>
-    <string name="popup_hint_email">Email</string>
-    <string name="popup_hint_password">Password</string>
-    <string name="popup_save">Save</string>
-    <string name="popup_cancel">Cancel</string>
-    <string name="icono_actual">Actual Icon</string>
-    <string name="selecciona_icono">Select the icon</string>
-    <string name="subir_imagen">Upload Image</string>
-    <string name="contra_editada">Password edited</string>
-    <string name="eliminar">Delete</string>
-    <string name="confirmar_eliminar_contra">Are you sure you want to delete this password?</string>
-    <string name="si">Yes</string>
+
+    <!-- Sugerencias / Ayuda -->
+    <string name="txt1_Sugerencias">A continuación se muestran perfiles preestablecidos, cada uno con un algoritmo diseñado para su categoría de aplicación. Al seleccionar uno se llenarán automáticamente los campos Nombre y Contraseña.</string>
+    <string name="txt2_Sugerencias">En la sección Avanzado puedes personalizar y generar tu propia contraseña con base en la lista de condiciones seleccionadas según tus preferencias. También puedes elegir la longitud con un límite máximo de 16 caracteres.</string>
+    <string name="entendido">Entendido</string>
+
+    <!-- Etiquetas comunes -->
+    <string name="nombre_de_la_categoria">Nombre de la categoría</string>
+    <string name="nombre">Nombre</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="si">Sí</string>
     <string name="no">No</string>
-    <string name="contra_eliminada">Password deleted</string>
+
+    <!-- Lista contraseñas -->
+    <string name="contrasenas_generadas">Contraseñas generadas</string>
+    <string name="contrase_as_hasta_el_momento">Contraseñas hasta el momento:</string>
+
+    <!-- Popup / editar -->
+    <string name="popup_edit_title">Editar elemento</string>
+    <string name="popup_change_icon">Cambiar icono</string>
+    <string name="popup_hint_title">Nombre</string>
+    <string name="popup_hint_email">Correo</string>
+    <string name="popup_hint_password">Contraseña</string>
+    <string name="popup_save">Guardar</string>
+    <string name="popup_cancel">Cancelar</string>
+    <string name="icono_actual">Icono actual</string>
+    <string name="selecciona_icono">Selecciona el icono</string>
+    <string name="subir_imagen">Subir imagen</string>
+    <string name="contra_editada">Contraseña editada</string>
+    <string name="contra_eliminada">Contraseña eliminada</string>
+    <string name="confirmar_eliminar_contra">¿Seguro que deseas eliminar esta contraseña?</string>
+
+    <!-- Auth -->
+    <string name="login_label">Iniciar sesión</string>
+    <string name="register_label">Registrarse</string>
+    <string name="switch_to_register">¿No tienes cuenta? Regístrate</string>
+    <string name="switch_to_login">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="esperando_label">Espera…</string>
+    <string name="error_correo_invalido">Correo inválido</string>
+    <string name="error_pass_corta">Al menos 8 caracteres</string>
+    <string name="error_nombre_vacio">Ingresa un nombre</string>
+    <string name="error_nombre_largo">Máximo 15 caracteres</string>
+    <string name="error_password_requisitos">Debe tener 8+ caracteres, mayúscula, minúscula, número y símbolo</string>
+    <string name="google_continue">Continuar con Google</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_email">Correo</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="error_auth_invalid">Credenciales inválidas</string>
+    <string name="error_auth_wrong_password">Contraseña incorrecta</string>
+    <string name="error_auth_user_not_found">Usuario no encontrado</string>
+    <string name="error_auth_email_in_use">El correo ya está en uso</string>
+    <string name="error_auth_network">Error de red, inténtalo de nuevo</string>
+    <string name="error_auth_generic_login">Error al iniciar sesión</string>
+    <string name="error_auth_generic_register">Error al registrar</string>
+    <string name="error_auth_google">Error con autenticación de Google</string>
+
+    <!-- Logout -->
+    <string name="confirm_logout_title">Cerrar sesión</string>
+    <string name="confirm_logout_message">¿Seguro que deseas cerrar sesión?</string>
+    <string name="logout_accept">Sí, salir</string>
+    <string name="logout_cancel">No</string>
+
+    <!-- Perfil -->
+    <string name="foto_de_usuario">Foto de usuario</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="editar_perfil_titulo">Editar perfil</string>
+    <string name="editar_perfil_nombre">Nombre</string>
+    <string name="editar_perfil_seleccionar_foto">Cambiar foto</string>
+    <string name="perfil_actualizado">Perfil actualizado</string>
+    <string name="error_subir_foto">Ocurrió un error al subir la foto</string>
+
+    <!-- Recorte -->
+    <string name="crop_image_title">Recortar foto</string>
+
+    <!-- Verificación correo -->
+    <string name="email_not_verified">Debes verificar tu correo para continuar.</string>
+    <string name="email_verification_sent">Se ha enviado un correo de verificación.</string>
+    <string name="resend_verification">Reenviar verificación</string>
+    <string name="i_verified">Ya verifiqué</string>
+    <string name="verifying_email">Comprobando verificación…</string>
+    <string name="verification_required_title">Verifica tu correo</string>
+    <string name="verification_instructions">Hemos enviado un correo con un enlace de verificación. Revisa tu bandeja y spam. Después presiona "Ya verifiqué".</string>
+    <string name="verification_code_label">Código de verificación</string>
+    <string name="apply_code">Aplicar código</string>
+    <string name="error_code_vacio">Ingresa el código</string>
+    <string name="error_code_invalido">Código inválido o expirado</string>
+    <string name="code_applied">Correo verificado</string>
+    <string name="resend_cooldown">Reenviar en %1$d s</string>
+
+    <!-- Fortaleza contraseña -->
+    <string name="password_strength_label">Seguridad:</string>
+    <string name="password_strength_full">Seguridad: %1$s</string>
+    <string name="password_weak">Débil</string>
+    <string name="password_medium">Media</string>
+    <string name="password_strong">Fuerte</string>
+    <string name="accesibilidad">Accesibilidad</string>
+    <string name="modo_noche">Modo Noche</string>
+    <string name="cambiar_idioma">Cambiar Idioma</string>
+
+    <!-- Nuevos textos -->
+    <string name="collision_password_prompt_title">Vincular cuenta</string>
+    <string name="collision_password_prompt_message">Este correo ya está registrado. Ingresa tu contraseña para vincular tu cuenta con Google y permitir ambos métodos.</string>
+    <string name="collision_password_hint">Contraseña</string>
+    <string name="collision_password_error">Contraseña inválida</string>
+    <string name="collision_link_success">Cuenta vinculada correctamente</string>
 </resources>

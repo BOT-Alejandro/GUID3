@@ -26,17 +26,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/Theme.GUID3">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/img_usuario"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="imagen de usuario"
-                android:src="@drawable/foto"
-                android:scaleType="fitCenter"
-                />
-
         </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout

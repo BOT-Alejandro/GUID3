@@ -3,7 +3,6 @@ package com.alexdev.guid3.Fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.res.ColorStateList
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -24,16 +23,17 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.alexdev.guid3.R
 import com.alexdev.guid3.R.id.btnImgPersonalizada
+import com.alexdev.guid3.util.CropUtils
+import com.alexdev.guid3.util.CustomIconRepository
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.storage.FirebaseStorage
-import java.io.File
+import com.yalantis.ucrop.UCrop
 import java.security.MessageDigest
 import java.util.Random
-import com.alexdev.guid3.util.CustomIconRepository
 
 var isPasswordValid = false
 
@@ -49,11 +49,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
 
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
-            val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "icono_personalizado_${System.currentTimeMillis()}.jpg"))
-            val intent = com.yalantis.ucrop.UCrop.of(uri, destinationUri)
-                .withAspectRatio(1f, 1f)
-                .withMaxResultSize(256, 256)
-                .getIntent(requireContext())
+            val intent = CropUtils.buildCropIntent(requireContext(), uri, getString(R.string.crop_image_title), maxSize = 256, square = true)
             cropImageLauncher.launch(intent)
         } else {
             Toast.makeText(requireContext(), "No se seleccionó ninguna imagen", Toast.LENGTH_SHORT).show()
@@ -63,7 +59,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
     private val cropImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data
-            val resultUri = data?.let { com.yalantis.ucrop.UCrop.getOutput(it) }
+            val resultUri = data?.let { UCrop.getOutput(it) }
             if (resultUri != null) {
                 val hash = computeFileHash(resultUri)
                 isUploading = true
@@ -132,6 +128,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val btnCancelar = view.findViewById<MaterialButton>(R.id.btnCancelar)
         val btnSugerencias = view.findViewById<MaterialButton>(R.id.btnSugerencias)
 
+        // Mapa de presets (ID -> Nombre, algoritmo, drawable)
         val presetButtons = mapOf(
             R.id.presetGmail to Triple("Gmail", ::algoritmoGmail, R.drawable._logogmail),
             R.id.presetYoutube to Triple("YouTube", ::algoritmoYoutube, R.drawable._logoyoutube),
@@ -144,25 +141,34 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             R.id.presetFacebook to Triple("Facebook", ::algoritmoFacebook, R.drawable._logofacebook)
         )
 
+        fun aplicarSeleccionPreset(nombre: String, algoritmo: () -> String, drawable: Int) {
+            textInputNombre.setText("$nombre: ")
+            editTextContrasena.setText(algoritmo())
+            imgSeleccionada = drawable
+            // Limpiamos cualquier URL personalizada previa
+            iconoPersonalizado = null
+            // Actualizamos el botón preview con el drawable elegido
+            btnImgPersonalizada.setImageResource(drawable)
+            // Feedback
+            Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
+            // Estado guardar
+            updateGuardarState()
+        }
+
+        // Listener para cada preset
         presetButtons.forEach { (id, triple) ->
-            val imageButton = view.findViewById<ImageView>(id)
-            imageButton.setOnClickListener {
-                val nombre = triple.first
-                val algoritmo = triple.second
-                val drawable = triple.third
-                textInputNombre.setText("$nombre: ")
-                editTextContrasena.setText(algoritmo())
-                imgSeleccionada = drawable
-                Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
+            view.findViewById<ImageView>(id)?.setOnClickListener {
+                aplicarSeleccionPreset(triple.first, triple.second, triple.third)
             }
         }
 
+        // Selector bottom sheet
         val selector = IconSelectorBottomSheet.newInstance(object : IconSelectorBottomSheet.OnIconSelectedListener {
             override fun onIconSelected(iconRes: Int) {
                 imgSeleccionada = iconRes
                 iconoPersonalizado = null
-                Glide.with(this@PopUpCrearContra).load(iconRes).into(btnImgPersonalizada)
+//                Glide.with(this@PopUpCrearContra).load(iconRes).into(btnImgPersonalizada)
+                btnImgPersonalizada.setImageResource(iconRes)
                 updateGuardarState()
             }
             override fun onRemoteIconSelected(url: String) {
@@ -171,112 +177,63 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
                 Glide.with(this@PopUpCrearContra).load(url).placeholder(R.drawable._logonotfound).into(btnImgPersonalizada)
                 updateGuardarState()
             }
-            override fun onCustomImageRequested() {
-                pickImageLauncher.launch("image/*")
-            }
+            override fun onCustomImageRequested() { pickImageLauncher.launch("image/*") }
             override fun onIconsDeleted(urls: List<String>) {
                 if (iconoPersonalizado != null && urls.contains(iconoPersonalizado)) {
-                    iconoPersonalizado = null
-                    Glide.with(this@PopUpCrearContra).load(R.drawable.subir_imagen_icono).into(btnImgPersonalizada)
+                    btnImgPersonalizada.setImageResource(R.drawable.subir_imagen_icono)
                     updateGuardarState()
                 }
             }
         })
 
-        btnImgPersonalizada.setOnClickListener {
-            selector.show(parentFragmentManager, "IconSelectorBottomSheetCreate")
-        }
+        btnImgPersonalizada.setOnClickListener { selector.show(parentFragmentManager, "IconSelectorBottomSheetCreate") }
 
         btnGuardar.setOnClickListener {
             val inputNombre = textInputNombre.text.toString().trim()
-            val inputCorreo = view.findViewById<TextInputEditText>(R.id.editTextCorreo).text.toString().trim()
+            val inputCorreo = textInputCorreo.text.toString().trim()
             val inputContra = editTextContrasena.text.toString().trim()
             val imagenOk = iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")
-            if (inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()) {
-                Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-                return@setOnClickListener
+            val camposVacios = inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()
+            when {
+                camposVacios -> Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                !isPasswordValid -> Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
+                !imagenOk -> Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                else -> {
+                    Log.d(TAG, "Campos completos, contraseña lista para guardar")
+                    Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+                    listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+                    parentFragmentManager.popBackStack()
+                }
             }
-            if (!isPasswordValid) {
-                Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-                return@setOnClickListener
-            }
-            if (!imagenOk) {
-                Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-                return@setOnClickListener
-            }
-            Log.d(TAG, "Campos completos, contraseña lista para guardar")
-            Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
-            listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
-            parentFragmentManager.popBackStack()
+            updateGuardarState()
         }
 
-        Glide.with(this)
-            .load(R.drawable._logogmail)
-            .into(presetGmail)
-
-        Glide.with(this)
-            .load(R.drawable._logoyoutube)
-            .into(presetYoutube)
-
-        Glide.with(this)
-            .load(R.drawable._logoinstragram)
-            .into(presetInstagram)
-
-        Glide.with(this)
-            .load(R.drawable._logobbva)
-            .into(presetBBVA)
-
-        Glide.with(this)
-            .load(R.drawable._logox)
-            .into(presetX)
-
-        Glide.with(this)
-            .load(R.drawable._logooutlook)
-            .into(presetOutlook)
-
-        Glide.with(this)
-            .load(R.drawable._logomercadopago)
-            .into(presetMercadoPago)
-
-        Glide.with(this)
-            .load(R.drawable._logonetflix)
-            .into(presetNetflix)
-
-        Glide.with(this)
-            .load(R.drawable._logofacebook)
-            .into(presetFacebook)
-
+        // Cargar drawables estáticos directamente (Glide innecesario para recursos locales)
+        presetGmail.setImageResource(R.drawable._logogmail)
+        presetYoutube.setImageResource(R.drawable._logoyoutube)
+        presetInstagram.setImageResource(R.drawable._logoinstragram)
+        presetBBVA.setImageResource(R.drawable._logobbva)
+        presetX.setImageResource(R.drawable._logox)
+        presetOutlook.setImageResource(R.drawable._logooutlook)
+        presetMercadoPago.setImageResource(R.drawable._logomercadopago)
+        presetNetflix.setImageResource(R.drawable._logonetflix)
+        presetFacebook.setImageResource(R.drawable._logofacebook)
 
         switchAvanzado.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                layoutOpcionesAvanzadas.visibility = View.VISIBLE
-                btnGenerar.visibility = View.VISIBLE
-            } else {
-                layoutOpcionesAvanzadas.visibility = View.GONE
-                btnGenerar.visibility = View.GONE
-            }
+            layoutOpcionesAvanzadas.visibility = if (isChecked) View.VISIBLE else View.GONE
+            btnGenerar.visibility = if (isChecked) View.VISIBLE else View.GONE
         }
 
-        // onClickListener para abrir el pop up de aviso sobre las sugerencias de algoritmos
-        btnSugerencias.setOnClickListener{alPresionarBotonSugerencias()}
+        btnSugerencias.setOnClickListener { alPresionarBotonSugerencias() }
 
-        // Metodo que esta a la espera de cambios en el TextInputEditText de la contraseña
         editTextContrasena.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            // Metodo que se ejecuta cada vez que se modifica el texto del TextInputEditText
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val password = s.toString()
-                evaluarComplejidadDeContrasena(password, textInputContrasena, progressBarContrasena)
+                evaluarComplejidadDeContrasena(s.toString(), textInputContrasena, progressBarContrasena)
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Metodo que genera una contraseña aleatoria
         btnGenerar.setOnClickListener {
             val contrasenaGenerada = generarContrasena()
             editTextContrasena.setText(contrasenaGenerada)
@@ -284,36 +241,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             updateGuardarState()
         }
 
-        // Listener único final para guardar
-        btnGuardar.setOnClickListener {
-            val inputNombre = textInputNombre.text.toString().trim()
-            val inputCorreo = textInputCorreo.text.toString().trim()
-            val inputContra = editTextContrasena.text.toString().trim()
-            val imagenOk = iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")
-            if (inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()) {
-                Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-            }else{
-                updateGuardarState()
-            }
-            if (!isPasswordValid) {
-                Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-            }
-            if (!imagenOk) {
-                Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
-                updateGuardarState()
-            }
-            Log.d(TAG, "Campos completos, contraseña lista para guardar")
-            Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
-            listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
-            parentFragmentManager.popBackStack()
-        }
-
-        btnCancelar.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-        }
-
+        btnCancelar.setOnClickListener { requireActivity().supportFragmentManager.popBackStack() }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -487,28 +415,27 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
             btnGuardar.isEnabled = false
             updateGuardarState()
         } else {
-            // Configura la barra de progreso y colores dinámicos
-            progressBarContrasena.progress = puntuaciondePassword * 20 // Cada criterio vale 20%
+            progressBarContrasena.progress = puntuaciondePassword * 20
             when (puntuaciondePassword) {
-                0, 1 -> { // Contraseña débil
+                0, 1 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
                     textInputContrasena.helperText = "Contraseña muy débil"
                     isPasswordValid = false
                     updateGuardarState()
                 }
-                2, 3 -> { // Contraseña regular
+                2, 3 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_orange_light))
                     textInputContrasena.helperText = "Contraseña regular"
                     isPasswordValid = false
                     updateGuardarState()
                 }
-                4 -> { // Contraseña fuerte
+                4 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_blue_light))
                     textInputContrasena.helperText = "Contraseña aceptable"
                     isPasswordValid = true
                     updateGuardarState()
                 }
-                5 -> { // Contraseña muy fuerte
+                5 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_green_light))
                     textInputContrasena.helperText = "Contraseña segura"
                     isPasswordValid = true

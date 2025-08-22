@@ -3,4 +3,3 @@
     <item android:drawable="@drawable/ripple" android:state_pressed="true" />
     <item android:drawable="@android:color/transparent" />
 </selector>
-

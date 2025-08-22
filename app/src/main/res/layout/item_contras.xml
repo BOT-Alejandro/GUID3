@@ -22,7 +22,7 @@
             android:layout_margin="10dp"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo1"
+            android:src="@drawable/_logonotfound"
             />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_toEndOf="@+id/img_de_contrasena"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Facebook: Alejandro Martinez Zendejas"
+            android:text="Facebook: Alejandro"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:fontFamily="@font/fuente_principal"
@@ -61,11 +61,11 @@
 
         <ImageButton
             android:id="@+id/btnMostrarOcultar"
-            android:layout_width="25dp"
-            android:layout_height="22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/textViewCorreo"
             android:src="@drawable/ocultar_icono"
             android:contentDescription="Mostrar/Ocultar Contraseña"
             android:background="@android:color/transparent"/>

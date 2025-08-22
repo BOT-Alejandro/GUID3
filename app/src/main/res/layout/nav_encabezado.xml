@@ -3,23 +3,42 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="160dp"
     android:gravity="bottom"
     android:padding="16dp"
     android:theme="@style/Theme.GUID3">
 
+    <ImageView
+        android:id="@+id/header_user_image"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/foto"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/foto_de_usuario"
+        android:background="@drawable/nav_fondo_redondo"
+        android:padding="2dp"/>
 
+    <TextView
+        android:id="@+id/header_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="?attr/android:textColorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/header_user_image"
+        android:layout_marginStart="10dp"
+        android:layout_alignTop="@id/header_user_image"/>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="?attr/android:textColorPrimary"
-            android:layout_marginTop="30dp"
-            android:textSize="25sp"
-            android:layout_gravity="start"
-            android:textAppearance="@style/Theme.GUID3"
-            />
+    <TextView
+        android:id="@+id/header_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="?attr/android:textColorPrimary"
+        android:textSize="12sp"
+        android:layout_below="@id/header_user_name"
+        android:layout_alignStart="@id/header_user_name"
+        android:layout_marginTop="4dp"/>
 
 </RelativeLayout>

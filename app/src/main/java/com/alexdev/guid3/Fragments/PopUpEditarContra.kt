@@ -1,7 +1,6 @@
 package com.alexdev.guid3.Fragments
 
 import android.app.Activity
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -189,7 +188,7 @@ class PopUpEditarContra : DialogFragment() {
 
     private fun showUploadDialog() {
         if (uploadDialog?.isShowing == true) return
-        val v = LayoutInflater.from(requireContext()).inflate(R.layout.progress_upload_dialog, null)
+        val v = layoutInflater.inflate(R.layout.progress_upload_dialog, null)
         uploadDialog = AlertDialog.Builder(requireContext())
             .setView(v)
             .setCancelable(false)
@@ -253,9 +252,9 @@ class PopUpEditarContra : DialogFragment() {
                 Toast.makeText(requireContext(), "Espera a que termine la subida", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val nuevoTitulo = view.findViewById<TextInputEditText>(R.id.inputTitulo).text.toString().trim()
-            val nuevoCorreo = view.findViewById<TextInputEditText>(R.id.inputCorreo).text.toString().trim()
-            val nuevaContra = view.findViewById<TextInputEditText>(R.id.inputContrasena).text.toString().trim()
+            val nuevoTitulo = inputTitulo.text.toString().trim()
+            val nuevoCorreo = inputCorreo.text.toString().trim()
+            val nuevaContra = inputContrasena.text.toString().trim()
             val finalImgRes: Int
             val finalIconoPers: String?
             if (iconoModificado) {

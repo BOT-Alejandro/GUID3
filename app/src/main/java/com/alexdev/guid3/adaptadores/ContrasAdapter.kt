@@ -83,7 +83,6 @@ class ContrasAdapter(
             }
         }
 
-        // Aplica o quita el efecto según el estado actual
         if (item.esVisible) {
             quitarBlur(holder.textoCorreo)
             quitarBlur(holder.textoContrasena)

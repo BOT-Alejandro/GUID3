@@ -14,7 +14,6 @@
     <!-- About -->
     <string name="texto_acerca_de">Our goal is to give the user a trustworthy tool to generate complex passwords and guide people to ensure that their passwords are solid and appropriate to protect them from possible intrusion attempts.\n\nWe want to decrease the 55% of victims of insecure passwords in Mexico.\n\nIncrease the cybersecurity culture in our country.\n\nReduce the complexity of creating a secure password for each platform where it is planned to be used.</string>
     <string name="app_version">App version</string>
-    <string name="technologies_text_acercade" translatable="false">Technologies</string>
 
     <!-- Suggestions / Help -->
     <string name="txt1_Sugerencias">Below are preset profiles, each with an algorithm designed for its category. Selecting one will auto-fill the Name and Password fields.</string>

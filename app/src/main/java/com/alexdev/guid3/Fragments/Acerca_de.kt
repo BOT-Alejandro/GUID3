@@ -18,6 +18,7 @@ class Acerca_de : Fragment(R.layout.fragment_acerca_de) {
         txtVersion.text = versionName
         val toolbar = (activity as? AppCompatActivity)?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.barra_de_herramientas)
         toolbar?.title = "Acerca de"
+
     }
 
 

@@ -1,7 +1,7 @@
 <resources>
     <!-- No traducibles -->
     <string name="app_name" translatable="false">GUID3</string>
-    <string name="version_de_app" translatable="false">1.3.0_beta</string>
+    <string name="version_de_app" translatable="false">1.4.0</string>
     <string name="autor_de_app" translatable="false">Alejandro Martinez</string>
     <string name="server_client_id" translatable="false">725302444507-vhh55mou6kotockl28u3ne0jq7pm8rpq.apps.googleusercontent.com</string>
 

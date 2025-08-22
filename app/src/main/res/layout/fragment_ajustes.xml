@@ -18,31 +18,33 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/foto"
             android:scaleType="centerCrop"
             android:contentDescription="@string/foto_de_usuario"
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/txtPerfilNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Alejandro Martinez"
+            android:text=""
             android:textSize="20sp"
             android:textColor="?attr/android:textColorPrimary"
             android:fontFamily="@font/fuente_principal"
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/txtPerfilEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="hectoralejandro037@gmail.com"
+            android:text=""
             android:textSize="14sp"
             android:textColor="?attr/android:textColorSecondary"
             android:fontFamily="@font/fuente_principal"
             android:layout_gravity="center" />
 
         <Button
+            android:id="@+id/btnEditarPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -152,41 +154,6 @@
                     android:layout_marginEnd="5dp"
                     android:layout_alignParentEnd="true"
                     app:switchMinWidth="50dp" />
-
-                <ImageView
-                    android:id="@+id/exportar_icono"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_below="@+id/idioma_icono"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/exportar_icono2" />
-
-                <TextView
-                    android:id="@+id/texto_exportar_pssw"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/texto_cambiar_idioma"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toEndOf="@+id/modo_noche_icono"
-                    android:fontFamily="@font/fuente_principal"
-                    android:text="@string/exportar_contras"
-                    android:textColor="?attr/android:textColorPrimary"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/boton_exportar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_below="@id/Switch_cambiar_idioma"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="5dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Exportar"
-                    android:src="@drawable/exportar_icono" />
-
             </RelativeLayout>
 
         </LinearLayout>

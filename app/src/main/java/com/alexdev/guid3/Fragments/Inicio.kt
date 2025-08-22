@@ -1,56 +1,51 @@
 package com.alexdev.guid3.Fragments
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
-import android.widget.Toast
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
 import com.alexdev.guid3.adaptadores.CategoriaAdapter
 import com.alexdev.guid3.adaptadores.ContrasAdapter
 import com.alexdev.guid3.dataClasses.categorias
 import com.alexdev.guid3.dataClasses.contras
+import com.alexdev.guid3.viewModels.CategoriaViewModel
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
-import com.alexdev.guid3.viewModels.CategoriaViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.alexdev.guid3.security.CryptoHelper
+import com.google.firebase.firestore.FieldValue
 
 class Inicio : Fragment(R.layout.fragment_inicio) {
     private lateinit var categoriaViewModel: CategoriaViewModel
 
-    //Lista de contraseñas generadas internamente para pruebas
-    private val contras = mutableListOf(
-        contras(R.drawable._logofacebook, "Facebook", "hectoralejandro037@gmail.com", "JKGB_+53r"),
-        contras(R.drawable._logoinstragram, "Instagram", "hectorzendejas069@gmail.com", "@#dfsf@1"),
-        contras(R.drawable._logobbva, "BBVA", "hectoralejandro037@gmail.com", "DSF#$%d452"),
-        contras(R.drawable._logooutlook, "Outlook", "hectoralejandro037@gmail.com", "SD#s@#%HH_"),
-        contras(R.drawable._logogmail, "Correo Gmail", "hectoralejandro037@gmail.com", "fjn#$%fx&"),
-        contras(R.drawable._logox, "Cuenta X: SoyAlex", "hectoralejandro037@gmail.com", "AKC@4Ddfa"),
-        contras(R.drawable._logoyoutube, "Cuenta Youtube: Alejandroo", "hectoralejandro23@outlook.com", "%^#FFFBd"),
-        contras(R.drawable._logonetflix, "Netflix: Alejandro", "hectoralejandro037@gmail.com", "#@%DFEUhmkf"),
-        contras(R.drawable._logomercadopago, "Mercado Pago", "hectoralejandro037@gmail.com", "@#%BGfjgdfb"),
-        contras(R.drawable._logoprime, "Cuenta Prime: Alejandro", "hectoralejandro037@gmail.com", "ASFjh3^^%"),
-        contras(R.drawable._logoamazon, "Cuenta Amazon: Alejandro", "hectoralejandro037@gmail.com", "ApU_@4Ddfa"),
-        contras(R.drawable._logomercadolibre, "Cuenta Mercado Libre: Alejandro", "hectoralejandro037@gmail.com", "&(_aslASmz"),
-        contras(R.drawable._logoebay, "Cuenta Ebay: Alejandro", "hectoralejandro037@gmail.com", "@347Dgry845_"),
-        contras(R.drawable._logopaypal, "Cuenta Paypal: Alejandro", "hectoralejandro037@gmail.com", "aslf!@vAFL"),
-        contras(R.drawable._logoicloud, "Cuenta iCloud: Alejandro Martinez", "hectoralejandro037@gmail.com", "adSFIL3%&gdw"),
-    )
+    // Instancia de Firestore
+    private val db = FirebaseFirestore.getInstance()
+    private val contrasCollection = db.collection("contras")
+    private var listaContras = mutableListOf<contras>()
+    private var contrasListener: ListenerRegistration? = null
 
     //Lista de categorias de contraseñas
     private val categorias = mutableListOf<categorias>()
@@ -63,11 +58,14 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     private val haciaIzquierda: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.hacia_izquierda) }
     private val haciaDerecha: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.hacia_derecha) }
 
+    private val TAG = "InicioFragment"
 
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+        Log.d(TAG, "onViewCreated: Inicializando Firestore y UI")
 
         // ViewModel para que las categorías se actualicen conforme se cambie el modo oscuro de la aplicación
         categoriaViewModel = ViewModelProvider(this)[CategoriaViewModel::class.java]
@@ -85,11 +83,47 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
         // Configurar el RecyclerView de la lista de contraseñas
         val txtConteoContra = view.findViewById<TextView>(R.id.txt_conteo_contra)
-        val adaptadorContras = ContrasAdapter(contras)
+        val adaptadorContras = ContrasAdapter(listaContras)
         val recyclerViewContras = view.findViewById<RecyclerView>(R.id.recyclerViewContras)
         recyclerViewContras.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewContras.adapter = adaptadorContras
         txtConteoContra.text = adaptadorContras.itemCount.toString()
+
+        // Escuchar cambios en Firestore y actualizar la lista
+        val currentUid = auth.currentUser?.uid
+        contrasListener?.remove()
+        if (currentUid == null) {
+            listaContras.clear()
+        } else {
+            contrasListener = contrasCollection
+                .whereEqualTo("uid", currentUid)
+                .addSnapshotListener { snapshot, error ->
+                    if (error != null) {
+                        Log.e(TAG, "Error al cargar contraseñas desde Firestore", error)
+                        Toast.makeText(requireContext(), "Error al cargar contraseñas", Toast.LENGTH_SHORT).show()
+                        return@addSnapshotListener
+                    }
+                    if (snapshot != null) {
+                        listaContras.clear()
+                        for (doc in snapshot.documents) {
+                            val contraObj = doc.toObject(contras::class.java)
+                            if (contraObj != null) {
+                                contraObj.id = doc.id
+                                val cipherText = contraObj.contra
+                                val ivB64 = contraObj.iv
+                                val ownerUid = auth.currentUser?.uid
+                                if (!cipherText.isNullOrBlank() && !ivB64.isNullOrBlank()) {
+                                    val plain = CryptoHelper.decrypt(cipherText, ivB64, ownerUid)
+                                    if (plain != null) contraObj.contra = plain
+                                }
+                                listaContras.add(contraObj)
+                            }
+                        }
+                        adaptadorContras.notifyDataSetChanged()
+                        txtConteoContra.text = listaContras.size.toString()
+                    }
+                }
+        }
 
 
 
@@ -138,7 +172,7 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         // Configurar el botón para abrir y cerrar las opciones
         btnAbrirOpciones.setOnClickListener {
             // Si los botones ya están visibles, los ocultamos con animación
-            if (btnAddContras.visibility == View.VISIBLE) {
+            if (btnAddContras.isVisible) {
                 // Animación de cierre
                 btnAddContras.startAnimation(haciaAbajo)
                 btnAddCategorias.startAnimation(haciaAbajo)
@@ -179,49 +213,53 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
             }
         }
 
-        //Configurar el boton de agregar Contraseñas
-        btnAddContras.setOnClickListener { alPresionarBotonContras() }
-
-        //Configurar el boton 2 de agregar Contraseñas
-        txtAddContra.setOnClickListener { alPresionarBotonContras() }
-
-        //Configurar el boton de agregar Categorias
-        btnAddCategorias.setOnClickListener { alPresionarBotonCategorias() }
-
-        //Configurar el boton 2 de agregar Categorias
-        txtAddCategoria.setOnClickListener { alPresionarBotonCategorias() }
-
+        configurarBotonesAgregar(
+            listOf(
+                view.findViewById(R.id.btnAddContras),
+                view.findViewById(R.id.txtAddContra)
+            ),
+            ::alPresionarBotonContras
+        )
+        configurarBotonesAgregar(
+            listOf(
+                view.findViewById(R.id.btnAddCategorias),
+                view.findViewById(R.id.txtAddCategoria)
+            ),
+            ::alPresionarBotonCategorias
+        )
         configurarDeslizarRecyclerView(recyclerViewContras)
-
-
     }
-    /* Metodo para poder deslizar hacia la izquierda o derecha los elementos del recyclerview
-       de contraseñas y eliminarlos o editarlos */
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        contrasListener?.remove()
+    }
+
+    // Función auxiliar para configurar listeners en varios botones
+    private fun configurarBotonesAgregar(botones: List<View>, accion: () -> Unit) {
+        botones.forEach { boton ->
+            boton.setOnClickListener { accion() }
+        }
+    }
+
     private fun configurarDeslizarRecyclerView(recyclerViewContras: RecyclerView) {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
-            ): Boolean {
-                // No se implementa el movimiento vertical
-                return false
-            }
+            ): Boolean = false
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-
                 when (direction) {
                     ItemTouchHelper.RIGHT -> {
-                        mostrarDialogoEliminar(position) // Llama a la función para eliminar
+                        mostrarDialogoEditar(position)
                     }
                     ItemTouchHelper.LEFT -> {
                         mostrarDialogoEliminar(position)
                     }
                 }
-
-                // Vuelve a dibujar el elemento en caso de que no se elimine o edite
                 recyclerViewContras.adapter?.notifyItemChanged(position)
             }
 
@@ -284,26 +322,78 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         itemTouchHelper.attachToRecyclerView(recyclerViewContras)
     }
 
-    // Funcion apoyado de la funcion eliminar elemento para mostrar un dialogo de confirmacion antes de eliminar
+    // Diálogo para editar elemento
+    private fun mostrarDialogoEditar(position: Int) {
+        val adaptadorContras = ContrasAdapter(listaContras)
+        if (position !in listaContras.indices) return
+        val contra = listaContras[position]
+        val docId = contra.id
+        if (docId == null) return
+        val ref = contrasCollection.document(docId)
+        val popUp = PopUpEditarContra.newInstance(
+            contra.imgSeleccionada,
+            contra.iconoPersonalizado,
+            contra.titulo,
+            contra.correo,
+            contra.contra,
+            object : PopUpEditarContra.OnContraEditadaListener {
+                @SuppressLint("NotifyDataSetChanged")
+                override fun onContraEditada(
+                    imgSeleccionada: Int,
+                    iconoPersonalizado: String?,
+                    titulo: String,
+                    correo: String,
+                    contraStr: String
+                ) {
+                    val enc = CryptoHelper.encrypt(contraStr, auth.currentUser?.uid)
+                    ref.update(
+                        mapOf(
+                            "imgSeleccionada" to imgSeleccionada,
+                            "iconoPersonalizado" to iconoPersonalizado,
+                            "titulo" to titulo,
+                            "correo" to correo,
+                            "contra" to enc.cipherTextB64,
+                            "iv" to enc.ivB64,
+                            "updatedAt" to FieldValue.serverTimestamp()
+                        )
+                    ).addOnSuccessListener {
+                        contra.imgSeleccionada = imgSeleccionada
+                        contra.iconoPersonalizado = iconoPersonalizado
+                        contra.titulo = titulo
+                        contra.correo = correo
+                        contra.contra = contraStr
+                        adaptadorContras.notifyDataSetChanged()
+                        Toast.makeText(requireContext(), getString(R.string.contra_editada), Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener { e ->
+                        Log.e(TAG, "Error al actualizar contraseña", e)
+                        Toast.makeText(requireContext(), "Error al actualizar", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
+        popUp.show(parentFragmentManager, "PopUpEditarContra")
+    }
+
     private fun mostrarDialogoEliminar(position: Int) {
+        if (position < 0 || position >= listaContras.size) return
         AlertDialog.Builder(requireContext())
-            .setTitle("Eliminar")
-            .setMessage("¿Estás seguro de que deseas eliminar esta contraseña?")
-            .setPositiveButton("Sí") { _, _ ->
-                eliminarElemento(position) // Llama a la función para eliminar el item
+            .setTitle(getString(R.string.eliminar))
+            .setMessage(getString(R.string.confirmar_eliminar_contra))
+            .setPositiveButton(getString(R.string.si)) { _, _ ->
+                eliminarElemento(position)
             }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setNegativeButton(getString(R.string.no)) { dialog, _ -> dialog.dismiss() }
             .show()
     }
 
-    // Funcion para eliminar un elemento del RecyclerView de contraseñas
     private fun eliminarElemento(position: Int) {
-        // Remover el elemento de la lista
-        val recyclerViewContra = view?.findViewById<RecyclerView>(R.id.recyclerViewContras)
-        contras.removeAt(position)
-            recyclerViewContra?.adapter?.notifyItemRemoved(position)
+        if (position !in listaContras.indices) return
+        val contra = listaContras[position]
+        val docId = contra.id
+        if (docId != null) {
+            contrasCollection.document(docId).delete()
+        }
+        Toast.makeText(requireContext(), getString(R.string.contra_eliminada), Toast.LENGTH_SHORT).show()
     }
 
     // Función para agregar una nueva categoría
@@ -348,8 +438,32 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
 
     private fun alPresionarBotonContras(){
-        // Abrir el fragment del pop up
+        Log.d(TAG, "Abriendo PopUpCrearContra para nueva contraseña")
         val fragmentPopUp = PopUpCrearContra()
+        fragmentPopUp.listener = object : PopUpCrearContra.OnContraCreadaListener {
+            override fun onContraCreada(imgSeleccionada: Int, iconoPersonalizado: String?, titulo: String, correo: String, contra: String) {
+                Log.d(TAG, "Creando nueva contraseña: $titulo, $correo")
+                val enc = CryptoHelper.encrypt(contra, auth.currentUser?.uid)
+                val uid = auth.currentUser?.uid
+                val data = mapOf(
+                    "imgSeleccionada" to imgSeleccionada,
+                    "titulo" to titulo,
+                    "correo" to correo,
+                    "contra" to enc.cipherTextB64,
+                    "iconoPersonalizado" to iconoPersonalizado,
+                    "uid" to uid,
+                    "iv" to enc.ivB64,
+                    "createdAt" to FieldValue.serverTimestamp(),
+                    "updatedAt" to FieldValue.serverTimestamp()
+                )
+                contrasCollection.add(data)
+                    .addOnSuccessListener { _ ->
+                        // El listener actualizará la lista y descifrará
+                    }
+                    .addOnFailureListener { e -> Log.e(TAG, "Error al guardar contraseña en Firestore", e) }
+                Toast.makeText(requireContext(), "Contraseña creada", Toast.LENGTH_SHORT).show()
+            }
+        }
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragmento_contenedor, fragmentPopUp)
         transaction.addToBackStack(null)
@@ -382,4 +496,3 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
 
 
 }
-

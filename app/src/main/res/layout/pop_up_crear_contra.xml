@@ -50,7 +50,7 @@
                 android:id="@+id/txtDeslizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desliza para ver más sugerencias o pulsa el boton '+' para seleccionar un icono de tu preferencia"
+                android:text="Desliza para ver más sugerencias o pulsa el boton '+' para seleccionar una imagen de tu preferencia"
                 android:fontFamily="@font/fuente_principal"
                 />
 
@@ -197,7 +197,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:hint="Nombre"
+                android:hint="@string/nombre"
                 app:helperTextEnabled="true"
                 app:helperText="Escribe el nombre de la contraseña"
                 app:placeholderText="Facebook: Alonso López"
@@ -208,6 +208,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextNombre"
+                    android:maxLength="25"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -220,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:hint="Correo"
+                android:hint="@string/popup_hint_email"
                 app:helperText="Escribe el correo asociado a tu cuenta"
                 app:helperTextEnabled="true"
                 app:placeholderText="usuario@gmail.com"
@@ -243,8 +244,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:helperTextEnabled="true"
-                app:helperText="Ingrese una contraseña"
-                android:hint="Contraseña"
+                app:helperText='Escribe una contraseña o crea una con la opción "Avanzado"'
+                android:hint="@string/popup_hint_password"
                 app:endIconMode="password_toggle"
                 app:boxBackgroundMode="filled">
 
@@ -266,6 +267,34 @@
                     android:inputType="textPassword"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:id="@+id/btnGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="25dp"
+                    android:text="Guardar"
+                    android:enabled="false"
+                    android:textAlignment="center"
+                    app:cornerRadius="8dp" />
+
+                <Button
+                    android:id="@+id/btnCancelar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="25dp"
+                    android:text="Cancelar"
+                    app:cornerRadius="8dp" />
+
+            </RelativeLayout>
 
 
 
@@ -297,8 +326,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    />
+                    android:layout_centerInParent="true" />
 
             </RelativeLayout>
 
@@ -540,30 +568,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
-
-                    <Button
-                        android:id="@+id/btnGuardar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginBottom="0dp"
-                        android:text="Guardar"
-                        android:enabled="false"
-                        android:textAlignment="center"
-                        app:cornerRadius="8dp" />
-
-                    <Button
-                        android:id="@+id/btnCancelar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="20dp"
-                        android:text="Cancelar"
-                        android:textAlignment="center"
-                        app:cornerRadius="8dp" />
 
                     <Button
                         android:id="@+id/btnGenerar"

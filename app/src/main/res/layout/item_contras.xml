@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:padding="16dp"
     android:radius="4dp"
@@ -22,55 +22,64 @@
             android:layout_margin="10dp"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo1"
-            />
+            android:src="@drawable/_logonotfound" />
 
         <TextView
             android:id="@+id/txtViewTituloContrasena"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/img_de_contrasena"
+            android:layout_toEndOf="@id/img_de_contrasena"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
-            android:text="Facebook: Alejandro Martinez Zendejas"
+            android:text="Facebook: Alejandro"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:fontFamily="@font/fuente_principal"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewCorreo"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtViewTituloContrasena"
-            android:layout_alignStart="@+id/txtViewTituloContrasena"
+            android:layout_below="@id/txtViewTituloContrasena"
+            android:layout_alignStart="@id/txtViewTituloContrasena"
             android:layout_marginEnd="5dp"
             android:fontFamily="@font/fuente_principal"
-            android:text="hectoralejandro037@gmail.com"
+            android:text="correo@ejemplo.com"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textViewContrasena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewCorreo"
-            android:layout_alignStart="@+id/txtViewTituloContrasena"
+            android:layout_below="@id/textViewCorreo"
+            android:layout_alignStart="@id/txtViewTituloContrasena"
             android:fontFamily="@font/fuente_principal"
-            android:text="ejM0287#a2^(423"
+            android:text="********"
             android:textSize="14sp" />
 
         <ImageButton
-            android:id="@+id/btnMostrarOcultar"
-            android:layout_width="25dp"
-            android:layout_height="22dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
+            android:id="@+id/btnCopiar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ocultar_icono"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Copiar"
+            android:src="@drawable/copiar_icono" />
+
+        <ImageButton
+            android:id="@+id/btnMostrarOcultar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="4dp"
+            android:layout_alignBottom="@id/textViewContrasena"
+            android:background="@android:color/transparent"
             android:contentDescription="Mostrar/Ocultar Contraseña"
-            android:background="@android:color/transparent"/>
+            android:src="@drawable/ocultar_icono" />
 
     </RelativeLayout>
-
 
 </androidx.cardview.widget.CardView>

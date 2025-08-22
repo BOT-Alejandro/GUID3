@@ -35,4 +35,11 @@
     <color name="SombraOscura">#000000</color> <!-- Sombra oscura en modo oscuro -->
     <color name="ErrorColor">#D32F2F</color> <!-- Color de error en modo claro -->
     <color name="ErrorColorOscuro">#EF5350</color> <!-- Color de error en modo oscuro -->
+    <color name="Ripple">#E0E0E0</color> <!-- Color de ripple en modo claro -->
+    <color name="RippleOscuro">#B0B0B0</color>
+
+    <!-- Colores para fuerza de contraseña -->
+    <color name="PwdWeak">#D32F2F</color>
+    <color name="PwdMedium">#FFA500</color>
+    <color name="PwdStrong">#2E7D32</color>
 </resources>

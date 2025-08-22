@@ -1,38 +1,110 @@
 package com.alexdev.guid3.Fragments
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.alexdev.guid3.R
-import com.alexdev.guid3.adaptadores.ContrasAdapter
-import com.alexdev.guid3.dataClasses.contras
+import com.alexdev.guid3.R.id.btnImgPersonalizada
+import com.alexdev.guid3.util.CropUtils
+import com.alexdev.guid3.util.CustomIconRepository
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.storage.FirebaseStorage
+import com.yalantis.ucrop.UCrop
+import java.security.MessageDigest
 import java.util.Random
 
+var isPasswordValid = false
+
 class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
+    interface OnContraCreadaListener {
+        fun onContraCreada(imgSeleccionada: Int, iconoPersonalizado: String?, titulo: String, correo: String, contra: String)
+    }
+    var iconoPersonalizado: String? = null
+    var listener: OnContraCreadaListener? = null
 
-    private var imgSeleccionada: Int = R.drawable._logogmail
+    private var imgSeleccionada: Int = 0
+    private var iconoPreview: ImageView? = null
 
+    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        if (uri != null) {
+            val intent = CropUtils.buildCropIntent(requireContext(), uri, getString(R.string.crop_image_title), maxSize = 256, square = true)
+            cropImageLauncher.launch(intent)
+        } else {
+            Toast.makeText(requireContext(), "No se seleccionó ninguna imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
 
+    private val cropImageLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data = result.data
+            val resultUri = data?.let { UCrop.getOutput(it) }
+            if (resultUri != null) {
+                val hash = computeFileHash(resultUri)
+                isUploading = true
+                showUploadDialog()
+                subirImagenAFirebaseStorage(resultUri,
+                    onSuccess = { url ->
+                        iconoPersonalizado = url
+                        hash?.let { CustomIconRepository.addCustomIcon(requireContext(), it, url) }
+                        Log.d(TAG, "URL personalizada guardada y registrada: $url")
+                        view?.findViewById<ImageButton>(btnImgPersonalizada)?.let { boton ->
+                            Glide.with(this).load(resultUri).into(boton)
+                        }
+                        isUploading = false
+                        dismissUploadDialog()
+                        updateGuardarState()
+                    },
+                    onError = { e ->
+                        isUploading = false
+                        dismissUploadDialog()
+                        Toast.makeText(requireContext(), "Error al subir imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                        updateGuardarState()
+                    }
+                )
+            } else {
+                Toast.makeText(requireContext(), "No se pudo recortar la imagen", Toast.LENGTH_SHORT).show()
+            }
+        } else if (result.resultCode == Activity.RESULT_CANCELED) {
+            Toast.makeText(requireContext(), "Recorte cancelado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val TAG = "PopUpCrearContra"
+
+    @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: PopUpCrearContra inicializado")
+
+        if (savedInstanceState != null) {
+            imgSeleccionada = savedInstanceState.getInt("imgSeleccionada", 0)
+            iconoPersonalizado = savedInstanceState.getString("iconoPersonalizado")
+        }
+
+        iconoPreview = view.findViewById<ImageView>(btnImgPersonalizada)
+        actualizarVistaPreviaIcono()
 
         val textInputContrasena = view.findViewById<TextInputLayout>(R.id.textInputContrasena)
         val editTextContrasena = view.findViewById<TextInputEditText>(R.id.editTextContrasena)
@@ -48,7 +120,7 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val presetOutlook = view.findViewById<ImageView>(R.id.presetOutlook)
         val presetMercadoPago = view.findViewById<ImageView>(R.id.presetMercadoPago)
         val presetNetflix = view.findViewById<ImageView>(R.id.presetNetflix)
-        val btnImgPersonalizada = view.findViewById<ImageView>(R.id.btnImgPersonalizada)
+        val btnImgPersonalizada = view.findViewById<ImageButton>(btnImgPersonalizada)
         val switchAvanzado = view.findViewById<SwitchMaterial>(R.id.switchAvanzado)
         val layoutOpcionesAvanzadas = view.findViewById<RelativeLayout>(R.id.layoutOpcionesAvanzadas)
         val btnGenerar = view.findViewById<Button>(R.id.btnGenerar)
@@ -56,141 +128,130 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val btnCancelar = view.findViewById<MaterialButton>(R.id.btnCancelar)
         val btnSugerencias = view.findViewById<MaterialButton>(R.id.btnSugerencias)
 
+        // Mapa de presets (ID -> Nombre, algoritmo, drawable)
         val presetButtons = mapOf(
-            R.id.presetGmail to Pair("Gmail", ::algoritmoGmail),
-            R.id.presetYoutube to Pair("YouTube", ::algoritmoYoutube),
-            R.id.presetInstagram to Pair("Instagram", ::algoritmoInstagram),
-            R.id.presetBBVA to Pair("BBVA", ::algoritmoBBVA),
-            R.id.presetX to Pair("X", ::algoritmoX),
-            R.id.presetOutlook to Pair("Outlook", ::algoritmoOutlook),
-            R.id.presetMercadoPago to Pair("MercadoPago", ::algoritmoMercadoPago),
-            R.id.presetNetflix to Pair("Netflix", ::algoritmoNetflix),
-            R.id.presetFacebook to Pair("Facebook", ::algoritmoFacebook)
+            R.id.presetGmail to Triple("Gmail", ::algoritmoGmail, R.drawable._logogmail),
+            R.id.presetYoutube to Triple("YouTube", ::algoritmoYoutube, R.drawable._logoyoutube),
+            R.id.presetInstagram to Triple("Instagram", ::algoritmoInstagram, R.drawable._logoinstragram),
+            R.id.presetBBVA to Triple("BBVA", ::algoritmoBBVA, R.drawable._logobbva),
+            R.id.presetX to Triple("X", ::algoritmoX, R.drawable._logox),
+            R.id.presetOutlook to Triple("Outlook", ::algoritmoOutlook, R.drawable._logooutlook),
+            R.id.presetMercadoPago to Triple("MercadoPago", ::algoritmoMercadoPago, R.drawable._logomercadopago),
+            R.id.presetNetflix to Triple("Netflix", ::algoritmoNetflix, R.drawable._logonetflix),
+            R.id.presetFacebook to Triple("Facebook", ::algoritmoFacebook, R.drawable._logofacebook)
         )
 
-        presetButtons.forEach { (id, pair) ->
-            val imageButton = view.findViewById<ImageView>(id)
-            imageButton.setOnClickListener {
-                val nombre = pair.first
-                val algoritmo = pair.second
-                textInputNombre.setText("$nombre: ")
-                editTextContrasena.setText(algoritmo())
-                Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
+        fun aplicarSeleccionPreset(nombre: String, algoritmo: () -> String, drawable: Int) {
+            textInputNombre.setText("$nombre: ")
+            editTextContrasena.setText(algoritmo())
+            imgSeleccionada = drawable
+            // Limpiamos cualquier URL personalizada previa
+            iconoPersonalizado = null
+            // Actualizamos el botón preview con el drawable elegido
+            btnImgPersonalizada.setImageResource(drawable)
+            // Feedback
+            Toast.makeText(requireContext(), "$nombre seleccionado", Toast.LENGTH_SHORT).show()
+            // Estado guardar
+            updateGuardarState()
+        }
+
+        // Listener para cada preset
+        presetButtons.forEach { (id, triple) ->
+            view.findViewById<ImageView>(id)?.setOnClickListener {
+                aplicarSeleccionPreset(triple.first, triple.second, triple.third)
             }
         }
 
-        btnImgPersonalizada.setOnClickListener {
-            // Aquí, abre un diálogo o cualquier tipo de vista con las opciones de imagen disponibles
-        }
+        // Selector bottom sheet
+        val selector = IconSelectorBottomSheet.newInstance(object : IconSelectorBottomSheet.OnIconSelectedListener {
+            override fun onIconSelected(iconRes: Int) {
+                imgSeleccionada = iconRes
+                iconoPersonalizado = null
+//                Glide.with(this@PopUpCrearContra).load(iconRes).into(btnImgPersonalizada)
+                btnImgPersonalizada.setImageResource(iconRes)
+                updateGuardarState()
+            }
+            override fun onRemoteIconSelected(url: String) {
+                iconoPersonalizado = url
+                imgSeleccionada = 0
+                Glide.with(this@PopUpCrearContra).load(url).placeholder(R.drawable._logonotfound).into(btnImgPersonalizada)
+                updateGuardarState()
+            }
+            override fun onCustomImageRequested() { pickImageLauncher.launch("image/*") }
+            override fun onIconsDeleted(urls: List<String>) {
+                if (iconoPersonalizado != null && urls.contains(iconoPersonalizado)) {
+                    btnImgPersonalizada.setImageResource(R.drawable.subir_imagen_icono)
+                    updateGuardarState()
+                }
+            }
+        })
+
+        btnImgPersonalizada.setOnClickListener { selector.show(parentFragmentManager, "IconSelectorBottomSheetCreate") }
 
         btnGuardar.setOnClickListener {
-                // Obtener el fragmento "Inicio" y agregar la nueva contraseña
-                val fragmentInicio = Inicio()
-
-                // Navegar de regreso al fragmento "Inicio"
-                val supportFragmentManager = requireActivity().supportFragmentManager
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmento_contenedor, fragmentInicio)
-                    .addToBackStack(null)
-                    .commit()
-
-                // Cerrar el fragmento actual (PopUpCrearContra)
-                requireActivity().supportFragmentManager.popBackStack()
-        }
-
-        Glide.with(this)
-            .load(R.drawable._logogmail)
-            .into(presetGmail)
-
-        Glide.with(this)
-            .load(R.drawable._logoyoutube)
-            .into(presetYoutube)
-
-        Glide.with(this)
-            .load(R.drawable._logoinstragram)
-            .into(presetInstagram)
-
-        Glide.with(this)
-            .load(R.drawable._logobbva)
-            .into(presetBBVA)
-
-        Glide.with(this)
-            .load(R.drawable._logox)
-            .into(presetX)
-
-        Glide.with(this)
-            .load(R.drawable._logooutlook)
-            .into(presetOutlook)
-
-        Glide.with(this)
-            .load(R.drawable._logomercadopago)
-            .into(presetMercadoPago)
-
-        Glide.with(this)
-            .load(R.drawable._logonetflix)
-            .into(presetNetflix)
-
-        Glide.with(this)
-            .load(R.drawable._logofacebook)
-            .into(presetFacebook)
-
-
-
-
-        // Listener para que el switch muestre las opciones avanzadas
-        switchAvanzado.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                layoutOpcionesAvanzadas.visibility = View.VISIBLE
-                btnGenerar.visibility = View.VISIBLE
-            } else {
-                layoutOpcionesAvanzadas.visibility = View.GONE
-                btnGenerar.visibility = View.GONE
+            val inputNombre = textInputNombre.text.toString().trim()
+            val inputCorreo = textInputCorreo.text.toString().trim()
+            val inputContra = editTextContrasena.text.toString().trim()
+            val imagenOk = iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")
+            val camposVacios = inputNombre.isEmpty() || inputCorreo.isEmpty() || inputContra.isEmpty()
+            when {
+                camposVacios -> Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                !isPasswordValid -> Toast.makeText(requireContext(), "La contraseña no es suficientemente segura", Toast.LENGTH_SHORT).show()
+                !imagenOk -> Toast.makeText(requireContext(), "Espera a que la imagen termine de subir", Toast.LENGTH_SHORT).show()
+                else -> {
+                    Log.d(TAG, "Campos completos, contraseña lista para guardar")
+                    Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
+                    listener?.onContraCreada(imgSeleccionada, iconoPersonalizado, inputNombre, inputCorreo, inputContra)
+                    parentFragmentManager.popBackStack()
+                }
             }
+            updateGuardarState()
         }
 
-        // onClickListener para abrir el pop up de aviso sobre las sugerencias de algoritmos
-        btnSugerencias.setOnClickListener{alPresionarBotonSugerencias()}
+        // Cargar drawables estáticos directamente (Glide innecesario para recursos locales)
+        presetGmail.setImageResource(R.drawable._logogmail)
+        presetYoutube.setImageResource(R.drawable._logoyoutube)
+        presetInstagram.setImageResource(R.drawable._logoinstragram)
+        presetBBVA.setImageResource(R.drawable._logobbva)
+        presetX.setImageResource(R.drawable._logox)
+        presetOutlook.setImageResource(R.drawable._logooutlook)
+        presetMercadoPago.setImageResource(R.drawable._logomercadopago)
+        presetNetflix.setImageResource(R.drawable._logonetflix)
+        presetFacebook.setImageResource(R.drawable._logofacebook)
 
-        // Metodo que esta a la espera de cambios en el TextInputEditText de la contraseña
+        switchAvanzado.setOnCheckedChangeListener { _, isChecked ->
+            layoutOpcionesAvanzadas.visibility = if (isChecked) View.VISIBLE else View.GONE
+            btnGenerar.visibility = if (isChecked) View.VISIBLE else View.GONE
+        }
+
+        btnSugerencias.setOnClickListener { alPresionarBotonSugerencias() }
+
         editTextContrasena.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            // Metodo que se ejecuta cada vez que se modifica el texto del TextInputEditText
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val password = s.toString()
-                evaluarComplejidadDeContrasena(password, textInputContrasena, progressBarContrasena)
+                evaluarComplejidadDeContrasena(s.toString(), textInputContrasena, progressBarContrasena)
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Metodo que genera una contraseña aleatoria
         btnGenerar.setOnClickListener {
             val contrasenaGenerada = generarContrasena()
             editTextContrasena.setText(contrasenaGenerada)
             Toast.makeText(requireContext(), "Contraseña generada", Toast.LENGTH_SHORT).show()
+            updateGuardarState()
         }
 
-        btnGuardar.setOnClickListener {
-            val editTextNombre = view?.findViewById<TextInputEditText>(R.id.editTextNombre)
-            val editTextCorreo = view?.findViewById<TextInputEditText>(R.id.editTextCorreo)
-            val editTextContra = view?.findViewById<TextInputEditText>(R.id.editTextContrasena)
-            val inputNombre = editTextNombre?.text.toString()
-            val inputCorreo = editTextCorreo?.text.toString()
-            val inputContra = editTextContra?.text.toString()
-            if (inputNombre.isEmpty() && inputCorreo.isEmpty() && inputContra.isEmpty()) {
-                btnGuardar.isEnabled = false
-                Toast.makeText(requireContext(), "Complete todos los campos", Toast.LENGTH_SHORT).show()
-            } else{
-                btnGuardar.isEnabled = true
-                Toast.makeText(requireContext(), "Contraseña guardada", Toast.LENGTH_SHORT).show()
-            }
-        }
+        btnCancelar.setOnClickListener { requireActivity().supportFragmentManager.popBackStack() }
+    }
 
-        btnCancelar.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("imgSeleccionada", imgSeleccionada)
+        outState.putString("iconoPersonalizado", iconoPersonalizado)
+    }
 
+    private fun actualizarVistaPreviaIcono() {
+        // Se mantiene el drawable original del botón (subir_imagen_icono). Solo mostraría distinto si quisieras un preview aparte.
     }
 
     // Algoritmos de generación de contraseñas para cada servicio
@@ -256,67 +317,59 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         val numeros = "0123456789"
         val simbolos = "!@#%^&*()+=<>?/$"
 
-        // Obtener la longitud de la contraseña
         val longitud = obtenerLongitudContrasena()
 
-        // Determinar las categorías habilitadas
-        val caracteresDisponibles = StringBuilder()
+        val contraPersonalizada = StringBuilder()
         if (checkMayusculas != null) {
-            if (checkMayusculas.isChecked) caracteresDisponibles.append(mayusculas)
+            if (checkMayusculas.isChecked) contraPersonalizada.append(mayusculas)
         }
         if (checkMinusculas != null) {
-            if (checkMinusculas.isChecked) caracteresDisponibles.append(minusculas)
+            if (checkMinusculas.isChecked) contraPersonalizada.append(minusculas)
         }
         if (checkNumeros != null) {
-            if (checkNumeros.isChecked) caracteresDisponibles.append(numeros)
+            if (checkNumeros.isChecked) contraPersonalizada.append(numeros)
         }
         if (checkGuion != null) {
-            if (checkGuion.isChecked) caracteresDisponibles.append("-")
+            if (checkGuion.isChecked) contraPersonalizada.append("-")
         }
         if (checkGuionBajo != null) {
-            if (checkGuionBajo.isChecked) caracteresDisponibles.append("_")
+            if (checkGuionBajo.isChecked) contraPersonalizada.append("_")
         }
         if (checkEspeciales != null) {
-            if (checkEspeciales.isChecked) caracteresDisponibles.append(simbolos)
+            if (checkEspeciales.isChecked) contraPersonalizada.append(simbolos)
         }
 
-        if (caracteresDisponibles.isEmpty()) {
-            // Si no hay ninguna opción seleccionada, devolver una contraseña aleatoria
-            caracteresDisponibles.append(mayusculas)
-            caracteresDisponibles.append(minusculas)
-            caracteresDisponibles.append(numeros)
-            caracteresDisponibles.append(simbolos)
-            caracteresDisponibles.append("-")
-            caracteresDisponibles.append("_")
+        if (contraPersonalizada.isEmpty()) {
+            contraPersonalizada.append(mayusculas)
+            contraPersonalizada.append(minusculas)
+            contraPersonalizada.append(numeros)
+            contraPersonalizada.append(simbolos)
+            contraPersonalizada.append("-")
+            contraPersonalizada.append("_")
         }
 
-        // Generar la contraseña aleatoria
         val contrasenaGenerada = StringBuilder()
         val random = Random()
         repeat(longitud) {
-            val randomIndex = random.nextInt(caracteresDisponibles.length)
-            contrasenaGenerada.append(caracteresDisponibles[randomIndex])
+            val randomIndex = random.nextInt(contraPersonalizada.length)
+            contrasenaGenerada.append(contraPersonalizada[randomIndex])
         }
 
         return contrasenaGenerada.toString()
     }
 
-    // Metodo que obtiene la longitud de la contraseña
     private fun obtenerLongitudContrasena(): Int {
         val editTextLongitudContra = view?.findViewById<TextInputEditText>(R.id.editTextLongitudContra)
         val longitudInput = editTextLongitudContra?.text.toString()
         return if (longitudInput.isEmpty()) {
-            // Si no se ingresó longitud, establecer longitud aleatoria entre 8 y 16
-            Random().nextInt(9) + 8  // genera entre 8 y 16
+            Random().nextInt(9) + 8
         } else {
             val longitud = longitudInput.toIntOrNull() ?: 8
-            // Asegurar que esté entre 8 y 16
             longitud.coerceIn(8, 16)
         }
     }
 
     private fun alPresionarBotonSugerencias(){
-        // inflar el diseño del pop up
         val inflater = LayoutInflater.from(requireContext())
         val dialogView = inflater.inflate(R.layout.pop_up_sugerencias, null)
 
@@ -342,44 +395,110 @@ class PopUpCrearContra : Fragment(R.layout.pop_up_crear_contra) {
         if (password.any { it.isDigit() }) puntuaciondePassword++
         if (password.any { "!@#$%^&*()-_+=<>?/".contains(it) }) puntuaciondePassword++
 
-        // Si la contraseña contiene espacios deshabilitar el boton de Guardar
         if (password.contains(" ")) {
-            puntuaciondePassword = 0 // Si hay espacios, la contraseña se considera inválida
+            puntuaciondePassword = 0
             progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
             textInputContrasena.helperText = "La contraseña no debe contener espacios"
+            isPasswordValid = false
             btnGuardar.isEnabled = false
+            updateGuardarState()
 
         } else if (password.isEmpty()) {
             textInputContrasena.helperText = "Ingrese una contraseña"
             progressBarContrasena.progress = 0
-            btnGuardar.isEnabled = false
+            isPasswordValid = false
+            updateGuardarState()
         } else if (password.length < 8) {
             textInputContrasena.helperText = "La contraseña debe tener al menos 8 caracteres"
             progressBarContrasena.progress = 0
+            isPasswordValid = false
             btnGuardar.isEnabled = false
+            updateGuardarState()
         } else {
-            // Configura la barra de progreso y colores dinámicos
-            progressBarContrasena.progress = puntuaciondePassword * 20 // Cada criterio vale 20%
+            progressBarContrasena.progress = puntuaciondePassword * 20
             when (puntuaciondePassword) {
-                0, 1 -> { // Contraseña débil
+                0, 1 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_red_light))
                     textInputContrasena.helperText = "Contraseña muy débil"
+                    isPasswordValid = false
+                    updateGuardarState()
                 }
-                2, 3 -> { // Contraseña regular
+                2, 3 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_orange_light))
                     textInputContrasena.helperText = "Contraseña regular"
+                    isPasswordValid = false
+                    updateGuardarState()
                 }
-                4 -> { // Contraseña fuerte
+                4 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_blue_light))
                     textInputContrasena.helperText = "Contraseña aceptable"
-                    btnGuardar.isEnabled = true
+                    isPasswordValid = true
+                    updateGuardarState()
                 }
-                5 -> { // Contraseña muy fuerte
+                5 -> {
                     progressBarContrasena.progressTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), android.R.color.holo_green_light))
                     textInputContrasena.helperText = "Contraseña segura"
-                    btnGuardar.isEnabled = true
+                    isPasswordValid = true
+                    updateGuardarState()
                 }
             }
         }
+    }
+
+    private var uploadDialog: AlertDialog? = null
+    private var isUploading = false
+
+    private fun showUploadDialog() {
+        if (uploadDialog?.isShowing == true) return
+        val v = LayoutInflater.from(requireContext()).inflate(R.layout.progress_upload_dialog, null)
+        uploadDialog = AlertDialog.Builder(requireContext())
+            .setView(v)
+            .setCancelable(false)
+            .create()
+        uploadDialog?.show()
+    }
+    private fun dismissUploadDialog() {
+        uploadDialog?.dismiss()
+    }
+
+    private fun subirImagenAFirebaseStorage(uri: Uri, onSuccess: (String) -> Unit, onError: (Exception) -> Unit) {
+        val storageRef = FirebaseStorage.getInstance().reference
+        val nombreArchivo = "iconos_personalizados/${System.currentTimeMillis()}.jpg"
+        val imagenRef = storageRef.child(nombreArchivo)
+        val uploadTask = imagenRef.putFile(uri)
+        uploadTask.addOnSuccessListener {
+            imagenRef.downloadUrl.addOnSuccessListener { url ->
+                Log.d(TAG, "Imagen subida a Firebase Storage: $url")
+                onSuccess(url.toString())
+            }.addOnFailureListener { e -> onError(e) }
+        }.addOnFailureListener { e -> onError(e) }
+    }
+
+    private fun computeFileHash(uri: Uri): String? {
+        return try {
+            val md = MessageDigest.getInstance("SHA-256")
+            requireContext().contentResolver.openInputStream(uri)?.use { input ->
+                val buf = ByteArray(8192)
+                var read: Int
+                while (input.read(buf).also { read = it } != -1) {
+                    md.update(buf, 0, read)
+                }
+            }
+            md.digest().joinToString("") { String.format("%02x", it) }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error hash: ${e.message}")
+            null
+        }
+    }
+
+    private fun updateGuardarState() {
+        val currentView = view ?: return
+        val btnGuardar = currentView.findViewById<MaterialButton>(R.id.btnGuardar)
+        val nombre = currentView.findViewById<TextInputEditText>(R.id.editTextNombre)?.text?.toString()?.trim().orEmpty()
+        val correo = currentView.findViewById<TextInputEditText>(R.id.editTextCorreo)?.text?.toString()?.trim().orEmpty()
+        val contra = currentView.findViewById<TextInputEditText>(R.id.editTextContrasena)?.text?.toString()?.trim().orEmpty()
+        val imagenOk = (iconoPersonalizado == null || iconoPersonalizado!!.startsWith("https://")) && !isUploading
+        val camposOk = nombre.isNotEmpty() && correo.isNotEmpty() && contra.isNotEmpty()
+        btnGuardar.isEnabled = camposOk && isPasswordValid && imagenOk
     }
 }

@@ -1,9 +1,15 @@
 package com.alexdev.guid3.adaptadores
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.BlurMaskFilter
 import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.os.Build
+import android.widget.Toast
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +27,8 @@ class ContrasAdapter(
     private val contrasenas: MutableList<contras> // Cambiado a MutableList para permitir modificaciones
 ) : RecyclerView.Adapter<ContrasAdapter.VistaContrasena>() {
 
+    private val clearHandler = Handler(Looper.getMainLooper())
+
     // ViewHolder que contiene las vistas de cada item del RecyclerView
     inner class VistaContrasena(view: View) : RecyclerView.ViewHolder(view) {
         val imagenIcono: ImageView = view.findViewById(R.id.img_de_contrasena)
@@ -28,6 +36,7 @@ class ContrasAdapter(
         val textoCorreo: TextView = view.findViewById(R.id.textViewCorreo)
         val textoContrasena: TextView = view.findViewById(R.id.textViewContrasena)
         val btnMostrarOcultar: ImageButton = view.findViewById(R.id.btnMostrarOcultar)
+        val btnCopiar: ImageButton = view.findViewById(R.id.btnCopiar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VistaContrasena {
@@ -98,6 +107,28 @@ class ContrasAdapter(
             notifyItemChanged(position)
         }
 
+        holder.btnCopiar.setOnClickListener { v ->
+            val ctx = v.context
+            val plain = item.contra
+            if (plain.isNullOrEmpty()) {
+                Toast.makeText(ctx, "Sin contraseña", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val cm = ctx.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("password", plain)
+            cm.setPrimaryClip(clip)
+            Toast.makeText(ctx, "Contraseña copiada (se eliminará en breve)", Toast.LENGTH_SHORT).show()
+            val snapshot = plain
+            clearHandler.postDelayed({
+                val current = cm.primaryClip
+                val currentText = if (current != null && current.itemCount > 0) current.getItemAt(0).coerceToText(ctx).toString() else null
+                if (currentText == snapshot) {
+                    val emptyClip = ClipData.newPlainText("", "")
+                    cm.setPrimaryClip(emptyClip)
+                    Toast.makeText(ctx, "Portapapeles limpiado", Toast.LENGTH_SHORT).show()
+                }
+            }, 30_000)
+        }
     }
 
     override fun getItemCount() = contrasenas.size

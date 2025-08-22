@@ -34,6 +34,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.google.firebase.auth.FirebaseAuth
+import com.alexdev.guid3.security.CryptoHelper
+import com.google.firebase.firestore.FieldValue
 
 class Inicio : Fragment(R.layout.fragment_inicio) {
     private lateinit var categoriaViewModel: CategoriaViewModel
@@ -56,6 +59,8 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     private val haciaDerecha: Animation by lazy { AnimationUtils.loadAnimation(requireContext(), R.anim.hacia_derecha) }
 
     private val TAG = "InicioFragment"
+
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -85,24 +90,39 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         txtConteoContra.text = adaptadorContras.itemCount.toString()
 
         // Escuchar cambios en Firestore y actualizar la lista
-        contrasListener = contrasCollection.addSnapshotListener { snapshot, error ->
-            if (error != null) {
-                Log.e(TAG, "Error al cargar contraseñas desde Firestore", error)
-                Toast.makeText(requireContext(), "Error al cargar contraseñas", Toast.LENGTH_SHORT).show()
-                return@addSnapshotListener
-            }
-            if (snapshot != null) {
-                Log.d(TAG, "Snapshot recibido: ${snapshot.documents.size} documentos")
-                listaContras.clear()
-                for (doc in snapshot.documents) {
-                    val contra = doc.toObject(contras::class.java)
-                    if (contra != null) listaContras.add(contra)
+        val currentUid = auth.currentUser?.uid
+        contrasListener?.remove()
+        if (currentUid == null) {
+            listaContras.clear()
+        } else {
+            contrasListener = contrasCollection
+                .whereEqualTo("uid", currentUid)
+                .addSnapshotListener { snapshot, error ->
+                    if (error != null) {
+                        Log.e(TAG, "Error al cargar contraseñas desde Firestore", error)
+                        Toast.makeText(requireContext(), "Error al cargar contraseñas", Toast.LENGTH_SHORT).show()
+                        return@addSnapshotListener
+                    }
+                    if (snapshot != null) {
+                        listaContras.clear()
+                        for (doc in snapshot.documents) {
+                            val contraObj = doc.toObject(contras::class.java)
+                            if (contraObj != null) {
+                                contraObj.id = doc.id
+                                val cipherText = contraObj.contra
+                                val ivB64 = contraObj.iv
+                                val ownerUid = auth.currentUser?.uid
+                                if (!cipherText.isNullOrBlank() && !ivB64.isNullOrBlank()) {
+                                    val plain = CryptoHelper.decrypt(cipherText, ivB64, ownerUid)
+                                    if (plain != null) contraObj.contra = plain
+                                }
+                                listaContras.add(contraObj)
+                            }
+                        }
+                        adaptadorContras.notifyDataSetChanged()
+                        txtConteoContra.text = listaContras.size.toString()
+                    }
                 }
-                adaptadorContras.notifyDataSetChanged()
-                txtConteoContra.text = listaContras.size.toString()
-            } else {
-                Log.w(TAG, "Snapshot nulo en listener de contras")
-            }
         }
 
 
@@ -305,9 +325,11 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     // Diálogo para editar elemento
     private fun mostrarDialogoEditar(position: Int) {
         val adaptadorContras = ContrasAdapter(listaContras)
-        if (position < 0 || position >= listaContras.size) return
+        if (position !in listaContras.indices) return
         val contra = listaContras[position]
-        Log.d(TAG, "Editar contraseña: $contra")
+        val docId = contra.id
+        if (docId == null) return
+        val ref = contrasCollection.document(docId)
         val popUp = PopUpEditarContra.newInstance(
             contra.imgSeleccionada,
             contra.iconoPersonalizado,
@@ -323,41 +345,29 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
                     correo: String,
                     contraStr: String
                 ) {
-                    Log.d(TAG, "onContraEditada: imgSeleccionada=$imgSeleccionada, iconoPersonalizado=$iconoPersonalizado, titulo=$titulo, correo=$correo, contra=$contraStr")
-                    Log.d(TAG, "Actualizando contraseña en Firestore: $titulo, $correo")
-                    val docQuery = contrasCollection
-                        .whereEqualTo("titulo", contra.titulo)
-                        .whereEqualTo("correo", contra.correo)
-                        .whereEqualTo("contra", contra.contra)
-                        .get()
-                    docQuery.addOnSuccessListener { docs ->
-                        Log.d(TAG, "Documentos encontrados para editar: ${docs.size()} documentos")
-                        for (doc in docs) {
-                            doc.reference.update(
-                                mapOf(
-                                    "imgSeleccionada" to imgSeleccionada,
-                                    "iconoPersonalizado" to iconoPersonalizado,
-                                    "titulo" to titulo,
-                                    "correo" to correo,
-                                    "contra" to contraStr
-                                )
-                            ).addOnSuccessListener {
-                                Log.d(TAG, "Contraseña actualizada correctamente")
-                                // Actualizar la lista local y refrescar el adapter
-                                contra.imgSeleccionada = imgSeleccionada
-                                contra.iconoPersonalizado = iconoPersonalizado
-                                contra.titulo = titulo
-                                contra.correo = correo
-                                contra.contra = contraStr
-                                adaptadorContras.notifyDataSetChanged()
-                            }.addOnFailureListener { e ->
-                                Log.e(TAG, "Error al actualizar contraseña", e)
-                            }
-                        }
+                    val enc = CryptoHelper.encrypt(contraStr, auth.currentUser?.uid)
+                    ref.update(
+                        mapOf(
+                            "imgSeleccionada" to imgSeleccionada,
+                            "iconoPersonalizado" to iconoPersonalizado,
+                            "titulo" to titulo,
+                            "correo" to correo,
+                            "contra" to enc.cipherTextB64,
+                            "iv" to enc.ivB64,
+                            "updatedAt" to FieldValue.serverTimestamp()
+                        )
+                    ).addOnSuccessListener {
+                        contra.imgSeleccionada = imgSeleccionada
+                        contra.iconoPersonalizado = iconoPersonalizado
+                        contra.titulo = titulo
+                        contra.correo = correo
+                        contra.contra = contraStr
+                        adaptadorContras.notifyDataSetChanged()
+                        Toast.makeText(requireContext(), getString(R.string.contra_editada), Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener { e ->
-                        Log.e(TAG, "Error al buscar documentos para editar", e)
+                        Log.e(TAG, "Error al actualizar contraseña", e)
+                        Toast.makeText(requireContext(), "Error al actualizar", Toast.LENGTH_SHORT).show()
                     }
-                    Toast.makeText(requireContext(), getString(R.string.contra_editada), Toast.LENGTH_SHORT).show()
                 }
             }
         )
@@ -377,24 +387,11 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
     }
 
     private fun eliminarElemento(position: Int) {
-        if (position < 0 || position >= listaContras.size) return
+        if (position !in listaContras.indices) return
         val contra = listaContras[position]
-        Log.d(TAG, "Eliminando contraseña: $contra")
-        // TODO: Eliminar de Firestore
-        val docQuery = contrasCollection
-            .whereEqualTo("titulo", contra.titulo)
-            .whereEqualTo("correo", contra.correo)
-            .whereEqualTo("contra", contra.contra)
-            .get()
-        docQuery.addOnSuccessListener { docs ->
-            Log.d(TAG, "Documentos encontrados para eliminar: ${docs.size()} documentos")
-            for (doc in docs) {
-                doc.reference.delete()
-                    .addOnSuccessListener { Log.d(TAG, "Contraseña eliminada correctamente") }
-                    .addOnFailureListener { e -> Log.e(TAG, "Error al eliminar contraseña", e) }
-            }
-        }.addOnFailureListener { e ->
-            Log.e(TAG, "Error al buscar documentos para eliminar", e)
+        val docId = contra.id
+        if (docId != null) {
+            contrasCollection.document(docId).delete()
         }
         Toast.makeText(requireContext(), getString(R.string.contra_eliminada), Toast.LENGTH_SHORT).show()
     }
@@ -446,15 +443,23 @@ class Inicio : Fragment(R.layout.fragment_inicio) {
         fragmentPopUp.listener = object : PopUpCrearContra.OnContraCreadaListener {
             override fun onContraCreada(imgSeleccionada: Int, iconoPersonalizado: String?, titulo: String, correo: String, contra: String) {
                 Log.d(TAG, "Creando nueva contraseña: $titulo, $correo")
-                val nuevaContra = contras(
-                    imgSeleccionada = imgSeleccionada,
-                    titulo = titulo,
-                    correo = correo,
-                    contra = contra,
-                    iconoPersonalizado = iconoPersonalizado
+                val enc = CryptoHelper.encrypt(contra, auth.currentUser?.uid)
+                val uid = auth.currentUser?.uid
+                val data = mapOf(
+                    "imgSeleccionada" to imgSeleccionada,
+                    "titulo" to titulo,
+                    "correo" to correo,
+                    "contra" to enc.cipherTextB64,
+                    "iconoPersonalizado" to iconoPersonalizado,
+                    "uid" to uid,
+                    "iv" to enc.ivB64,
+                    "createdAt" to FieldValue.serverTimestamp(),
+                    "updatedAt" to FieldValue.serverTimestamp()
                 )
-                contrasCollection.add(nuevaContra)
-                    .addOnSuccessListener { Log.d(TAG, "Contraseña guardada en Firestore correctamente") }
+                contrasCollection.add(data)
+                    .addOnSuccessListener { _ ->
+                        // El listener actualizará la lista y descifrará
+                    }
                     .addOnFailureListener { e -> Log.e(TAG, "Error al guardar contraseña en Firestore", e) }
                 Toast.makeText(requireContext(), "Contraseña creada", Toast.LENGTH_SHORT).show()
             }
